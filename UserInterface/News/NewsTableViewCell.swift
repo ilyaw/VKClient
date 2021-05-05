@@ -14,7 +14,6 @@ class NewsTableViewCell: UITableViewCell {
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var contentText: UILabel!
     @IBOutlet weak var contentImageView: UIImageView!
-    
     @IBOutlet weak var like: LikeButton!
     @IBOutlet weak var comment: CommentButton!
     @IBOutlet weak var share: ShareButton!

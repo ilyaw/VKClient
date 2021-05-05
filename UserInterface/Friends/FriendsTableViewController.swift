@@ -139,47 +139,47 @@ final class FriendsTableViewController: UITableViewController {
             case .success(let friends):
                 DispatchQueue.main.async {
                     
-                    let firebaseUsers = friends.map { FirebaseUser.init(from: $0) }
-                    for user in firebaseUsers {
-                        //  создаем новую ветку
-                        
-                       // self?.saveUserToFirestore(user: user)
-                     
-                    
-                        self?.userCollection.document("\(Session.shared.userId)").setData([
-                            "friends": [MyFriend(1, "Vasya"), MyFriend(2, "Pasha")],
-                             
-//                            "firstName": "Ilya",
-//                            "lastName": "Rudenko",
-//
-//                            "friends": [
-//                                [
-//                                    "id": 1,
-//                                    "firstName": "Pavel",
-//                                    "lastName": "Durov",
-//                                    "photo_50": "url"
-//                                ],
-//                                [
-//                                    "id": 2,
-//                                    "firstName": "Test",
-//                                    "lastName": "Qweqwe",
-//                                    "photo_50": "url"
-//                                ]
-//                            ],
-//
-//                            "groups": [
-//                                "id": 1,
-//                                "title": "This is group",
-//                                "photo_50": "url"
-//                            ]
-                            
-                        ], merge: true) { [weak self] (error) in
-                            if let error = error {
-                                print(error.localizedDescription)
-                            }
-                        }
-                        
-                    }
+//                    let firebaseUsers = friends.map { FirebaseUser.init(from: $0) }
+//                    for user in firebaseUsers {
+//                        //  создаем новую ветку
+//                        
+//                       // self?.saveUserToFirestore(user: user)
+//                     
+//                    
+//                        self?.userCollection.document("\(Session.shared.userId)").setData([
+//                            "friends": [MyFriend(1, "Vasya"), MyFriend(2, "Pasha")],
+//                             
+////                            "firstName": "Ilya",
+////                            "lastName": "Rudenko",
+////
+////                            "friends": [
+////                                [
+////                                    "id": 1,
+////                                    "firstName": "Pavel",
+////                                    "lastName": "Durov",
+////                                    "photo_50": "url"
+////                                ],
+////                                [
+////                                    "id": 2,
+////                                    "firstName": "Test",
+////                                    "lastName": "Qweqwe",
+////                                    "photo_50": "url"
+////                                ]
+////                            ],
+////
+////                            "groups": [
+////                                "id": 1,
+////                                "title": "This is group",
+////                                "photo_50": "url"
+////                            ]
+//                            
+//                        ], merge: true) { [weak self] (error) in
+//                            if let error = error {
+//                                print(error.localizedDescription)
+//                            }
+//                        }
+//                        
+//                    }
                     
                     
                     
