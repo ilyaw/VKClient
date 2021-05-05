@@ -169,5 +169,10 @@ class NetworkManager {
             }
         }
     }
+    
+    //Получение новостной ленты
+    func getNewsFeed() {
+        
+    }
 }
 

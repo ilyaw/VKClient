@@ -11,9 +11,9 @@ target 'UserInterface' do
   pod 'RealmSwift'
   pod 'SDWebImage', '~> 5.0'
   
-  pod 'Firebase/Core'
-  pod 'Firebase/Database'
-  pod 'Firebase/Auth'
-  pod 'Firebase/Firestore'
+#  pod 'Firebase/Core'
+#  pod 'Firebase/Database'
+#  pod 'Firebase/Auth'
+#  pod 'Firebase/Firestore'
   
 end
