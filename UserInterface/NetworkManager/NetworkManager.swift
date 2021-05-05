@@ -21,6 +21,7 @@ class NetworkManager {
         case getPhotos = "photos.get"
         case getGroups = "groups.get"
         case searchGroups = "groups.search"
+        case getNewsfeed = "newsfeed.get"
     }
     
     //получение списка друзей по ID юзера
@@ -139,7 +140,6 @@ class NetworkManager {
     }
     
     //Получение групп по поисковому запросу
-    //Добавить потом type
     func searchGroups(textSearch: String, count: Int = 1000, offset: Int = 0, completion: @escaping ((Result<[GroupItem], Error>) -> Void) ) {
         guard let token = Session.shared.token else { return }
         
