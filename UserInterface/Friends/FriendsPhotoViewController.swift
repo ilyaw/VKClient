@@ -38,7 +38,6 @@ class FriendsPhotoViewController: UIViewController {
     }
     
     @objc private func handleSwipeGesture(sender: UISwipeGestureRecognizer) {
-        
         switch sender.direction{
         case .left:  //влевую сторону
             

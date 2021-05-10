@@ -27,7 +27,6 @@ class LikeButton: UIControl {
     func setLike(count: Int) {
         self.likeCount = count
         flag = false
-        //print(flag)
     }
     
     private func setup() {

@@ -35,8 +35,6 @@ final class FriendsTableViewController: UITableViewController {
         return users
     }
     
-    
-    
     @IBOutlet weak var searchBar: UISearchBar!
     
     override func viewWillAppear(_ animated: Bool) {
@@ -231,7 +229,7 @@ final class FriendsTableViewController: UITableViewController {
     }
     
     deinit {
-                filteredUsersNotificationToken?.invalidate()
+        filteredUsersNotificationToken?.invalidate()
     }
 }
 
