@@ -24,7 +24,7 @@ class VKLoginViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-//        Session.shared.token = "1213ea0f08536be51484c3f92f32bf978ee440234fea498cf36a93545a961afd3590bdcd93ca994d08c1b"
+//        Session.shared.token = "58a91173aac68ab1fcade3ba8000c30b94bfea85d81819b7e4ab126efbfff6071a45d5164a6c3119a0794"
 //        Session.shared.userId = 210404335
 //        moveToTabBarController()
     }
@@ -32,7 +32,7 @@ class VKLoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       // moveToTabBarController()
+        // moveToTabBarController()
         
         //        realmManager.get
         //
@@ -41,30 +41,39 @@ class VKLoginViewController: UIViewController {
         //            moveToTabBarController()
         //        }
         
-//        if true {
-//            Session.shared.token = "6bfb9c35ebcc773b15c8f65d47cf475f5f5606b1c9c52ef1dd5a222e4cb123295a4dfbc1133d616217063"
-//            Session.shared.userId = 210404335
-//            moveToTabBarController()
-//        } else {
-//
-            var components = URLComponents()
-            components.scheme = "https"
-            components.host = "oauth.vk.com"
-            components.path = "/authorize"
-            components.queryItems = [
-                URLQueryItem(name: "client_id", value: "7798550"),
-                URLQueryItem(name: "scope", value: "262150"),
-                URLQueryItem(name: "display", value: "mobile"),
-                URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
-                URLQueryItem(name: "response_type", value: "token"),
-                URLQueryItem(name: "v", value: "5.130")
-            ]
+        //        if true {
+        //            Session.shared.token = "6bfb9c35ebcc773b15c8f65d47cf475f5f5606b1c9c52ef1dd5a222e4cb123295a4dfbc1133d616217063"
+        //            Session.shared.userId = 210404335
+        //            moveToTabBarController()
+        //        } else {
+        //
+        
+                let friendsMask = 1 << 1
+                let photosMask = 1 << 2
+                let wallMask = 1 << 13
+                let groupsMask = 1 << 18
 
-            guard let url = components.url else { return }
+                let scope = friendsMask + photosMask + wallMask + groupsMask
 
-            let request = URLRequest(url: url)
-            webView.load(request)
-//        }
+                var components = URLComponents()
+                components.scheme = "https"
+                components.host = "oauth.vk.com"
+                components.path = "/authorize"
+                components.queryItems = [
+                    URLQueryItem(name: "client_id", value: "7798550"),
+                    URLQueryItem(name: "scope", value: "\(scope)"),
+                    URLQueryItem(name: "display", value: "mobile"),
+                    URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
+                    URLQueryItem(name: "response_type", value: "token"),
+                    URLQueryItem(name: "v", value: "5.130")
+                ]
+
+                guard let url = components.url else { return }
+
+                let request = URLRequest(url: url)
+                webView.load(request)
+        
+        //        }
     }
     
     

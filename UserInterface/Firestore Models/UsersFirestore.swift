@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import FirebaseDatabase
 
 class FirebaseUser {
     let id: Int

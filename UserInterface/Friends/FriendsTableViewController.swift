@@ -8,7 +8,6 @@
 import UIKit
 import RealmSwift
 import SDWebImage
-import FirebaseFirestore
 
 final class FriendsTableViewController: UITableViewController {
     let segueFromFriendsTableToFriendPhoto = "SegueFromFriendsTableToFriendPhoto"
@@ -23,8 +22,6 @@ final class FriendsTableViewController: UITableViewController {
         return refreshControl
     }()
     
-    var userCollection = Firestore.firestore().collection("Users")
-    var listener: ListenerRegistration?
     private var usersTest = [FirebaseUser]()
     
     private let networkManager = NetworkManager.shared
@@ -37,8 +34,6 @@ final class FriendsTableViewController: UITableViewController {
         let users: Results<FriendItem>? = realmManager?.getObjects()
         return users
     }
-    
-    
     
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -60,30 +55,6 @@ final class FriendsTableViewController: UITableViewController {
         
         filteredUsers = users
         
-        listener = userCollection.addSnapshotListener { [weak self] (snapshot, error) in
-            //удаляем все старые данные
-            self?.usersTest.removeAll()
-            
-            //все документы
-            guard let snapshot = snapshot,
-                  !snapshot.documents.isEmpty
-            else {
-                self?.loadData()
-                return
-            }
-            
-            //если что-то есть
-            for document in snapshot.documents {
-                guard
-                    let user = FirebaseUser(dict: document.data())
-                else { continue }
-                
-                self?.usersTest.append(user)
-            }
-            
-            //     self?.usersTableView.reloadData()
-        }
-        
         signToFilteredUsersChange()
         loadData()
     }
@@ -94,9 +65,6 @@ final class FriendsTableViewController: UITableViewController {
             case .initial( _): break
             case .update( _, deletions: let deletions, insertions: let insertions, modifications: let modifications):
                 self?.tableView.beginUpdates()
-                
-                
-                
                 
                 let deletionsIndexPaths = deletions.map { IndexPath(row: $0, section: 0) }
                 let insertionsIndexPaths = insertions.map { IndexPath(row: $0, section: 0) }
@@ -181,10 +149,6 @@ final class FriendsTableViewController: UITableViewController {
 //                        
 //                    }
                     
-                    
-                    
-                    
-                    
                     let sortedFriends = friends.sorted { $0.id < $1.id }
                     let arrEqual = sortedFriends == self?.users?.toArray()
                     
@@ -194,14 +158,6 @@ final class FriendsTableViewController: UITableViewController {
                     
                     completion?()
                 }
-            }
-        }
-    }
-    
-    private func saveUserToFirestore(user: FirebaseUser) {
-        userCollection.document("\(user.id)").setData(user.toAnyObject()) { [weak self] (error) in
-            if let error = error {
-                print(error.localizedDescription)
             }
         }
     }
@@ -273,8 +229,7 @@ final class FriendsTableViewController: UITableViewController {
     }
     
     deinit {
-        //        filteredUsersNotificationToken?.invalidate()
-        listener?.remove()
+        filteredUsersNotificationToken?.invalidate()
     }
 }
 
