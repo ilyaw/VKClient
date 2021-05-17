@@ -12,7 +12,6 @@ class FirebaseUser {
     let firstName: String
     let lastName: String
     
-    
     init(id: Int,
          firstName: String,
          lastName: String) {

@@ -24,7 +24,8 @@ class VKLoginViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-//        Session.shared.token = "58a91173aac68ab1fcade3ba8000c30b94bfea85d81819b7e4ab126efbfff6071a45d5164a6c3119a0794"
+
+//        Session.shared.token = "402ba1e1a44c3e461cc0bb787844e36db17494962c9d9797a06ec721bff761f0036812ab5c1ff3db3509d"
 //        Session.shared.userId = 210404335
 //        moveToTabBarController()
     }
@@ -47,7 +48,7 @@ class VKLoginViewController: UIViewController {
         //            moveToTabBarController()
         //        } else {
         //
-        
+
                 let friendsMask = 1 << 1
                 let photosMask = 1 << 2
                 let wallMask = 1 << 13

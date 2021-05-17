@@ -25,8 +25,7 @@ class NetworkManager {
     }
     
     //получение списка друзей по ID юзера
-    //photo_200_orig убрать
-    func getFriends(userId: Int = Session.shared.userId, count: Int = 5000, offset: Int = 0, fields: String = "sex, bdate, city, photo_50, photo_200_orig", completion: @escaping ((Result<[FriendItem], Error>) -> Void)) {
+    func getFriends(userId: Int = Session.shared.userId, count: Int = 500, offset: Int = 0, fields: String = "sex, bdate, city, photo_50", completion: @escaping ((Result<[FriendItem], Error>) -> Void)) {
         guard let token = Session.shared.token else { return }
         
         let url = baseURL + Paths.getFriends.rawValue
@@ -53,16 +52,7 @@ class NetworkManager {
                         friends = friends.filter {
                             $0.deactivated == nil
                         }
-                        
-                        //                        friends = friends.filter({ (friend) -> Bool in
-                        //                            if friend.deactivated == nil {
-                        //                                return true
-                        //                            }
-                        //                            return false
-                        //                        })
-                        //
-                        
-                        
+
                         completion(.success(friends))
                     } catch {
                         completion(.failure(error))
@@ -182,7 +172,6 @@ class NetworkManager {
             "filters": "post"
         ]
         
-        
         AF.request(url, parameters: parameters).responseJSON { (response) in
             switch response.result {
             case .failure(let error):
@@ -223,31 +212,6 @@ class NetworkManager {
                             
                             newsFeed.append(feed)
                         }
-                        
-                        
-//                        let dispatchGroup = DispatchGroup()
-//
-//                        DispatchQueue.global().async(group: dispatchGroup) {
-//                            for item in newsFeedResponse.items {
-//                                print(item.text ?? "")
-//                            }
-//                        }
-//
-//                        DispatchQueue.global().async(group: dispatchGroup) {
-//                            for profile in newsFeedResponse.profiles {
-//                                print("\(profile.firstName) \(profile.lastName)")
-//                            }
-//                        }
-//
-//                        DispatchQueue.global().async(group: dispatchGroup) {
-//                            for group in newsFeedResponse.groups {
-//                                print(group.name)
-//                            }
-//                        }
-//
-//                        dispatchGroup.notify(queue: DispatchQueue.main) {
-//                            print("done")
-//                        }
                         
                         completion(.success(newsFeed))
                     } catch {

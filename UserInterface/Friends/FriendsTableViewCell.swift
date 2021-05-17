@@ -19,5 +19,22 @@ class FriendsTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-
+    
+    func setup(_ user: FriendItem) {
+        self.name.text = user.firstName + " " + user.lastName
+        if let url = URL(string: user.photo50 ?? "") {
+            DispatchQueue.global().async {
+                DispatchQueue.main.async {
+                    self.shadowView.avatar.sd_setImage(with: url)
+                }
+            }
+        }
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        self.shadowView.avatar.image = nil
+        self.name.text = nil
+    }
 }

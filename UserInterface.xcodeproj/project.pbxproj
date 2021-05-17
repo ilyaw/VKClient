@@ -37,6 +37,13 @@
 		090AF7F7260896FE00C1939B /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 090AF7F3260890B700C1939B /* WebKit.framework */; };
 		090AF7FC26089E6600C1939B /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090AF7FB26089E6600C1939B /* NetworkManager.swift */; };
 		092212502615D2C800B49CD6 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0922124F2615D2C800B49CD6 /* RealmManager.swift */; };
+		092600E6264B273C00D079E5 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092600E5264B273C00D079E5 /* AsyncOperation.swift */; };
+		092600E8264B276300D079E5 /* GetDataOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092600E7264B276300D079E5 /* GetDataOperation.swift */; };
+		092600EA264B277400D079E5 /* ParseFriendsOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092600E9264B277400D079E5 /* ParseFriendsOperation.swift */; };
+		092600EC264B278600D079E5 /* RealmUpdateFriendsOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092600EB264B278600D079E5 /* RealmUpdateFriendsOperation.swift */; };
+		092600EE264B279600D079E5 /* ReloadFriendsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092600ED264B279600D079E5 /* ReloadFriendsController.swift */; };
+		092600F1264B29E600D079E5 /* NetworkManagerOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092600F0264B29E600D079E5 /* NetworkManagerOperation.swift */; };
+		092600F4264C279000D079E5 /* ReloadDataTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092600F3264C279000D079E5 /* ReloadDataTableController.swift */; };
 		0926B8D326106F1300C66F1A /* Groups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0926B8D226106F1300C66F1A /* Groups.swift */; };
 		092AC34B260B3D0F001E4EF1 /* AnimatorOpen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092AC34A260B3D0F001E4EF1 /* AnimatorOpen.swift */; };
 		092AC34E260B4106001E4EF1 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092AC34D260B4106001E4EF1 /* CustomNavigationController.swift */; };
@@ -90,6 +97,13 @@
 		090AF7F3260890B700C1939B /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		090AF7FB26089E6600C1939B /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		0922124F2615D2C800B49CD6 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		092600E5264B273C00D079E5 /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
+		092600E7264B276300D079E5 /* GetDataOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDataOperation.swift; sourceTree = "<group>"; };
+		092600E9264B277400D079E5 /* ParseFriendsOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseFriendsOperation.swift; sourceTree = "<group>"; };
+		092600EB264B278600D079E5 /* RealmUpdateFriendsOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmUpdateFriendsOperation.swift; sourceTree = "<group>"; };
+		092600ED264B279600D079E5 /* ReloadFriendsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadFriendsController.swift; sourceTree = "<group>"; };
+		092600F0264B29E600D079E5 /* NetworkManagerOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerOperation.swift; sourceTree = "<group>"; };
+		092600F3264C279000D079E5 /* ReloadDataTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadDataTableController.swift; sourceTree = "<group>"; };
 		0926B8D226106F1300C66F1A /* Groups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Groups.swift; sourceTree = "<group>"; };
 		092AC34A260B3D0F001E4EF1 /* AnimatorOpen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatorOpen.swift; sourceTree = "<group>"; };
 		092AC34D260B4106001E4EF1 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
@@ -212,9 +226,10 @@
 		045C904625CAD144005FC428 /* UserInterface */ = {
 			isa = PBXGroup;
 			children = (
+				092600F2264C26F400D079E5 /* Protocols */,
+				092AC349260B3A64001E4EF1 /* CustomAnimation */,
 				09D685C0261F62AF0046B131 /* Extensions */,
 				0922124E2615D26000B49CD6 /* RealmManager */,
-				092AC349260B3A64001E4EF1 /* CustomAnimation */,
 				090AF7ED26088C4A00C1939B /* NetworkManager */,
 				0450641625FF634000B08791 /* View */,
 				045063EA25FD4C4700B08791 /* Control */,
@@ -240,6 +255,7 @@
 		090AF7ED26088C4A00C1939B /* NetworkManager */ = {
 			isa = PBXGroup;
 			children = (
+				092600E4264B272F00D079E5 /* Operations */,
 				042542F3260088E6005D99FD /* Session.swift */,
 				090AF7FB26089E6600C1939B /* NetworkManager.swift */,
 			);
@@ -261,6 +277,35 @@
 				0922124F2615D2C800B49CD6 /* RealmManager.swift */,
 			);
 			path = RealmManager;
+			sourceTree = "<group>";
+		};
+		092600E4264B272F00D079E5 /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				092600F0264B29E600D079E5 /* NetworkManagerOperation.swift */,
+				092600E5264B273C00D079E5 /* AsyncOperation.swift */,
+				092600E7264B276300D079E5 /* GetDataOperation.swift */,
+				092600EF264B27AF00D079E5 /* Friends */,
+			);
+			path = Operations;
+			sourceTree = "<group>";
+		};
+		092600EF264B27AF00D079E5 /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				092600E9264B277400D079E5 /* ParseFriendsOperation.swift */,
+				092600EB264B278600D079E5 /* RealmUpdateFriendsOperation.swift */,
+				092600ED264B279600D079E5 /* ReloadFriendsController.swift */,
+			);
+			path = Friends;
+			sourceTree = "<group>";
+		};
+		092600F2264C26F400D079E5 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				092600F3264C279000D079E5 /* ReloadDataTableController.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		092AC349260B3A64001E4EF1 /* CustomAnimation */ = {
@@ -424,6 +469,7 @@
 				045063F025FD4D0B00B08791 /* ShareButton.swift in Sources */,
 				040A3E8025DA427B00DFD359 /* MyGroupsTableViewCell.swift in Sources */,
 				092AC358260B419F001E4EF1 /* CustomInteractiveTransition.swift in Sources */,
+				092600EC264B278600D079E5 /* RealmUpdateFriendsOperation.swift in Sources */,
 				045063EC25FD4C9E00B08791 /* CommentButton.swift in Sources */,
 				092AC355260B4165001E4EF1 /* CustomPopAnimator.swift in Sources */,
 				09D685C2261F62C90046B131 /* Results.swift in Sources */,
@@ -437,6 +483,7 @@
 				04DDEE552604728600FC8577 /* FriendsPhotoViewController.swift in Sources */,
 				042B210625FCF0DD007D8DC8 /* News.swift in Sources */,
 				040A3E7A25D9CEAC00DFD359 /* FriendPhotoCollectionViewCell.swift in Sources */,
+				092600EA264B277400D079E5 /* ParseFriendsOperation.swift in Sources */,
 				045CCBA925F3F46F00513B88 /* GroupUser.swift in Sources */,
 				042B20FD25FCB2DB007D8DC8 /* NewsFeedTableViewCell.swift in Sources */,
 				044570C225E9064100FC4E47 /* ShadowView.swift in Sources */,
@@ -444,8 +491,10 @@
 				040A3E8625DA46C400DFD359 /* AllGroupsTableViewController.swift in Sources */,
 				0936FC452642E7C000FB60D7 /* NewsFeed.swift in Sources */,
 				0952DF1C260E2B2200877AFC /* Friends.swift in Sources */,
+				092600F4264C279000D079E5 /* ReloadDataTableController.swift in Sources */,
 				0450641825FF634C00B08791 /* Loading.swift in Sources */,
 				090AF7FC26089E6600C1939B /* NetworkManager.swift in Sources */,
+				092600EE264B279600D079E5 /* ReloadFriendsController.swift in Sources */,
 				040A3E7425D9C6C600DFD359 /* FriendsTableViewCell.swift in Sources */,
 				09D1DCC5263325FA00D58A5F /* PhotosFirestore.swift in Sources */,
 				045C904825CAD144005FC428 /* AppDelegate.swift in Sources */,
@@ -454,12 +503,15 @@
 				0943ECD3260F455800039272 /* Photos.swift in Sources */,
 				042542F4260088E6005D99FD /* Session.swift in Sources */,
 				09D1DCC92633260300D58A5F /* GroupsFirestore.swift in Sources */,
+				092600E6264B273C00D079E5 /* AsyncOperation.swift in Sources */,
 				09D1DCC02633246D00D58A5F /* UsersFirestore.swift in Sources */,
 				0926B8D326106F1300C66F1A /* Groups.swift in Sources */,
 				045C904A25CAD144005FC428 /* SceneDelegate.swift in Sources */,
 				041C53F825E9196600F21BD7 /* LikeButton.swift in Sources */,
 				040A3E8325DA463F00DFD359 /* AllGroupsTableViewCell.swift in Sources */,
 				09F1FAFE2646E30A00C5A2E0 /* Date.swift in Sources */,
+				092600E8264B276300D079E5 /* GetDataOperation.swift in Sources */,
+				092600F1264B29E600D079E5 /* NetworkManagerOperation.swift in Sources */,
 				090AF7F026088F9100C1939B /* VKLoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
