@@ -24,6 +24,7 @@ class VKLoginViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+
 //        Session.shared.token = "402ba1e1a44c3e461cc0bb787844e36db17494962c9d9797a06ec721bff761f0036812ab5c1ff3db3509d"
 //        Session.shared.userId = 210404335
 //        moveToTabBarController()
