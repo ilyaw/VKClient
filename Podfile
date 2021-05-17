@@ -10,5 +10,6 @@ target 'UserInterface' do
   pod 'SwiftyJSON', '~> 4.0'
   pod 'RealmSwift'
   pod 'SDWebImage', '~> 5.0'
+  pod "PromiseKit", "~> 6.8"
   
 end
