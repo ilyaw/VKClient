@@ -8,8 +8,8 @@
 import UIKit
 
 class MyGroupsTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var avatar: UIImageView!
+    
+    @IBOutlet weak var shadowView: ShadowView!
     @IBOutlet weak var groupName: UILabel!
     
     override func awakeFromNib() {
@@ -29,7 +29,7 @@ class MyGroupsTableViewCell: UITableViewCell {
         if let url = URL(string: group.photo50) {
             DispatchQueue.global().async {
                 DispatchQueue.main.async {
-                    self.avatar.sd_setImage(with: url)
+                    self.shadowView.avatar.sd_setImage(with: url)
                 }
             }
         }
@@ -38,7 +38,6 @@ class MyGroupsTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         self.groupName.text = nil
-        self.avatar.image = nil
+        self.shadowView.avatar.image = nil
     }
-
 }

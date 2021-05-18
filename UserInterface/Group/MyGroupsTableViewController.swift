@@ -10,7 +10,7 @@ import RealmSwift
 import SDWebImage
 
 class MyGroupsTableViewController: UITableViewController {
-    static let identifier = "MyGroups"
+    static let identifier = "GroupCell"
     
     private lazy var refresh: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
