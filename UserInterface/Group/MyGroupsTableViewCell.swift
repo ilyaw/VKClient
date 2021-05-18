@@ -22,5 +22,23 @@ class MyGroupsTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func setup(_ group: GroupItem) {
+        self.groupName.text = group.name
+        
+        if let url = URL(string: group.photo50) {
+            DispatchQueue.global().async {
+                DispatchQueue.main.async {
+                    self.avatar.sd_setImage(with: url)
+                }
+            }
+        }
+    }
+    
+    
+    override func prepareForReuse() {
+        self.groupName.text = nil
+        self.avatar.image = nil
+    }
 
 }

@@ -10,7 +10,7 @@ import RealmSwift
 import SDWebImage
 
 class MyGroupsTableViewController: UITableViewController {
-    let myGroups = "MyGroups"
+    static let identifier = "MyGroups"
     
     private lazy var refresh: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -98,23 +98,12 @@ class MyGroupsTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: myGroups, for: indexPath) as? MyGroupsTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MyGroupsTableViewController.identifier, for: indexPath) as? MyGroupsTableViewCell,
+              let group = groups?[indexPath.row]  else {
             return UITableViewCell()
         }
         
-        guard let group = groups?[indexPath.row] else {
-            return UITableViewCell()
-        }
-        
-        cell.groupName.text = group.name
-        
-        if let url = URL(string: group.photo50) {
-            DispatchQueue.global().async {
-                DispatchQueue.main.async {
-                    cell.avatar.sd_setImage(with: url)
-                }
-            }
-        }
+        cell.setup(group)
         
         return cell
     }

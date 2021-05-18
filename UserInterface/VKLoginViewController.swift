@@ -24,9 +24,9 @@ class VKLoginViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        Session.shared.token = "05817c429fda755aefe2ee932f52e84b462fdba044fb22a5b47296751be50d0cbbd7278ab27067ca8eb9a"
-        Session.shared.userId = 210404335
-        moveToTabBarController()
+//        Session.shared.token = "05817c429fda755aefe2ee932f52e84b462fdba044fb22a5b47296751be50d0cbbd7278ab27067ca8eb9a"
+//        Session.shared.userId = 210404335
+//        moveToTabBarController()
     }
     
     override func viewDidLoad() {
@@ -48,30 +48,30 @@ class VKLoginViewController: UIViewController {
         //        } else {
         //
 
-//                let friendsMask = 1 << 1
-//                let photosMask = 1 << 2
-//                let wallMask = 1 << 13
-//                let groupsMask = 1 << 18
-//
-//                let scope = friendsMask + photosMask + wallMask + groupsMask
-//
-//                var components = URLComponents()
-//                components.scheme = "https"
-//                components.host = "oauth.vk.com"
-//                components.path = "/authorize"
-//                components.queryItems = [
-//                    URLQueryItem(name: "client_id", value: "7798550"),
-//                    URLQueryItem(name: "scope", value: "\(scope)"),
-//                    URLQueryItem(name: "display", value: "mobile"),
-//                    URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
-//                    URLQueryItem(name: "response_type", value: "token"),
-//                    URLQueryItem(name: "v", value: "5.130")
-//                ]
-//
-//                guard let url = components.url else { return }
-//
-//                let request = URLRequest(url: url)
-//                webView.load(request)
+        let friendsMask = 1 << 1
+        let photosMask = 1 << 2
+        let wallMask = 1 << 13
+        let groupsMask = 1 << 18
+        
+        let scope = friendsMask + photosMask + wallMask + groupsMask
+        
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = "oauth.vk.com"
+        components.path = "/authorize"
+        components.queryItems = [
+            URLQueryItem(name: "client_id", value: "7798550"),
+            URLQueryItem(name: "scope", value: "\(scope)"),
+            URLQueryItem(name: "display", value: "mobile"),
+            URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
+            URLQueryItem(name: "response_type", value: "token"),
+            URLQueryItem(name: "v", value: "5.130")
+        ]
+        
+        guard let url = components.url else { return }
+        
+        let request = URLRequest(url: url)
+        webView.load(request)
         
         //        }
     }
