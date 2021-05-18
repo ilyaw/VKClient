@@ -16,7 +16,7 @@ class NetworkManagerPromise {
     
     private let baseURL = "https://api.vk.com/method/"
     private let versionVKAPI = "5.130"
-
+    
     private enum Paths: String {
         case getGroups = "groups.get"
         case searchGroups = "groups.search"
@@ -39,11 +39,44 @@ class NetworkManagerPromise {
             "offset": offset,
         ]
         
+        return Alamofire.request(url, parameters: parameters)
+            .responseJSON()
+            .map(on: queue) { json, response -> [GroupItem] in
+                guard let data = response.data else {
+                    throw VKError.dataIsEmpty(message: "response data is empty")
+                }
+                
+                do {
+                    let groups = try JSONDecoder().decode(Groups.self, from: data).response.items
+                    return groups
+                } catch {
+                    throw VKError.cannotDeserialize(message: error.localizedDescription)
+                }
+            }
+    }
+    
+    //Получение групп по поисковому запросу
+    func searchGroups(textSearch: String, on queue: DispatchQueue = .main, count: Int = 1000, offset: Int = 0) -> Promise<[GroupItem]> {
+        guard let token = Session.shared.token else {
+            return Promise.init(error: VKError.needValidation(message: "Отсутвует Token"))
+        }
+        
+        let url = baseURL + Paths.searchGroups.rawValue
+        
+        let parameters: Parameters = [
+            "access_token": token,
+            "v": versionVKAPI,
+            "q": textSearch,
+            "count": count,
+            "offset": offset,
+        ]
         
         return Alamofire.request(url, parameters: parameters)
             .responseJSON()
             .map(on: queue) { json, response -> [GroupItem] in
-                guard let data = response.data else { return [GroupItem]() }
+                guard let data = response.data else {
+                    throw VKError.dataIsEmpty(message: "response data is empty")
+                }
                 
                 do {
                     let groups = try JSONDecoder().decode(Groups.self, from: data).response.items

@@ -316,64 +316,6 @@
             </objects>
             <point key="canvasLocation" x="1954" y="-108"/>
         </scene>
-        <!--Группы-->
-        <scene sceneID="T4k-uH-Uef">
-            <objects>
-                <tableViewController id="RJa-0M-E2p" customClass="MyGroupsTableViewController" customModule="UserInterface" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="pgI-R4-tWd">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyGroups" id="MiZ-B8-dLV" customClass="MyGroupsTableViewCell" customModule="UserInterface" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="24.5" width="414" height="42.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MiZ-B8-dLV" id="q2N-8t-EHS">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="42.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="g_1" translatesAutoresizingMaskIntoConstraints="NO" id="ypJ-Rc-GVc">
-                                            <rect key="frame" x="20" y="0.0" width="45" height="45"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="45" id="aOm-Ax-6d7"/>
-                                                <constraint firstAttribute="height" constant="45" id="fLF-1y-sr8"/>
-                                            </constraints>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qJ8-Tz-FRa">
-                                            <rect key="frame" x="73" y="11" width="307" height="20.5"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                            <color key="textColor" systemColor="linkColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="qJ8-Tz-FRa" firstAttribute="top" secondItem="q2N-8t-EHS" secondAttribute="topMargin" id="6Gf-4p-9Te"/>
-                                        <constraint firstItem="ypJ-Rc-GVc" firstAttribute="top" secondItem="q2N-8t-EHS" secondAttribute="top" id="WAl-NF-CmZ"/>
-                                        <constraint firstItem="qJ8-Tz-FRa" firstAttribute="centerY" secondItem="q2N-8t-EHS" secondAttribute="centerY" id="Xq5-UG-nbO"/>
-                                        <constraint firstItem="qJ8-Tz-FRa" firstAttribute="leading" secondItem="ypJ-Rc-GVc" secondAttribute="trailing" constant="8" symbolic="YES" id="hCg-N2-Kbu"/>
-                                        <constraint firstItem="ypJ-Rc-GVc" firstAttribute="leading" secondItem="q2N-8t-EHS" secondAttribute="leadingMargin" id="qLe-64-Ml8"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="qJ8-Tz-FRa" secondAttribute="trailing" constant="14" id="t62-5i-Ey1"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="avatar" destination="ypJ-Rc-GVc" id="gda-pj-HEC"/>
-                                    <outlet property="groupName" destination="qJ8-Tz-FRa" id="AsH-HY-pxo"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="RJa-0M-E2p" id="akH-z3-cyf"/>
-                            <outlet property="delegate" destination="RJa-0M-E2p" id="RUx-mh-HMz"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Группы" id="Reo-ny-6u6">
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="ruT-7h-0RP"/>
-                    </navigationItem>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Rza-n9-f4t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3665" y="569"/>
-        </scene>
         <!--Глобальный поиск-->
         <scene sceneID="tEq-V7-fba">
             <objects>
@@ -652,7 +594,6 @@
         <image name="1" width="807" height="807"/>
         <image name="VK_Full_Logo" width="274" height="48"/>
         <image name="chevron.down" catalog="system" width="128" height="72"/>
-        <image name="g_1" width="789" height="789"/>
         <image name="newspaper.fill" catalog="system" width="128" height="111"/>
         <image name="person.2.fill" catalog="system" width="128" height="80"/>
         <image name="person.3.fill" catalog="system" width="128" height="61"/>

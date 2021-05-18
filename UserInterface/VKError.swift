@@ -10,6 +10,7 @@ import Foundation
 enum VKError: Error {
     case needValidation(message: String)
     case cannotDeserialize(message: String)
+    case dataIsEmpty(message: String)
 }
 
 extension VKError: LocalizedError {
@@ -18,6 +19,8 @@ extension VKError: LocalizedError {
         case .cannotDeserialize(let message):
             return NSLocalizedString(message, comment: "")
         case .needValidation(message: let message):
+            return NSLocalizedString(message, comment: "")
+        case .dataIsEmpty(message: let message):
             return NSLocalizedString(message, comment: "")
         }
     }

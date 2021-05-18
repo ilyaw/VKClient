@@ -47,8 +47,8 @@ class MyGroupsTableViewController: UITableViewController {
     }
     
     private func loadData(completion: (() -> Void)? = nil) {
-        networkManager.getGroups(on: .main)
-            .get { [weak self] groups in
+        networkManager.getGroups(on: .global())
+            .get(on: .main) { [weak self] groups in
                 let sortedGroups = groups.sorted { $0.id < $1.id }
                 let arrEqual = sortedGroups == self?.groups?.toArray()
                 
