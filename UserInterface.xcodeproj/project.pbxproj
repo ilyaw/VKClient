@@ -44,6 +44,9 @@
 		092600EE264B279600D079E5 /* ReloadFriendsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092600ED264B279600D079E5 /* ReloadFriendsController.swift */; };
 		092600F1264B29E600D079E5 /* NetworkManagerOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092600F0264B29E600D079E5 /* NetworkManagerOperation.swift */; };
 		092600F4264C279000D079E5 /* ReloadDataTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092600F3264C279000D079E5 /* ReloadDataTableController.swift */; };
+		092601942652BE6F00D079E5 /* NetworkManagerPromise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092601932652BE6F00D079E5 /* NetworkManagerPromise.swift */; };
+		092601962654015900D079E5 /* VKError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092601952654015900D079E5 /* VKError.swift */; };
+		0926019826540D5C00D079E5 /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0926019726540D5C00D079E5 /* UIAlertController.swift */; };
 		0926B8D326106F1300C66F1A /* Groups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0926B8D226106F1300C66F1A /* Groups.swift */; };
 		092AC34B260B3D0F001E4EF1 /* AnimatorOpen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092AC34A260B3D0F001E4EF1 /* AnimatorOpen.swift */; };
 		092AC34E260B4106001E4EF1 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092AC34D260B4106001E4EF1 /* CustomNavigationController.swift */; };
@@ -104,6 +107,9 @@
 		092600ED264B279600D079E5 /* ReloadFriendsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadFriendsController.swift; sourceTree = "<group>"; };
 		092600F0264B29E600D079E5 /* NetworkManagerOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerOperation.swift; sourceTree = "<group>"; };
 		092600F3264C279000D079E5 /* ReloadDataTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadDataTableController.swift; sourceTree = "<group>"; };
+		092601932652BE6F00D079E5 /* NetworkManagerPromise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerPromise.swift; sourceTree = "<group>"; };
+		092601952654015900D079E5 /* VKError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKError.swift; sourceTree = "<group>"; };
+		0926019726540D5C00D079E5 /* UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
 		0926B8D226106F1300C66F1A /* Groups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Groups.swift; sourceTree = "<group>"; };
 		092AC34A260B3D0F001E4EF1 /* AnimatorOpen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatorOpen.swift; sourceTree = "<group>"; };
 		092AC34D260B4106001E4EF1 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
@@ -230,6 +236,8 @@
 				092AC349260B3A64001E4EF1 /* CustomAnimation */,
 				09D685C0261F62AF0046B131 /* Extensions */,
 				0922124E2615D26000B49CD6 /* RealmManager */,
+				092601922652BD6100D079E5 /* Promise */,
+				092600E4264B272F00D079E5 /* Operations */,
 				090AF7ED26088C4A00C1939B /* NetworkManager */,
 				0450641625FF634000B08791 /* View */,
 				045063EA25FD4C4700B08791 /* Control */,
@@ -242,6 +250,7 @@
 				045C904925CAD144005FC428 /* SceneDelegate.swift */,
 				045C904B25CAD144005FC428 /* LoginFormController.swift */,
 				090AF7EF26088F9100C1939B /* VKLoginViewController.swift */,
+				092601952654015900D079E5 /* VKError.swift */,
 				045C904D25CAD144005FC428 /* Main.storyboard */,
 				045C905025CAD146005FC428 /* Assets.xcassets */,
 				045C905225CAD146005FC428 /* LaunchScreen.storyboard */,
@@ -255,7 +264,6 @@
 		090AF7ED26088C4A00C1939B /* NetworkManager */ = {
 			isa = PBXGroup;
 			children = (
-				092600E4264B272F00D079E5 /* Operations */,
 				042542F3260088E6005D99FD /* Session.swift */,
 				090AF7FB26089E6600C1939B /* NetworkManager.swift */,
 			);
@@ -308,6 +316,14 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		092601922652BD6100D079E5 /* Promise */ = {
+			isa = PBXGroup;
+			children = (
+				092601932652BE6F00D079E5 /* NetworkManagerPromise.swift */,
+			);
+			path = Promise;
+			sourceTree = "<group>";
+		};
 		092AC349260B3A64001E4EF1 /* CustomAnimation */ = {
 			isa = PBXGroup;
 			children = (
@@ -336,6 +352,7 @@
 				09D685C1261F62C90046B131 /* Results.swift */,
 				09F1FAFD2646E30A00C5A2E0 /* Date.swift */,
 				09F1FAFF2646FC1900C5A2E0 /* Int.swift */,
+				0926019726540D5C00D079E5 /* UIAlertController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -473,11 +490,14 @@
 				045063EC25FD4C9E00B08791 /* CommentButton.swift in Sources */,
 				092AC355260B4165001E4EF1 /* CustomPopAnimator.swift in Sources */,
 				09D685C2261F62C90046B131 /* Results.swift in Sources */,
+				092601962654015900D079E5 /* VKError.swift in Sources */,
 				092AC351260B414D001E4EF1 /* CustomPushAnimator.swift in Sources */,
+				092601942652BE6F00D079E5 /* NetworkManagerPromise.swift in Sources */,
 				09F1FB002646FC1900C5A2E0 /* Int.swift in Sources */,
 				040A3E7725D9CB1900DFD359 /* FriendPhotoCollectionViewController.swift in Sources */,
 				042B20F525FCB1F4007D8DC8 /* NewsFeedTableViewController.swift in Sources */,
 				045C904C25CAD144005FC428 /* LoginFormController.swift in Sources */,
+				0926019826540D5C00D079E5 /* UIAlertController.swift in Sources */,
 				092212502615D2C800B49CD6 /* RealmManager.swift in Sources */,
 				040A3E7125D9C1DE00DFD359 /* FriendsTableViewController.swift in Sources */,
 				04DDEE552604728600FC8577 /* FriendsPhotoViewController.swift in Sources */,

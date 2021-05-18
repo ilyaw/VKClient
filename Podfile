@@ -6,10 +6,11 @@ target 'UserInterface' do
   use_frameworks!
 
   # Pods for UserInterface
-  pod 'Alamofire', '~> 5.2'
+  pod 'Alamofire', '~> 4.0'
   pod 'SwiftyJSON', '~> 4.0'
   pod 'RealmSwift'
   pod 'SDWebImage', '~> 5.0'
-  pod "PromiseKit", "~> 6.8"
-  
+  pod "PromiseKit", "~> 6.13.1"
+  pod 'PromiseKit/Alamofire'
+
 end

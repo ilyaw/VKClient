@@ -27,7 +27,7 @@ class MyGroupsTableViewController: UITableViewController {
         }
     }
     
-    private let networkManager = NetworkManager.shared
+    private let networkManager = NetworkManagerPromise.shared
     private let realmManager = RealmManager.shared
     
     private var groupsNotificationToken: NotificationToken?
@@ -47,23 +47,21 @@ class MyGroupsTableViewController: UITableViewController {
     }
     
     private func loadData(completion: (() -> Void)? = nil) {
-        networkManager.getGroups { [weak self] result in
-            switch result {
-            case .failure(let error):
-                print(error.localizedDescription)
-            case .success(let groups):
-                DispatchQueue.main.async {
-                    let sortedGroups = groups.sorted { $0.id < $1.id }
-                    let arrEqual = sortedGroups == self?.groups?.toArray()
-                    
-                    if !arrEqual {
-                        try? self?.realmManager?.add(objects: sortedGroups)
-                    }
-                    
-                    completion?()
+        networkManager.getGroups(on: .main)
+            .get { [weak self] groups in
+                let sortedGroups = groups.sorted { $0.id < $1.id }
+                let arrEqual = sortedGroups == self?.groups?.toArray()
+                
+                if !arrEqual {
+                    try? self?.realmManager?.add(objects: sortedGroups)
                 }
             }
-        }
+            .catch { [weak self] error in
+                self?.present(UIAlertController.create(error.localizedDescription), animated: true, completion: nil)
+            }
+            .finally {
+                completion?()
+            }
     }
     
     private func signToGroupsChanges() {

@@ -25,7 +25,7 @@ class NetworkManager {
     }
     
     //получение списка друзей по ID юзера
-    func getFriends(userId: Int = Session.shared.userId, count: Int = 500, offset: Int = 0, fields: String = "sex, bdate, city, photo_50", completion: @escaping ((Result<[FriendItem], Error>) -> Void)) {
+    func getFriends(userId: Int = Session.shared.userId, count: Int = 500, offset: Int = 0, fields: String = "sex, bdate, city, photo_50", completion: @escaping ((Result<[FriendItem]>) -> Void)) {
         guard let token = Session.shared.token else { return }
         
         let url = baseURL + Paths.getFriends.rawValue
@@ -39,7 +39,7 @@ class NetworkManager {
             "fields": fields,
         ]
         
-        AF.request(url, parameters: parameters).responseJSON { (response) in
+        Alamofire.request(url, parameters: parameters).responseJSON { (response) in
             switch response.result {
             case .failure(let error):
                 completion(.failure(error))
@@ -64,7 +64,7 @@ class NetworkManager {
     
     
     //Получение групп пользователя
-    func getGroups(userId: Int = Session.shared.userId, extended: Int = 1, count: Int = 1000, offset: Int = 0, completion: @escaping ((Result<[GroupItem], Error>) -> Void)) {
+    func getGroups(userId: Int = Session.shared.userId, extended: Int = 1, count: Int = 1000, offset: Int = 0, completion: @escaping ((Result<[GroupItem]>) -> Void)) {
         guard let token = Session.shared.token else { return }
         
         let url = baseURL + Paths.getGroups.rawValue
@@ -78,7 +78,9 @@ class NetworkManager {
             "offset": offset,
         ]
         
-        AF.request(url, parameters: parameters).responseJSON { (response) in
+    
+        
+        Alamofire.request(url, parameters: parameters).responseJSON { (response) in
             switch response.result {
             case .failure(let error):
                 completion(.failure(error))
@@ -97,7 +99,7 @@ class NetworkManager {
     
     
     //получение фотографий человека
-    func getPhotos(ownerId: Int = Session.shared.userId, albumId: TypeAlbum, rev: TypeRev = .antiСhronological, count: Int = 1000, offset: Int = 0, completion: @escaping ((Result<[PhotoItem], Error>) -> Void)) {
+    func getPhotos(ownerId: Int = Session.shared.userId, albumId: TypeAlbum, rev: TypeRev = .antiСhronological, count: Int = 1000, offset: Int = 0, completion: @escaping ((Result<[PhotoItem]>) -> Void)) {
         guard let token = Session.shared.token else { return }
         
         let url = baseURL + Paths.getPhotos.rawValue
@@ -112,7 +114,8 @@ class NetworkManager {
             "offset": offset,
         ]
         
-        AF.request(url, parameters: parameters).responseJSON { (response) in
+        
+        Alamofire.request(url, parameters: parameters).responseJSON { (response) in
             switch response.result {
             case .failure(let error):
                 completion(.failure(error))
@@ -130,7 +133,7 @@ class NetworkManager {
     }
     
     //Получение групп по поисковому запросу
-    func searchGroups(textSearch: String, count: Int = 1000, offset: Int = 0, completion: @escaping ((Result<[GroupItem], Error>) -> Void) ) {
+    func searchGroups(textSearch: String, count: Int = 1000, offset: Int = 0, completion: @escaping ((Result<[GroupItem]>) -> Void) ) {
         guard let token = Session.shared.token else { return }
         
         let url = baseURL + Paths.searchGroups.rawValue
@@ -143,7 +146,7 @@ class NetworkManager {
             "offset": offset,
         ]
         
-        AF.request(url, parameters: parameters).responseJSON { (response) in
+        Alamofire.request(url, parameters: parameters).responseJSON { (response) in
             switch response.result {
             case .failure(let error):
                 completion(.failure(error))
@@ -161,7 +164,7 @@ class NetworkManager {
     }
     
     //Получение новостной ленты
-    func getNewsFeed(completion: @escaping ((Result<[NewsFeed], Error>) -> Void)) {
+    func getNewsFeed(completion: @escaping ((Result<[NewsFeed]>) -> Void)) {
         guard let token = Session.shared.token else { return }
         
         let url = baseURL + Paths.getNewsFeed.rawValue
@@ -172,7 +175,7 @@ class NetworkManager {
             "filters": "post"
         ]
         
-        AF.request(url, parameters: parameters).responseJSON { (response) in
+        Alamofire.request(url, parameters: parameters).responseJSON { (response) in
             switch response.result {
             case .failure(let error):
                 completion(.failure(error))
