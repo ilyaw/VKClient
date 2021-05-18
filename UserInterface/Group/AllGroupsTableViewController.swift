@@ -51,6 +51,10 @@ class AllGroupsTableViewController: UITableViewController {
 
 extension AllGroupsTableViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            return
+        }
+        
         networkManager.searchGroups(textSearch: searchText, on: .global())
             .get { [weak self] groups in
                 self?.searchGroups = groups
