@@ -8,9 +8,7 @@
 import UIKit
 
 class AllGroupsTableViewController: UITableViewController {
-
-    let allGroup = "AllGroup"
-  //  static var groups = getAllGroupsData()
+    static let identifier = "GroupCell"
     
     var searchGroups: [GroupItem]?
     
@@ -44,28 +42,15 @@ class AllGroupsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: allGroup, for: indexPath) as! AllGroupsTableViewCell
-
-//        cell.groupName.text = AllGroupsTableViewController.groups[indexPath.row].name
-//        cell.avatar.image = UIImage(named: AllGroupsTableViewController.groups[indexPath.row].photo)
-
-        guard let group = self.searchGroups?[indexPath.row] else { return UITableViewCell() }
-        
-        cell.groupName.text = group.name
-        
-        if let url = URL(string: group.photo50) {
-            DispatchQueue.global().async {
-//                let data = try? Data(contentsOf: url)
-                DispatchQueue.main.async {
-                    cell.avatar.sd_setImage(with: url)
-//                    cell.avatar.image = UIImage(data: data!)
-                }
-            }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: AllGroupsTableViewController.identifier, for: indexPath) as? AllGroupsTableViewCell,
+              let group = self.searchGroups?[indexPath.row] else {
+            return UITableViewCell()
         }
+
+        cell.setup(group)
         
         return cell
     }
-
 }
 
 extension AllGroupsTableViewController: UISearchBarDelegate {
@@ -76,7 +61,6 @@ extension AllGroupsTableViewController: UISearchBarDelegate {
             case .failure(let error):
                 print(error)
             case .success(let groups):
-                
                 self?.searchGroups = groups
                 self?.tableView.reloadData()
             }
