@@ -52,7 +52,7 @@ class NetworkManager {
                         friends = friends.filter {
                             $0.deactivated == nil
                         }
-                        
+
                         completion(.success(friends))
                     } catch {
                         completion(.failure(error))
