@@ -20,8 +20,4 @@ extension Int {
 
         return dateFormatter.string(from: myNSDate)
     }
-    
-    func toDateTime() -> String {
-        
-    }
 }

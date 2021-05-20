@@ -57,6 +57,7 @@
 		0943ECD3260F455800039272 /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0943ECD2260F455800039272 /* Photos.swift */; };
 		0952DF1C260E2B2200877AFC /* Friends.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0952DF1B260E2B2200877AFC /* Friends.swift */; };
 		09B1A54C2638A781005314FD /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 09B1A54B2638A781005314FD /* .gitignore */; };
+		09CDB2102656BD9500FE69F2 /* KeychainUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CDB20F2656BD9500FE69F2 /* KeychainUser.swift */; };
 		09D1DCA22633218200D58A5F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 09D1DCA12633218200D58A5F /* GoogleService-Info.plist */; };
 		09D1DCC02633246D00D58A5F /* UsersFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D1DCBF2633246D00D58A5F /* UsersFirestore.swift */; };
 		09D1DCC5263325FA00D58A5F /* PhotosFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D1DCC4263325FA00D58A5F /* PhotosFirestore.swift */; };
@@ -120,6 +121,7 @@
 		0943ECD2260F455800039272 /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
 		0952DF1B260E2B2200877AFC /* Friends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friends.swift; sourceTree = "<group>"; };
 		09B1A54B2638A781005314FD /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		09CDB20F2656BD9500FE69F2 /* KeychainUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainUser.swift; sourceTree = "<group>"; };
 		09D1DCA12633218200D58A5F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		09D1DCBF2633246D00D58A5F /* UsersFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersFirestore.swift; sourceTree = "<group>"; };
 		09D1DCC4263325FA00D58A5F /* PhotosFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosFirestore.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				0936FC442642E7C000FB60D7 /* NewsFeed.swift */,
 				042B210525FCF0DD007D8DC8 /* News.swift */,
 				045CCBA825F3F46F00513B88 /* GroupUser.swift */,
+				09CDB20F2656BD9500FE69F2 /* KeychainUser.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -491,6 +494,7 @@
 				092AC355260B4165001E4EF1 /* CustomPopAnimator.swift in Sources */,
 				09D685C2261F62C90046B131 /* Results.swift in Sources */,
 				092601962654015900D079E5 /* VKError.swift in Sources */,
+				09CDB2102656BD9500FE69F2 /* KeychainUser.swift in Sources */,
 				092AC351260B414D001E4EF1 /* CustomPushAnimator.swift in Sources */,
 				092601942652BE6F00D079E5 /* NetworkManagerPromise.swift in Sources */,
 				09F1FB002646FC1900C5A2E0 /* Int.swift in Sources */,
