@@ -24,8 +24,7 @@ class VKLoginViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-
-//        Session.shared.token = "402ba1e1a44c3e461cc0bb787844e36db17494962c9d9797a06ec721bff761f0036812ab5c1ff3db3509d"
+//        Session.shared.token = "05817c429fda755aefe2ee932f52e84b462fdba044fb22a5b47296751be50d0cbbd7278ab27067ca8eb9a"
 //        Session.shared.userId = 210404335
 //        moveToTabBarController()
     }
@@ -49,30 +48,32 @@ class VKLoginViewController: UIViewController {
         //        } else {
         //
 
-                let friendsMask = 1 << 1
-                let photosMask = 1 << 2
-                let wallMask = 1 << 13
-                let groupsMask = 1 << 18
+        let friendsMask = 1 << 1
+        let photosMask = 1 << 2
+        let wallMask = 1 << 13
+        let groupsMask = 1 << 18
 
-                let scope = friendsMask + photosMask + wallMask + groupsMask
+        let scope = friendsMask + photosMask + wallMask + groupsMask
 
-                var components = URLComponents()
-                components.scheme = "https"
-                components.host = "oauth.vk.com"
-                components.path = "/authorize"
-                components.queryItems = [
-                    URLQueryItem(name: "client_id", value: "7798550"),
-                    URLQueryItem(name: "scope", value: "\(scope)"),
-                    URLQueryItem(name: "display", value: "mobile"),
-                    URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
-                    URLQueryItem(name: "response_type", value: "token"),
-                    URLQueryItem(name: "v", value: "5.130")
-                ]
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = "oauth.vk.com"
+        components.path = "/authorize"
+        components.queryItems = [
+            URLQueryItem(name: "client_id", value: "7798550"),
+            URLQueryItem(name: "scope", value: "\(scope)"),
+            URLQueryItem(name: "display", value: "mobile"),
+            URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
+            URLQueryItem(name: "response_type", value: "token"),
+            URLQueryItem(name: "v", value: "5.130")
+        ]
 
-                guard let url = components.url else { return }
+        guard let url = components.url else { return }
 
-                let request = URLRequest(url: url)
-                webView.load(request)
+        let request = URLRequest(url: url)
+        webView.load(request)
+        
+        
         
         //        }
     }

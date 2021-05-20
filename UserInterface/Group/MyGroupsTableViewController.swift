@@ -10,7 +10,7 @@ import RealmSwift
 import SDWebImage
 
 class MyGroupsTableViewController: UITableViewController {
-    let myGroups = "MyGroups"
+    static let identifier = "GroupCell"
     
     private lazy var refresh: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -27,7 +27,7 @@ class MyGroupsTableViewController: UITableViewController {
         }
     }
     
-    private let networkManager = NetworkManager.shared
+    private let networkManager = NetworkManagerPromise.shared
     private let realmManager = RealmManager.shared
     
     private var groupsNotificationToken: NotificationToken?
@@ -47,23 +47,21 @@ class MyGroupsTableViewController: UITableViewController {
     }
     
     private func loadData(completion: (() -> Void)? = nil) {
-        networkManager.getGroups { [weak self] result in
-            switch result {
-            case .failure(let error):
-                print(error.localizedDescription)
-            case .success(let groups):
-                DispatchQueue.main.async {
-                    let sortedGroups = groups.sorted { $0.id < $1.id }
-                    let arrEqual = sortedGroups == self?.groups?.toArray()
-                    
-                    if !arrEqual {
-                        try? self?.realmManager?.add(objects: sortedGroups)
-                    }
-                    
-                    completion?()
+        networkManager.getGroups(on: .global())
+            .get(on: .main) { [weak self] groups in
+                let sortedGroups = groups.sorted { $0.id < $1.id }
+                let arrEqual = sortedGroups == self?.groups?.toArray()
+                
+                if !arrEqual {
+                    try? self?.realmManager?.add(objects: sortedGroups)
                 }
             }
-        }
+            .catch { [weak self] error in
+                self?.present(UIAlertController.create(error.localizedDescription), animated: true, completion: nil)
+            }
+            .finally {
+                completion?()
+            }
     }
     
     private func signToGroupsChanges() {
@@ -100,23 +98,12 @@ class MyGroupsTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: myGroups, for: indexPath) as? MyGroupsTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MyGroupsTableViewController.identifier, for: indexPath) as? MyGroupsTableViewCell,
+              let group = groups?[indexPath.row]  else {
             return UITableViewCell()
         }
         
-        guard let group = groups?[indexPath.row] else {
-            return UITableViewCell()
-        }
-        
-        cell.groupName.text = group.name
-        
-        if let url = URL(string: group.photo50) {
-            DispatchQueue.global().async {
-                DispatchQueue.main.async {
-                    cell.avatar.sd_setImage(with: url)
-                }
-            }
-        }
+        cell.setup(group)
         
         return cell
     }

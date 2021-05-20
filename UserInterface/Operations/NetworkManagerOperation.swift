@@ -18,12 +18,8 @@ class NetworkManagerOperation {
 
     private enum Paths: String {
         case getFriends = "friends.get"
-        case getPhotos = "photos.get"
-        case getGroups = "groups.get"
-        case searchGroups = "groups.search"
-        case getNewsFeed = "newsfeed.get"
     }
-
+   
     //получение списка друзей по ID юзера
     func getFriends(controller: ReloadDataTableController, userId: Int = Session.shared.userId, count: Int = 500, offset: Int = 0, fields: String = "sex, bdate, city, photo_50", completion: (() -> Void)? = nil) {
         guard let token = Session.shared.token else { return }
@@ -39,7 +35,7 @@ class NetworkManagerOperation {
             "fields": fields,
         ]
         
-        let request = AF.request(url, parameters: parameters)
+        let request = Alamofire.request(url, parameters: parameters)
         let operationQueue = OperationQueue()
         
         let getDataOperation = GetDataOperation(request: request)
