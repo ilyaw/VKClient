@@ -8,12 +8,20 @@
 import UIKit
 import WebKit
 import Alamofire
+import SwiftKeychainWrapper
 
 
+struct User: Codable {
+    var id: Int
+    var token: String
+    var date: Int
+}
 
 class VKLoginViewController: UIViewController {
     
-    private let realmManager = RealmManager.shared
+//    private let realmManager = RealmManager.shared
+    
+
     
     @IBOutlet weak var webView: WKWebView! {
         didSet {
@@ -24,6 +32,21 @@ class VKLoginViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+//        KeychainWrapper.standard.set("Some String", forKey: "myKey")
+//        var res = KeychainWrapper.standard.string(forKey: "myKey")
+    
+//        var user = User(id: 1, token: "qwe", date: 123)
+//        
+//        let encodedUser = encode(object: user)
+//        KeychainWrapper.standard["user"] = encodedUser
+//
+//        if let res = KeychainWrapper.standard.string(forKey: "user") {
+//            var data = Data(res.utf8)
+//            let decodeUser = decode(json: data, as: User.self)
+//            print("done")
+//        }
+//
+//        print("")
 //        Session.shared.token = "05817c429fda755aefe2ee932f52e84b462fdba044fb22a5b47296751be50d0cbbd7278ab27067ca8eb9a"
 //        Session.shared.userId = 210404335
 //        moveToTabBarController()
@@ -48,34 +71,60 @@ class VKLoginViewController: UIViewController {
         //        } else {
         //
 
-        let friendsMask = 1 << 1
-        let photosMask = 1 << 2
-        let wallMask = 1 << 13
-        let groupsMask = 1 << 18
-
-        let scope = friendsMask + photosMask + wallMask + groupsMask
-
-        var components = URLComponents()
-        components.scheme = "https"
-        components.host = "oauth.vk.com"
-        components.path = "/authorize"
-        components.queryItems = [
-            URLQueryItem(name: "client_id", value: "7798550"),
-            URLQueryItem(name: "scope", value: "\(scope)"),
-            URLQueryItem(name: "display", value: "mobile"),
-            URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
-            URLQueryItem(name: "response_type", value: "token"),
-            URLQueryItem(name: "v", value: "5.130")
-        ]
-
-        guard let url = components.url else { return }
-
-        let request = URLRequest(url: url)
-        webView.load(request)
+        
+//        let friendsMask = 1 << 1
+//        let photosMask = 1 << 2
+//        let wallMask = 1 << 13
+//        let groupsMask = 1 << 18
+//
+//        let scope = friendsMask + photosMask + wallMask + groupsMask
+//
+//        var components = URLComponents()
+//        components.scheme = "https"
+//        components.host = "oauth.vk.com"
+//        components.path = "/authorize"
+//        components.queryItems = [
+//            URLQueryItem(name: "client_id", value: "7798550"),
+//            URLQueryItem(name: "scope", value: "\(scope)"),
+//            URLQueryItem(name: "display", value: "mobile"),
+//            URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
+//            URLQueryItem(name: "response_type", value: "token"),
+//            URLQueryItem(name: "v", value: "5.130")
+//        ]
+//
+//        guard let url = components.url else { return }
+//
+//        let request = URLRequest(url: url)
+//        webView.load(request)
         
         
         
         //        }
+    }
+    
+    
+    func encode<T: Codable>(object: T) -> Data? {
+        do {
+            let encoder = JSONEncoder()
+            encoder.outputFormatting = .prettyPrinted
+            return try encoder.encode(object)
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        return nil
+    }
+
+    func decode<T: Decodable>(json: Data, as class: T.Type) -> T? {
+        do {
+            let decoder = JSONDecoder()
+            let data = try decoder.decode(T.self, from: json)
+            
+            return data
+        } catch {
+            print("An error occurred while parsing JSON")
+        }
+        
+        return nil
     }
     
     

@@ -13,12 +13,11 @@ extension Date {
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .none
         
-//        let timeInterval = TimeInterval(23)
-//        let myNSDate = Date(timeIntervalSince1970: timeInterval)
-
-        dateFormatter.locale = Locale(identifier: "ru_RU")
-
-        return dateFormatter.string(from: self)
+        //        let timeInterval = TimeInterval(23)
+        //        let myNSDate = Date(timeIntervalSince1970: timeInterval)
         
+        dateFormatter.locale = Locale(identifier: "ru_RU")
+        
+        return dateFormatter.string(from: self)
     }
 }

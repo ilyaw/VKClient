@@ -12,5 +12,6 @@ target 'UserInterface' do
   pod 'SDWebImage', '~> 5.0'
   pod "PromiseKit", "~> 6.13.1"
   pod 'PromiseKit/Alamofire'
+  pod 'SwiftKeychainWrapper'
 
 end
