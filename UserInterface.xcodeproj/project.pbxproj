@@ -58,6 +58,7 @@
 		0952DF1C260E2B2200877AFC /* Friends.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0952DF1B260E2B2200877AFC /* Friends.swift */; };
 		09B1A54C2638A781005314FD /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 09B1A54B2638A781005314FD /* .gitignore */; };
 		09CDB2102656BD9500FE69F2 /* KeychainUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CDB20F2656BD9500FE69F2 /* KeychainUser.swift */; };
+		09CDB21326594C9400FE69F2 /* PhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CDB21226594C9400FE69F2 /* PhotoService.swift */; };
 		09D1DCA22633218200D58A5F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 09D1DCA12633218200D58A5F /* GoogleService-Info.plist */; };
 		09D1DCC02633246D00D58A5F /* UsersFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D1DCBF2633246D00D58A5F /* UsersFirestore.swift */; };
 		09D1DCC5263325FA00D58A5F /* PhotosFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D1DCC4263325FA00D58A5F /* PhotosFirestore.swift */; };
@@ -122,6 +123,7 @@
 		0952DF1B260E2B2200877AFC /* Friends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friends.swift; sourceTree = "<group>"; };
 		09B1A54B2638A781005314FD /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		09CDB20F2656BD9500FE69F2 /* KeychainUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainUser.swift; sourceTree = "<group>"; };
+		09CDB21226594C9400FE69F2 /* PhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoService.swift; sourceTree = "<group>"; };
 		09D1DCA12633218200D58A5F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		09D1DCBF2633246D00D58A5F /* UsersFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersFirestore.swift; sourceTree = "<group>"; };
 		09D1DCC4263325FA00D58A5F /* PhotosFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosFirestore.swift; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 				092601922652BD6100D079E5 /* Promise */,
 				092600E4264B272F00D079E5 /* Operations */,
 				090AF7ED26088C4A00C1939B /* NetworkManager */,
+				09CDB214265952B700FE69F2 /* Services */,
 				0450641625FF634000B08791 /* View */,
 				045063EA25FD4C4700B08791 /* Control */,
 				042B20F325FCB149007D8DC8 /* NewsFeed */,
@@ -337,6 +340,14 @@
 				092AC34A260B3D0F001E4EF1 /* AnimatorOpen.swift */,
 			);
 			path = CustomAnimation;
+			sourceTree = "<group>";
+		};
+		09CDB214265952B700FE69F2 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				09CDB21226594C9400FE69F2 /* PhotoService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		09D1DCC2263325A600D58A5F /* Firestore Models */ = {
@@ -518,6 +529,7 @@
 				092600F4264C279000D079E5 /* ReloadDataTableController.swift in Sources */,
 				0450641825FF634C00B08791 /* Loading.swift in Sources */,
 				090AF7FC26089E6600C1939B /* NetworkManager.swift in Sources */,
+				09CDB21326594C9400FE69F2 /* PhotoService.swift in Sources */,
 				092600EE264B279600D079E5 /* ReloadFriendsController.swift in Sources */,
 				040A3E7425D9C6C600DFD359 /* FriendsTableViewCell.swift in Sources */,
 				09D1DCC5263325FA00D58A5F /* PhotosFirestore.swift in Sources */,

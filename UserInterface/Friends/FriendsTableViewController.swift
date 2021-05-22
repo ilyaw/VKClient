@@ -67,7 +67,6 @@ final class FriendsTableViewController: UITableViewController {
     }
     
     private func signToFilteredUsersChange() {
-
         filteredUsersNotificationToken = filteredUsers?.observe { [weak self] (change) in
             switch change {
             case .initial( _): break

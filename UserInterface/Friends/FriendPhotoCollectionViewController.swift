@@ -87,10 +87,7 @@ class FriendPhotoCollectionViewController: UICollectionViewController {
             }
         }
     }
-    
-    
-    // MARK: UICollectionViewDataSource
-    
+        
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -101,22 +98,11 @@ class FriendPhotoCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? FriendPhotoCollectionViewCell else {
-            return UICollectionViewCell()
-        }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? FriendPhotoCollectionViewCell,
+              let photo = self.photos?[indexPath.row] else { return UICollectionViewCell() }
         
-        if let photo = self.photos?[indexPath.row] {
-            if let url = URL(string: photo.sizes.first?.url ?? "") {
-                DispatchQueue.global().async {
-//                    let data = try? Data(contentsOf: url)
-                    DispatchQueue.main.async {
-                        cell.photoImageView.sd_setImage(with: url)
-//                        cell.photoImageView.image = UIImage(data: data!)
-                    }
-                }
-            }
-        }
-
+        cell.setup(photo)
+        
         return cell
     }
     

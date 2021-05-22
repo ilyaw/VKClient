@@ -21,7 +21,7 @@ class VKLoginViewController: UIViewController {
       
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         if let keychainData = KeychainWrapper.standard.string(forKey: "user") {
             let data = Data(keychainData.utf8)
             
