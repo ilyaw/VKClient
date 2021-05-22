@@ -189,8 +189,8 @@ class NetworkManager {
                         let profiles = newsFeedResponse.profiles
                         let items = newsFeedResponse.items
                         
-                        for item in items.filter { $0.text != nil || ($0.attachments?
-                            .first { $0.photo != nil }) != nil  } {
+                        for item in items.filter({ $0.text != nil || ($0.attachments?
+                                                                        .first { $0.photo != nil }) != nil  }) {
                             
                             let photoContent = item.attachments?
                                 .first { $0.photo != nil }?.photo?.sizes?

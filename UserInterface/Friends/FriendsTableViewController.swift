@@ -59,7 +59,7 @@ final class FriendsTableViewController: UITableViewController {
     }
     
     private func loadData(completion: (() -> Void)? = nil) {
-        NetworkManagerOperation.shared.getFriends(controller: self) { [weak self] in
+        NetworkManagerOperation.shared.getFriends(controller: self) {
             DispatchQueue.main.async {
                 completion?()
             }
