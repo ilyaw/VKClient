@@ -7,7 +7,6 @@
 
 import UIKit
 import RealmSwift
-import SDWebImage
 
 final class FriendsTableViewController: UITableViewController {
     let segueFromFriendsTableToFriendPhoto = "SegueFromFriendsTableToFriendPhoto"

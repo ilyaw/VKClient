@@ -9,7 +9,6 @@ target 'UserInterface' do
   pod 'Alamofire', '~> 4.0'
   pod 'SwiftyJSON', '~> 4.0'
   pod 'RealmSwift'
-  pod 'SDWebImage', '~> 5.0'
   pod "PromiseKit", "~> 6.13.1"
   pod 'PromiseKit/Alamofire'
   pod 'SwiftKeychainWrapper'
