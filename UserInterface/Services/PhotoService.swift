@@ -112,4 +112,10 @@ class PhotoService {
                 return self.loadImage(urlString: urlString)
             }
     }
+    
+    // only memory
+//    public func photoMemoryCache(urlString: String) -> Promise<UIImage>  {
+//        
+//    }
+    
 }

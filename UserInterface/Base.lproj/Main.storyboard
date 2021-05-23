@@ -589,6 +589,90 @@
             </objects>
             <point key="canvasLocation" x="2680" y="-108"/>
         </scene>
+        <!--Друзья-->
+        <scene sceneID="VoV-Jj-d2N">
+            <objects>
+                <tableViewController id="RLa-Ue-YhQ" customClass="FriendsTableViewController" customModule="UserInterface" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="6wV-Ic-Xni">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="YVH-Sp-v2c">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FriendCell" id="Z7g-H7-sey" customClass="FriendsTableViewCell" customModule="UserInterface" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="68.5" width="414" height="55.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Z7g-H7-sey" id="7du-nN-a16">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="55.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Илья Руденко" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yeu-Mz-nOq">
+                                            <rect key="frame" x="75" y="18" width="112" height="20"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                            <color key="textColor" systemColor="linkColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MqT-Cm-2WA" customClass="ShadowView" customModule="UserInterface" customModuleProvider="target">
+                                            <rect key="frame" x="10" y="2.5" width="50" height="50.5"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="d04-6b-tPs">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="50" id="ALU-B8-keD"/>
+                                                        <constraint firstAttribute="height" constant="50" id="j5Z-wa-dYz"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="50" id="0vK-dp-fWY"/>
+                                                <constraint firstItem="d04-6b-tPs" firstAttribute="top" secondItem="MqT-Cm-2WA" secondAttribute="top" id="47m-lE-ruy"/>
+                                                <constraint firstAttribute="bottom" secondItem="d04-6b-tPs" secondAttribute="bottom" id="D3B-vX-LVE"/>
+                                                <constraint firstItem="d04-6b-tPs" firstAttribute="centerY" secondItem="MqT-Cm-2WA" secondAttribute="centerY" id="HwT-gQ-7a2"/>
+                                                <constraint firstItem="d04-6b-tPs" firstAttribute="leading" secondItem="MqT-Cm-2WA" secondAttribute="leading" id="feE-l0-fo5"/>
+                                                <constraint firstAttribute="height" constant="50" id="gyS-3d-M7P"/>
+                                                <constraint firstAttribute="trailing" secondItem="d04-6b-tPs" secondAttribute="trailing" id="nhu-Li-fOc"/>
+                                            </constraints>
+                                            <connections>
+                                                <outlet property="avatar" destination="d04-6b-tPs" id="XRw-Y2-3Yu"/>
+                                            </connections>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="MqT-Cm-2WA" firstAttribute="centerY" secondItem="7du-nN-a16" secondAttribute="centerY" id="LQD-Pq-Mqh"/>
+                                        <constraint firstItem="MqT-Cm-2WA" firstAttribute="leading" secondItem="7du-nN-a16" secondAttribute="leading" constant="10" id="RZb-8m-rdj"/>
+                                        <constraint firstItem="yeu-Mz-nOq" firstAttribute="centerY" secondItem="7du-nN-a16" secondAttribute="centerY" id="f48-Y6-Bqg"/>
+                                        <constraint firstAttribute="bottom" secondItem="MqT-Cm-2WA" secondAttribute="bottom" constant="2.5" id="fBE-Rq-LFe"/>
+                                        <constraint firstItem="MqT-Cm-2WA" firstAttribute="top" secondItem="7du-nN-a16" secondAttribute="top" constant="2.5" id="p9n-xN-oZ2"/>
+                                        <constraint firstItem="MqT-Cm-2WA" firstAttribute="centerY" secondItem="7du-nN-a16" secondAttribute="centerY" id="pIn-qG-stP"/>
+                                        <constraint firstItem="yeu-Mz-nOq" firstAttribute="leading" secondItem="d04-6b-tPs" secondAttribute="trailing" constant="15" id="sp6-0c-yMk"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="name" destination="yeu-Mz-nOq" id="P0K-ph-AhB"/>
+                                    <outlet property="shadowView" destination="MqT-Cm-2WA" id="G9N-QP-Smq"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="RLa-Ue-YhQ" id="ILU-mK-skm"/>
+                            <outlet property="delegate" destination="RLa-Ue-YhQ" id="Vj7-qb-AeT"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Друзья" id="qfi-Hy-ZfW"/>
+                    <connections>
+                        <outlet property="searchBar" destination="YVH-Sp-v2c" id="qE7-hF-qmH"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yhd-lx-j1E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2679.7101449275365" y="-909.375"/>
+        </scene>
     </scenes>
     <resources>
         <image name="1" width="807" height="807"/>

@@ -39,8 +39,8 @@ class NewsFeedTableViewCell: UITableViewCell {
         
         if let url = URL(string: newsFeed.photoContent ?? "") {
             DispatchQueue.global().async {
-                DispatchQueue.main.async {
-                    if let imageData = try? Data(contentsOf: url) {
+                if let imageData = try? Data(contentsOf: url) {
+                    DispatchQueue.main.async {
                         self.contentImageView.image = UIImage(data: imageData)
                     }
                 }
@@ -56,51 +56,7 @@ class NewsFeedTableViewCell: UITableViewCell {
         self.share.setShare(count: newsFeed.reposts?.count ?? 0)
         self.comment.setComment(count: newsFeed.comments?.count ?? 0)
         
-        self.views.text = "\(newsFeed.views?.count ?? 0)" 
-
-//        self.contentText.text = newsFeed.text
-////        self.author = newsFeed.
-//
-//        if let firstImage = newsFeed.attachments?.first?.photo {
-//            if let url = URL(string: firstImage.sizes?[4].url ?? "") {
-//                DispatchQueue.global().async {
-//                    DispatchQueue.main.async {
-//                        self.contentImageView.sd_setImage(with: url)
-//                    }
-//                }
-//            }
-//        } else {
-//            //            self.author.text = "asdasdas"
-//            //            self.contentImageView.alpha = 0
-//        }
-//
-//        self.views.text = "\(newsFeed.views?.count ?? 0)"
-//        self.like.setLike(count: newsFeed.likes?.count ?? 0)
-//        self.comment.setComment(count: newsFeed.comments?.count ?? 0)
-//        self.share.setShare(count: newsFeed.reposts?.count ?? 0)
-        
-        
-        //        if let url = URL(string: user.photo50 ?? "") {
-        //            DispatchQueue.global().async {
-        //                DispatchQueue.main.async {
-        //                    cell.shadowView.avatar.sd_setImage(with: url)
-        //                }
-        //            }
-        //        }
-        
-        // self.contentImageView.image = UIImage
-
-        
-        //        cell.postAvatar.image = UIImage(named: news.postAvatar)
-        //        cell.author.text = news.postAuthor
-        //        cell.date.text = news.postDate
-        //        cell.contentText.text = news.postContentText
-        //        cell.contentImageView.image = UIImage(named: news.postImage)
-        //
-        //        cell.like.setLike(count: news.likeCount)
-        //        cell.comment.setComment(count: news.commentCount)
-        //        cell.share.setShare(count: news.shareCount)
-        //        cell.views.text = String(news.viewsCount)
+        self.views.text = "\(newsFeed.views?.count ?? 0)"
     }
     
     override func prepareForReuse() {
@@ -112,9 +68,6 @@ class NewsFeedTableViewCell: UITableViewCell {
         self.contentText.text = nil
         self.contentImageView.image = nil
         self.views.text = nil
-        
-        //        self.like = LikeButton()
-        //       self.like.button.setImage("nil", for: .normal)
     }
     
 }
