@@ -37,14 +37,10 @@ class NewsFeedTableViewCell: UITableViewCell {
             .done { [weak self] image in self?.postAvatar.image = image }
             .catch { print($0.localizedDescription) }
         
-        if let url = URL(string: newsFeed.photoContent ?? "") {
-            DispatchQueue.global().async {
-                if let imageData = try? Data(contentsOf: url) {
-                    DispatchQueue.main.async {
-                        self.contentImageView.image = UIImage(data: imageData)
-                    }
-                }
-            }
+        if let url = newsFeed.photoContent {
+            PhotoService.shared.photo(urlString: url, filesystem: false)
+                .done { [weak self] image in self?.contentImageView.image = image }
+                .catch { print($0.localizedDescription) }
         } else {
             self.contentImageView.image = UIImage(named: "noimage")
         }
