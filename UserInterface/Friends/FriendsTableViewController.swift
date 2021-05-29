@@ -93,6 +93,10 @@ final class FriendsTableViewController: UITableViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 65
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -110,18 +114,20 @@ final class FriendsTableViewController: UITableViewController {
         return cell
     }
     
+
+    
+    
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? FriendsTableViewCell else { return }
-        
+          
         UIView.animate(withDuration: 0.15, delay: 0, options: [], animations: {
-            cell.shadowView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
-            
+            cell.photoUser.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
         }, completion: {_ in
             UIView.animate(withDuration: 0.15, delay: 0, options: [], animations: {
-                cell.shadowView.transform = .identity
-                
+                cell.photoUser.transform = .identity
             }, completion: {_ in
-                self.performSegue(withIdentifier: self.segueFromFriendsTableToFriendPhoto, sender: self)
+//                self.performSegue(withIdentifier: self.segueFromFriendsTableToFriendPhoto, sender: self)
             })
         })
     }

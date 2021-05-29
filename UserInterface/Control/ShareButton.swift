@@ -52,6 +52,7 @@ class ShareButton: UIControl {
         
         label.frame = labelFrame
         label.text = "\(shareCount)"
+        label.backgroundColor = .white
         
         self.addSubview(label)
         self.addSubview(button)
