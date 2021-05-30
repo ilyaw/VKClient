@@ -10,7 +10,7 @@ import UIKit
 
 //View для теней фото и прочего
 //@IBDesignable
-class ShadowView: UIView {
+class CircleView: UIView {
     
     @IBOutlet weak var avatar: UIImageView!
 //    {
