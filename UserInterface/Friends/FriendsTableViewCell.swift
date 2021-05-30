@@ -8,35 +8,55 @@
 import UIKit
 
 class FriendsTableViewCell: UITableViewCell {
+
+    var nameLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
     
-//    @IBOutlet weak var shadowView: ShadowView! {
-//        didSet {
-//            shadowView.translatesAutoresizingMaskIntoConstraints = false
-//        }
-//    }
+    var photoUser: UIImageView = {
+        var image = UIImageView()
+        return image
+    }()
     
-    @IBOutlet weak var photoUser: UIImageView! {
-        didSet {
-            photoUser.translatesAutoresizingMaskIntoConstraints = false
-        }
+    var myView: CustomShadowView = {
+//        var view = CustomShadowView(frame: CGRect(x: 10, y: 7.5, width: 50, height: 50))
+        var view = CustomShadowView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        self.addSubview(myView)
+        self.myView.addSubview(photoUser)
+        
+        self.addSubview(nameLabel)
     }
     
-    @IBOutlet weak var name: UILabel! {
-        didSet {
-            name.translatesAutoresizingMaskIntoConstraints = false
-        }
-    }
-    
-    
-    
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     
+    let imageHeight: CGFloat = 50, imageWidth: CGFloat = 50
+    let xPosition: CGFloat = 10
+    let instets: CGFloat = 15.0
+    
     func setup(_ user: FriendItem) {
-        self.name.text = user.firstName + " " + user.lastName
+        self.nameLabel.text = user.firstName + " " + user.lastName
+        
+        photoUser.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+
+        photoUser.backgroundColor = .white
+        //configure the imageView
+        photoUser.clipsToBounds = true
+        photoUser.layer.cornerRadius = 25
+        //add a border (if required)
+        photoUser.layer.borderColor = UIColor.black.cgColor
+        photoUser.layer.borderWidth = 0
         
         if let url = user.photo50 {
             PhotoService.shared.photo(urlString: url)
@@ -45,54 +65,63 @@ class FriendsTableViewCell: UITableViewCell {
         }
     }
     
-
     override func layoutSubviews() {
         super.layoutSubviews()
-
+        
         photoFrame()
         usernameFrame()
         
-    }
-    
-    let instets: CGFloat = 10.0
-    
-    func photoFrame() {
-        let photoSideLinght: CGFloat = 50
-        let photoSize = CGSize(width: photoSideLinght, height: photoSideLinght)
-        let photoOrigin = CGPoint(x: instets, y: bounds.midY - photoSideLinght / 2 )
         
-        self.photoUser.layer.masksToBounds = true
-        self.photoUser.layer.cornerRadius = 25
-        
-        self.photoUser.frame = CGRect(origin: photoOrigin, size: photoSize)
+
     }
-    
-    private func changeBackground(color: UIColor) {
-        self.name.backgroundColor = color
-    }
-    
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        if self.isSelected {
-            self.changeBackground(color: .systemGray4)
-        } else {
-            self.changeBackground(color: .white)
-        }
-    }
-    
+
     func usernameFrame() {
-        guard let text = name.text else {  return }
-        
-        let nameLabelSize = getLabelSize(text: text, font: name.font)
-        let nameLabelX = photoUser.frame.width + instets * 2
+        guard let text = nameLabel.text else {  return }
+
+        let nameLabelSize = getLabelSize(text: text, font: nameLabel.font)
+        let nameLabelX = imageWidth + instets * 2
         let nameLabelY = bounds.midY - nameLabelSize.height / 2
         let nameLabelOrigin = CGPoint(x: nameLabelX, y: nameLabelY)
-        
-        self.name.backgroundColor = .white
-        self.name.frame = CGRect(origin: nameLabelOrigin, size: nameLabelSize)
+
+        self.nameLabel.frame = CGRect(origin: nameLabelOrigin, size: nameLabelSize)
     }
+    
+    func photoFrame() {
+        if myView.frame == .zero {
+            let yPosition = (self.frame.height / 2) - (imageHeight / 2)
+            myView.frame = CGRect(x: xPosition, y: yPosition, width: imageWidth, height: imageHeight)
+        }
+    }
+
+    
+    
+    //    func photoFrame() {
+//        let photoSideLinght: CGFloat = 50
+//        let photoSize = CGSize(width: photoSideLinght, height: photoSideLinght)
+//        let photoOrigin = CGPoint(x: instets, y: bounds.midY - photoSideLinght / 2 )
+//
+//        self.photoUser.layer.masksToBounds = true
+//        self.photoUser.layer.cornerRadius = 25
+//
+//        self.photoUser.frame = CGRect(origin: photoOrigin, size: photoSize)
+//    }
+//
+//    private func changeBackground(color: UIColor) {
+////        self.name.backgroundColor = color
+//    }
+//
+//
+//    override func setSelected(_ selected: Bool, animated: Bool) {
+//        super.setSelected(selected, animated: animated)
+//
+//        if self.isSelected {
+//            self.changeBackground(color: .systemGray4)
+//        } else {
+//            self.changeBackground(color: .white)
+//        }
+//    }
+//
+
     
     func getLabelSize(text: String, font: UIFont) -> CGSize {
         // определяем максимальную ширину текста - это ширина ячейки минус отступы слева и справа
@@ -116,6 +145,6 @@ class FriendsTableViewCell: UITableViewCell {
         super.prepareForReuse()
         
         self.photoUser.image = nil
-        self.name.text = nil
+        self.nameLabel.text = nil
     }
 }
