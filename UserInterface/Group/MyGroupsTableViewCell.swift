@@ -9,7 +9,7 @@ import UIKit
 
 class MyGroupsTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var shadowView: ShadowView!
+    @IBOutlet weak var shadowView: CircleView!
     @IBOutlet weak var groupName: UILabel!
     
     override func awakeFromNib() {

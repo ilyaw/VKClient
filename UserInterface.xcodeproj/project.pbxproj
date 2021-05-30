@@ -21,7 +21,7 @@
 		042B20FD25FCB2DB007D8DC8 /* NewsFeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B20FB25FCB2DA007D8DC8 /* NewsFeedTableViewCell.swift */; };
 		042B20FE25FCB2DB007D8DC8 /* NewsFeedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 042B20FC25FCB2DA007D8DC8 /* NewsFeedTableViewCell.xib */; };
 		042B210625FCF0DD007D8DC8 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B210525FCF0DD007D8DC8 /* News.swift */; };
-		044570C225E9064100FC4E47 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044570C125E9064100FC4E47 /* ShadowView.swift */; };
+		044570C225E9064100FC4E47 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044570C125E9064100FC4E47 /* CircleView.swift */; };
 		045063EC25FD4C9E00B08791 /* CommentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045063EB25FD4C9E00B08791 /* CommentButton.swift */; };
 		045063F025FD4D0B00B08791 /* ShareButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045063EF25FD4D0B00B08791 /* ShareButton.swift */; };
 		0450641825FF634C00B08791 /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0450641725FF634C00B08791 /* Loading.swift */; };
@@ -36,6 +36,7 @@
 		090AF7F026088F9100C1939B /* VKLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090AF7EF26088F9100C1939B /* VKLoginViewController.swift */; };
 		090AF7F7260896FE00C1939B /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 090AF7F3260890B700C1939B /* WebKit.framework */; };
 		090AF7FC26089E6600C1939B /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090AF7FB26089E6600C1939B /* NetworkManager.swift */; };
+		091A71652662766800F41EAA /* CustomShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091A71642662766800F41EAA /* CustomShadowView.swift */; };
 		092212502615D2C800B49CD6 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0922124F2615D2C800B49CD6 /* RealmManager.swift */; };
 		092600E6264B273C00D079E5 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092600E5264B273C00D079E5 /* AsyncOperation.swift */; };
 		092600E8264B276300D079E5 /* GetDataOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092600E7264B276300D079E5 /* GetDataOperation.swift */; };
@@ -84,7 +85,7 @@
 		042B20FB25FCB2DA007D8DC8 /* NewsFeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedTableViewCell.swift; sourceTree = "<group>"; };
 		042B20FC25FCB2DA007D8DC8 /* NewsFeedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsFeedTableViewCell.xib; sourceTree = "<group>"; };
 		042B210525FCF0DD007D8DC8 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
-		044570C125E9064100FC4E47 /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
+		044570C125E9064100FC4E47 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		045063EB25FD4C9E00B08791 /* CommentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentButton.swift; sourceTree = "<group>"; };
 		045063EF25FD4D0B00B08791 /* ShareButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareButton.swift; sourceTree = "<group>"; };
 		0450641725FF634C00B08791 /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
@@ -101,6 +102,7 @@
 		090AF7EF26088F9100C1939B /* VKLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKLoginViewController.swift; sourceTree = "<group>"; };
 		090AF7F3260890B700C1939B /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		090AF7FB26089E6600C1939B /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		091A71642662766800F41EAA /* CustomShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomShadowView.swift; sourceTree = "<group>"; };
 		0922124F2615D2C800B49CD6 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		092600E5264B273C00D079E5 /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
 		092600E7264B276300D079E5 /* GetDataOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDataOperation.swift; sourceTree = "<group>"; };
@@ -209,8 +211,9 @@
 		0450641625FF634000B08791 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				044570C125E9064100FC4E47 /* ShadowView.swift */,
+				044570C125E9064100FC4E47 /* CircleView.swift */,
 				0450641725FF634C00B08791 /* Loading.swift */,
+				091A71642662766800F41EAA /* CustomShadowView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -521,7 +524,7 @@
 				092600EA264B277400D079E5 /* ParseFriendsOperation.swift in Sources */,
 				045CCBA925F3F46F00513B88 /* GroupUser.swift in Sources */,
 				042B20FD25FCB2DB007D8DC8 /* NewsFeedTableViewCell.swift in Sources */,
-				044570C225E9064100FC4E47 /* ShadowView.swift in Sources */,
+				044570C225E9064100FC4E47 /* CircleView.swift in Sources */,
 				092AC34B260B3D0F001E4EF1 /* AnimatorOpen.swift in Sources */,
 				040A3E8625DA46C400DFD359 /* AllGroupsTableViewController.swift in Sources */,
 				0936FC452642E7C000FB60D7 /* NewsFeed.swift in Sources */,
@@ -545,6 +548,7 @@
 				045C904A25CAD144005FC428 /* SceneDelegate.swift in Sources */,
 				041C53F825E9196600F21BD7 /* LikeButton.swift in Sources */,
 				040A3E8325DA463F00DFD359 /* AllGroupsTableViewCell.swift in Sources */,
+				091A71652662766800F41EAA /* CustomShadowView.swift in Sources */,
 				09F1FAFE2646E30A00C5A2E0 /* Date.swift in Sources */,
 				092600E8264B276300D079E5 /* GetDataOperation.swift in Sources */,
 				092600F1264B29E600D079E5 /* NetworkManagerOperation.swift in Sources */,

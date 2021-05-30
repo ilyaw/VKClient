@@ -23,11 +23,11 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Doa-2C-yff" userLabel="Top Content">
                                 <rect key="frame" x="0.0" y="0.0" width="528" height="50"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sFE-RK-8fQ" customClass="ShadowView" customModule="UserInterface" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sFE-RK-8fQ" userLabel="ImageView" customClass="CircleView" customModule="UserInterface" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="QwG-M3-JJx">
-                                                <rect key="frame" x="0.0" y="2" width="50" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
                                         </subviews>
@@ -37,7 +37,7 @@
                                             <constraint firstAttribute="height" constant="50" id="x9f-To-aN6"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="avatar" destination="QwG-M3-JJx" id="REF-vR-jd9"/>
+                                            <outlet property="avatar" destination="QwG-M3-JJx" id="Otk-6h-SQi"/>
                                         </connections>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="-3" translatesAutoresizingMaskIntoConstraints="NO" id="8P5-K0-f2i">
@@ -166,8 +166,8 @@
                 <outlet property="contentImageView" destination="YBA-8d-by8" id="4Xq-Sm-68m"/>
                 <outlet property="contentText" destination="1cI-dp-DvT" id="oZZ-iR-Afx"/>
                 <outlet property="date" destination="0H6-oO-Rd5" id="tfC-B2-jli"/>
+                <outlet property="imageVIew" destination="sFE-RK-8fQ" id="BJ0-y5-sbU"/>
                 <outlet property="like" destination="dcB-gW-qTT" id="0mg-u7-aAD"/>
-                <outlet property="postAvatar" destination="QwG-M3-JJx" id="w2T-pJ-2eo"/>
                 <outlet property="share" destination="R1s-b4-0cd" id="AES-Xx-c8t"/>
                 <outlet property="views" destination="wQR-Ir-3cu" id="fvk-7O-owb"/>
             </connections>

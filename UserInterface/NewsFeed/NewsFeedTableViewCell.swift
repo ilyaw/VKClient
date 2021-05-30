@@ -10,7 +10,7 @@ import Foundation
 
 class NewsFeedTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var postAvatar: UIImageView!
+    @IBOutlet weak var imageVIew: CircleView!
     @IBOutlet weak var author: UILabel!
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var contentText: UILabel!
@@ -34,7 +34,7 @@ class NewsFeedTableViewCell: UITableViewCell {
         self.author.text = newsFeed.ownerName
         
         PhotoService.shared.photo(urlString: newsFeed.ownerAvatar)
-            .done { [weak self] image in self?.postAvatar.image = image }
+            .done { [weak self] image in self?.imageVIew.avatar.image = image }
             .catch { print($0.localizedDescription) }
         
         if let url = newsFeed.photoContent {
@@ -58,7 +58,7 @@ class NewsFeedTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        self.postAvatar.image = nil
+        self.imageVIew.avatar.image = nil
         self.author.text = nil
         self.date.text = nil
         self.contentText.text = nil

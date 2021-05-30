@@ -36,7 +36,7 @@ class CustomShadowView: UIView {
         photoUser.layer.borderColor = UIColor.black.cgColor
         photoUser.layer.borderWidth = 0
         
-        self.addSubview(photoUser)
+     //   self.addSubview(photoUser)
     }
     
 
