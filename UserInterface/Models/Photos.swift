@@ -35,6 +35,7 @@ class PhotoItem: Object, Codable {
         case sizes, text
     }
     
+    
     override func isEqual(_ object: Any?) -> Bool {
         if let object = object as? PhotoItem {
             return self.albumID == object.albumID && self.text == object.text

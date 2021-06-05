@@ -217,31 +217,12 @@
                     <connections>
                         <segue destination="Ent-wr-Y9E" kind="relationship" relationship="viewControllers" id="M47-Gp-lXc"/>
                         <segue destination="KZq-TS-hJu" kind="relationship" relationship="viewControllers" id="l1E-s2-XaX"/>
-                        <segue destination="QM5-Nf-Yvi" kind="relationship" relationship="viewControllers" id="UQ4-bv-B63"/>
+                        <segue destination="sDM-8V-LBg" kind="relationship" relationship="viewControllers" id="rKd-iG-sdU"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y9L-7v-cu9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1135" y="108"/>
-        </scene>
-        <!--Новости-->
-        <scene sceneID="B1n-i7-Owd">
-            <objects>
-                <tableViewController id="5Fh-bi-VTI" customClass="NewsFeedTableViewController" customModule="UserInterface" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Syc-EG-dae">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <connections>
-                            <outlet property="dataSource" destination="5Fh-bi-VTI" id="2Hr-2M-LMK"/>
-                            <outlet property="delegate" destination="5Fh-bi-VTI" id="sWn-4d-fgz"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Новости" id="vSU-fi-E08"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fvy-vX-5JG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2667" y="595"/>
         </scene>
         <!--Группы-->
         <scene sceneID="EFp-Hr-Z5m">
@@ -344,24 +325,49 @@
             </objects>
             <point key="canvasLocation" x="3458" y="-108"/>
         </scene>
-        <!--Новости-->
-        <scene sceneID="6hJ-5S-vkh">
+        <!--Лента-->
+        <scene sceneID="deG-T5-poE">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QM5-Nf-Yvi" customClass="CustomNavigationController" customModule="UserInterface" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Новости" image="newspaper.fill" catalog="system" id="iCC-OQ-xAv"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7nt-85-7ln">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
+                <viewController id="sDM-8V-LBg" customClass="NewsfeedViewController" customModule="UserInterface" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Qrm-56-Ofn">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ggh-v2-nfa" customClass="GradientView" customModule="UserInterface" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                        <color key="value" red="1" green="0.55294117647058827" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                        <color key="value" red="1" green="0.81568627450980391" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QTW-7J-7NY">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ufA-7E-QqN"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="QTW-7J-7NY" firstAttribute="bottom" secondItem="ufA-7E-QqN" secondAttribute="bottom" id="X4F-cY-pRw"/>
+                            <constraint firstAttribute="trailing" secondItem="QTW-7J-7NY" secondAttribute="trailing" id="ZrQ-oV-AYJ"/>
+                            <constraint firstItem="QTW-7J-7NY" firstAttribute="leading" secondItem="ufA-7E-QqN" secondAttribute="leading" id="fx7-j7-9Vu"/>
+                            <constraint firstItem="QTW-7J-7NY" firstAttribute="top" secondItem="Qrm-56-Ofn" secondAttribute="top" id="xF0-oW-YfL"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Лента" image="newspaper.fill" catalog="system" id="gWC-Ej-vMb"/>
                     <connections>
-                        <segue destination="5Fh-bi-VTI" kind="relationship" relationship="rootViewController" id="hVx-SV-QZF"/>
+                        <outlet property="tableView" destination="QTW-7J-7NY" id="MJx-0x-Dy5"/>
                     </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Jl1-Kz-zfa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U3T-q3-W31" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1954" y="595"/>
+            <point key="canvasLocation" x="1134.7826086956522" y="874.55357142857144"/>
         </scene>
         <!--Item-->
         <scene sceneID="zUx-UW-6Oe">

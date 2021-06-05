@@ -164,65 +164,65 @@ class NetworkManager {
     }
     
     //Получение новостной ленты
-    func getNewsFeed(completion: @escaping ((Result<[NewsFeed]>) -> Void)) {
-        guard let token = Session.shared.token else { return }
-        
-        let url = baseURL + Paths.getNewsFeed.rawValue
-        
-        let parameters: Parameters = [
-            "access_token": token,
-            "v": versionVKAPI,
-            "filters": "post"
-        ]
-        
-        Alamofire.request(url, parameters: parameters).responseJSON { (response) in
-            switch response.result {
-            case .failure(let error):
-                completion(.failure(error))
-            case .success(_ ):
-                if let data = response.data {
-                    do {
-                        var newsFeed: [NewsFeed] = []
-                        let newsFeedResponse = try JSONDecoder().decode(NewsFeedVK.self, from: data).response
-                        
-                        let groups = newsFeedResponse.groups
-                        let profiles = newsFeedResponse.profiles
-                        let items = newsFeedResponse.items
-                        
-                        for item in items.filter({ $0.text != nil || ($0.attachments?
-                                                                        .first { $0.photo != nil }) != nil  }) {
-                            
-                            let photoContent = item.attachments?
-                                .first { $0.photo != nil }?.photo?.sizes?
-                                .first { $0.type == "x" }?.url
-                        
-                            let feed = NewsFeed(ownerId: -item.sourceID,
-                                                date: item.date.toDateTime(),
-                                                text: item.text ?? "",
-                                                photoContent: photoContent,
-                                                likes: item.likes,
-                                                reposts: item.reposts,
-                                                comments: item.comments,
-                                                views: item.views)
-
-                            if item.sourceID < 0, let group = groups.first(where: { $0.id == -item.sourceID }) {
-                                feed.ownerName = group.name
-                                feed.ownerAvatar = group.photo50
-                            } else if let profile = profiles.first(where: { $0.id == item.sourceID }) {
-                                feed.ownerName = "\(profile.firstName) \(profile.lastName)"
-                                feed.ownerAvatar = profile.photo50 ?? ""
-                            }
-                            
-                            newsFeed.append(feed)
-                        }
-                        
-                        completion(.success(newsFeed))
-                    } catch {
-                        completion(.failure(error))
-                    }
-                }
-            }
-        }
-    }
+//    func getNewsFeed(completion: @escaping ((Result<[NewsFeed]>) -> Void)) {
+//        guard let token = Session.shared.token else { return }
+//
+//        let url = baseURL + Paths.getNewsFeed.rawValue
+//
+//        let parameters: Parameters = [
+//            "access_token": token,
+//            "v": versionVKAPI,
+//            "filters": "post,photo"
+//        ]
+//
+//        Alamofire.request(url, parameters: parameters).responseJSON { (response) in
+//            switch response.result {
+//            case .failure(let error):
+//                completion(.failure(error))
+//            case .success(_ ):
+//                if let data = response.data {
+//                    do {
+//                        var newsFeed: [NewsFeed] = []
+//                        let newsFeedResponse = try JSONDecoder().decode(NewsFeedVK.self, from: data).response
+//
+//                        let groups = newsFeedResponse.groups
+//                        let profiles = newsFeedResponse.profiles
+//                        let items = newsFeedResponse.items
+//
+//                        for item in items.filter({ $0.text != nil || ($0.attachments?
+//                                                                        .first { $0.photo != nil }) != nil  }) {
+//
+//                            let photoContent = item.attachments?
+//                                .first { $0.photo != nil }?.photo?.sizes?
+//                                .first { $0.type == "x" }?.url
+//
+//                            let feed = NewsFeed(ownerId: -item.sourceID,
+//                                                date: item.date.toDateTime(),
+//                                                text: item.text ?? "",
+//                                                photoContent: photoContent,
+//                                                likes: item.likes,
+//                                                reposts: item.reposts,
+//                                                comments: item.comments,
+//                                                views: item.views)
+//
+//                            if item.sourceID < 0, let group = groups.first(where: { $0.id == -item.sourceID }) {
+//                                feed.ownerName = group.name
+//                                feed.ownerAvatar = group.photo50
+//                            } else if let profile = profiles.first(where: { $0.id == item.sourceID }) {
+//                                feed.ownerName = "\(profile.firstName) \(profile.lastName)"
+//                                feed.ownerAvatar = profile.photo50 ?? ""
+//                            }
+//
+//                            newsFeed.append(feed)
+//                        }
+//
+//                        completion(.success(newsFeed))
+//                    } catch {
+//                        completion(.failure(error))
+//                    }
+//                }
+//            }
+//        }
+//    }
 }
 

@@ -9,6 +9,8 @@ import Foundation
 import Alamofire
 import PromiseKit
 
+// Пример работы с Promise
+
 class NetworkManagerPromise {
     static let shared = NetworkManagerPromise()
     
