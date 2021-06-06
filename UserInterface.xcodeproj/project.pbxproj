@@ -40,7 +40,6 @@
 		092600EC264B278600D079E5 /* RealmUpdateFriendsOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092600EB264B278600D079E5 /* RealmUpdateFriendsOperation.swift */; };
 		092600EE264B279600D079E5 /* ReloadFriendsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092600ED264B279600D079E5 /* ReloadFriendsController.swift */; };
 		092600F1264B29E600D079E5 /* NetworkManagerOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092600F0264B29E600D079E5 /* NetworkManagerOperation.swift */; };
-		092600F4264C279000D079E5 /* ReloadDataTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092600F3264C279000D079E5 /* ReloadDataTableController.swift */; };
 		092601942652BE6F00D079E5 /* NetworkManagerPromise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092601932652BE6F00D079E5 /* NetworkManagerPromise.swift */; };
 		092601962654015900D079E5 /* VKError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092601952654015900D079E5 /* VKError.swift */; };
 		0926019826540D5C00D079E5 /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0926019726540D5C00D079E5 /* UIAlertController.swift */; };
@@ -123,7 +122,6 @@
 		092600EB264B278600D079E5 /* RealmUpdateFriendsOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmUpdateFriendsOperation.swift; sourceTree = "<group>"; };
 		092600ED264B279600D079E5 /* ReloadFriendsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadFriendsController.swift; sourceTree = "<group>"; };
 		092600F0264B29E600D079E5 /* NetworkManagerOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerOperation.swift; sourceTree = "<group>"; };
-		092600F3264C279000D079E5 /* ReloadDataTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadDataTableController.swift; sourceTree = "<group>"; };
 		092601932652BE6F00D079E5 /* NetworkManagerPromise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerPromise.swift; sourceTree = "<group>"; };
 		092601952654015900D079E5 /* VKError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKError.swift; sourceTree = "<group>"; };
 		0926019726540D5C00D079E5 /* UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
@@ -266,7 +264,6 @@
 		045C904625CAD144005FC428 /* UserInterface */ = {
 			isa = PBXGroup;
 			children = (
-				092600F2264C26F400D079E5 /* Protocols */,
 				092AC349260B3A64001E4EF1 /* CustomAnimation */,
 				09D685C0261F62AF0046B131 /* Extensions */,
 				0922124E2615D26000B49CD6 /* RealmManager */,
@@ -333,14 +330,6 @@
 				092600ED264B279600D079E5 /* ReloadFriendsController.swift */,
 			);
 			path = Friends;
-			sourceTree = "<group>";
-		};
-		092600F2264C26F400D079E5 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				092600F3264C279000D079E5 /* ReloadDataTableController.swift */,
-			);
-			path = Protocols;
 			sourceTree = "<group>";
 		};
 		092601922652BD6100D079E5 /* Promise */ = {
@@ -611,7 +600,6 @@
 				040A3E8625DA46C400DFD359 /* AllGroupsTableViewController.swift in Sources */,
 				0952DF1C260E2B2200877AFC /* Friends.swift in Sources */,
 				09EB45E4266BC9360065648C /* RowLayout.swift in Sources */,
-				092600F4264C279000D079E5 /* ReloadDataTableController.swift in Sources */,
 				09EB45C9266BA8370065648C /* NewsfeedRouter.swift in Sources */,
 				0450641825FF634C00B08791 /* Loading.swift in Sources */,
 				090AF7FC26089E6600C1939B /* NetworkManager.swift in Sources */,

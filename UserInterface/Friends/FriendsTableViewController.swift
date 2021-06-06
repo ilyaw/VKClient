@@ -8,6 +8,10 @@
 import UIKit
 import RealmSwift
 
+protocol ReloadDataTableController: AnyObject {
+    func reloadData()
+}
+
 final class FriendsTableViewController: UITableViewController {
     let segueFromFriendsTableToFriendPhoto = "SegueFromFriendsTableToFriendPhoto"
     let friendCell = "FriendCell"
