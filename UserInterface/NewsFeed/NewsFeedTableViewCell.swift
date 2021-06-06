@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SDWebImage
 import Foundation
 
 class NewsFeedTableViewCell: UITableViewCell {
@@ -34,31 +33,31 @@ class NewsFeedTableViewCell: UITableViewCell {
     func setup(newsFeed: NewsFeed) {
         self.author.text = newsFeed.ownerName
         
-        DispatchQueue.main.async {
-            DispatchQueue.main.async {
-                self.postAvatar.sd_setImage(with: URL(string: newsFeed.ownerAvatar))
-            }
-        }
-
-        self.date.text = newsFeed.date
-        self.contentText.text = newsFeed.text
+        PhotoService.shared.photo(urlString: newsFeed.ownerAvatar)
+            .done { [weak self] image in self?.postAvatar.image = image }
+            .catch { print($0.localizedDescription) }
         
-        DispatchQueue.main.async {
-            DispatchQueue.main.async {
-                if let url = newsFeed.photoContent {
-                    self.contentImageView.sd_setImage(with: URL(string: url))
-                } else {
-                    self.contentImageView.image = UIImage(named: "noimage")
+        if let url = URL(string: newsFeed.photoContent ?? "") {
+            DispatchQueue.global().async {
+                DispatchQueue.main.async {
+                    if let imageData = try? Data(contentsOf: url) {
+                        self.contentImageView.image = UIImage(data: imageData)
+                    }
                 }
             }
+        } else {
+            self.contentImageView.image = UIImage(named: "noimage")
         }
+        
+        self.date.text = newsFeed.date
+        self.contentText.text = newsFeed.text
         
         self.like.setLike(count: newsFeed.likes?.count ?? 0)
         self.share.setShare(count: newsFeed.reposts?.count ?? 0)
         self.comment.setComment(count: newsFeed.comments?.count ?? 0)
         
         self.views.text = "\(newsFeed.views?.count ?? 0)" 
-//
+
 //        self.contentText.text = newsFeed.text
 ////        self.author = newsFeed.
 //

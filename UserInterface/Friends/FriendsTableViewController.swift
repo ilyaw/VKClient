@@ -7,7 +7,6 @@
 
 import UIKit
 import RealmSwift
-import SDWebImage
 
 final class FriendsTableViewController: UITableViewController {
     let segueFromFriendsTableToFriendPhoto = "SegueFromFriendsTableToFriendPhoto"
@@ -59,7 +58,7 @@ final class FriendsTableViewController: UITableViewController {
     }
     
     private func loadData(completion: (() -> Void)? = nil) {
-        NetworkManagerOperation.shared.getFriends(controller: self) { [weak self] in
+        NetworkManagerOperation.shared.getFriends(controller: self) {
             DispatchQueue.main.async {
                 completion?()
             }
@@ -67,7 +66,6 @@ final class FriendsTableViewController: UITableViewController {
     }
     
     private func signToFilteredUsersChange() {
-
         filteredUsersNotificationToken = filteredUsers?.observe { [weak self] (change) in
             switch change {
             case .initial( _): break

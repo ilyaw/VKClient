@@ -7,7 +7,6 @@
 
 import UIKit
 import RealmSwift
-import SDWebImage
 
 class MyGroupsTableViewController: UITableViewController {
     static let identifier = "GroupCell"

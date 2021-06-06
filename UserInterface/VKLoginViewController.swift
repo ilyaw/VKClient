@@ -7,13 +7,9 @@
 
 import UIKit
 import WebKit
-import Alamofire
-
-
+import SwiftKeychainWrapper
 
 class VKLoginViewController: UIViewController {
-    
-    private let realmManager = RealmManager.shared
     
     @IBOutlet weak var webView: WKWebView! {
         didSet {
@@ -21,33 +17,29 @@ class VKLoginViewController: UIViewController {
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-//        Session.shared.token = "05817c429fda755aefe2ee932f52e84b462fdba044fb22a5b47296751be50d0cbbd7278ab27067ca8eb9a"
-//        Session.shared.userId = 210404335
-//        moveToTabBarController()
-    }
-    
+    var canPresent: Bool = false
+      
     override func viewDidLoad() {
         super.viewDidLoad()
+                
+        if let keychainData = KeychainWrapper.standard.string(forKey: "user") {
+            let data = Data(keychainData.utf8)
+            
+            if let decodeUser = decode(json: data, as: KeychainUser.self) {
+                
+                let now = Date().timeIntervalSince1970
+                let checkInterval = (now - decodeUser.date) >= 86400
+                
+                if !checkInterval {
+                    Session.shared.token = decodeUser.token
+                    Session.shared.userId = decodeUser.id
+            
+                    self.canPresent = true
+                    return
+                }
+            }
+        }
         
-        // moveToTabBarController()
-        
-        //        realmManager.get
-        //
-        //        if Session.shared.token != nil,
-        //           Session.shared.userId != nil {
-        //            moveToTabBarController()
-        //        }
-        
-        //        if true {
-        //            Session.shared.token = "6bfb9c35ebcc773b15c8f65d47cf475f5f5606b1c9c52ef1dd5a222e4cb123295a4dfbc1133d616217063"
-        //            Session.shared.userId = 210404335
-        //            moveToTabBarController()
-        //        } else {
-        //
-
         let friendsMask = 1 << 1
         let photosMask = 1 << 2
         let wallMask = 1 << 13
@@ -72,13 +64,15 @@ class VKLoginViewController: UIViewController {
 
         let request = URLRequest(url: url)
         webView.load(request)
-        
-        
-        
-        //        }
     }
     
-    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if self.canPresent {
+            moveToTabBarController()
+        }
+    }
 }
 
 extension VKLoginViewController: WKNavigationDelegate {
@@ -119,6 +113,14 @@ extension VKLoginViewController: WKNavigationDelegate {
         
         if Session.shared.token != nil,
            Session.shared.userId != nil {
+            
+            let user = KeychainUser(id: Session.shared.userId,
+                            token: Session.shared.token,
+                            date: Date().timeIntervalSince1970)
+        
+            let encodedUser = encode(object: user)
+            KeychainWrapper.standard["user"] = encodedUser
+            
             moveToTabBarController()
         }
     }
@@ -128,5 +130,31 @@ extension VKLoginViewController: WKNavigationDelegate {
         
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true, completion: nil)
+    }
+}
+
+extension VKLoginViewController {
+    func encode<T: Codable>(object: T) -> Data? {
+        do {
+            let encoder = JSONEncoder()
+            encoder.outputFormatting = .prettyPrinted
+            return try encoder.encode(object)
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        return nil
+    }
+
+    func decode<T: Decodable>(json: Data, as class: T.Type) -> T? {
+        do {
+            let decoder = JSONDecoder()
+            let data = try decoder.decode(T.self, from: json)
+            
+            return data
+        } catch {
+            print("An error occurred while parsing JSON")
+        }
+        
+        return nil
     }
 }

@@ -22,12 +22,11 @@ class FriendsTableViewCell: UITableViewCell {
     
     func setup(_ user: FriendItem) {
         self.name.text = user.firstName + " " + user.lastName
-        if let url = URL(string: user.photo50 ?? "") {
-            DispatchQueue.global().async {
-                DispatchQueue.main.async {
-                    self.shadowView.avatar.sd_setImage(with: url)
-                }
-            }
+        
+        if let url = user.photo50 {
+            PhotoService.shared.photo(urlString: url)
+                .done { [weak self] image in self?.shadowView.avatar.image = image }
+                .catch { print($0.localizedDescription) }
         }
     }
     

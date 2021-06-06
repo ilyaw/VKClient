@@ -20,19 +20,14 @@ class MyGroupsTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
     
     func setup(_ group: GroupItem) {
         self.groupName.text = group.name
         
-        if let url = URL(string: group.photo50) {
-            DispatchQueue.global().async {
-                DispatchQueue.main.async {
-                    self.shadowView.avatar.sd_setImage(with: url)
-                }
-            }
-        }
+        PhotoService.shared.photo(urlString: group.photo50 )
+            .done { [weak self] image in self?.shadowView.avatar.image = image }
+            .catch { print($0.localizedDescription) }
     }
     
     
