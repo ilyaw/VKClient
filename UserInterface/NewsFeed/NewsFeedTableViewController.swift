@@ -8,7 +8,7 @@
 import UIKit
 
 class NewsFeedTableViewController: UITableViewController {
-    static let newsCell = "NewsCell"
+    let newsCell = "NewsCell"
     
     let allNews = getAllNews()
     
@@ -20,7 +20,7 @@ class NewsFeedTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.register(UINib(nibName: "NewsFeedTableViewCell", bundle: nil), forCellReuseIdentifier: NewsFeedTableViewController.newsCell)
+        self.tableView.register(UINib(nibName: "NewsFeedTableViewCell", bundle: nil), forCellReuseIdentifier: newsCell)
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -50,7 +50,7 @@ class NewsFeedTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: NewsFeedTableViewController.newsCell, for: indexPath) as? NewsFeedTableViewCell,
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: newsCell, for: indexPath) as? NewsFeedTableViewCell,
             let newsFeedItem = newsFeed?[indexPath.row] else { return UITableViewCell() }
         
         cell.setup(newsFeed: newsFeedItem)

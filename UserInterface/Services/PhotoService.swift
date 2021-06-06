@@ -30,10 +30,11 @@ class ThreadSafeMemoryCache {
 }
 
 class PhotoService {
+    
     private let cacheLifetime: TimeInterval = 60 * 60 * 24 * 7
     private static var memoryCache = ThreadSafeMemoryCache()
     static let shared = PhotoService()
-
+    
     private init() {}
     
     private var imageCacheUrl: URL? {
@@ -79,8 +80,8 @@ class PhotoService {
         
         return image
     }
-
-    private func loadImage(urlString: String) -> Promise<UIImage> {
+    
+    private func loadImage(urlString: String, saveFilesystem: Bool) -> Promise<UIImage> {
         let promise = Promise<Data>(resolver: { resolver -> Void in
             Alamofire.request(urlString).responseData(queue: .global()) { response in
                 switch response.result {
@@ -93,23 +94,32 @@ class PhotoService {
         })
         
         return promise
-            .map { guard let image = UIImage(data: $0) else { throw PMKError.badInput }; return image }
-            .get(on: .global()) { PhotoService.memoryCache.set(image: $0, for: urlString) }
-            .get { self.saveImageToFilesystem(urlString: urlString, image: $0) }
+            .map {
+                guard let image = UIImage(data: $0) else { throw PMKError.badInput };
+                return image
+            }
+            .get(on: .global()) {
+                PhotoService.memoryCache.set(image: $0, for: urlString)
+            }
+            .get {
+                if saveFilesystem {
+                    self.saveImageToFilesystem(urlString: urlString, image: $0)
+                }
+            }
     }
     
-    public func photo(urlString: String) -> Promise<UIImage>  {
+    public func photo(urlString: String, filesystem: Bool = true) -> Promise<UIImage>  {
         return Promise.value(urlString)
             .then(on: .global()) { url -> Promise<UIImage> in
-                // memory cache
                 if let image = PhotoService.memoryCache.get(for: urlString) {
                     return Promise.value(image)
-                } else if let image = self.loadImageFromFilesystem(urlString: urlString) {
-                    // filesystem
+                }
+                
+                if filesystem, let image = self.loadImageFromFilesystem(urlString: urlString) {
                     return Promise.value(image)
                 }
-                // internet
-                return self.loadImage(urlString: urlString)
+                
+                return self.loadImage(urlString: urlString, saveFilesystem: filesystem)
             }
     }
 }

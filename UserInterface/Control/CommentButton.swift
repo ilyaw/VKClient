@@ -52,6 +52,7 @@ class CommentButton: UIControl {
         
         label.frame = labelFrame
         label.text = "\(commentCount)"
+        label.backgroundColor = .white
         
         self.addSubview(label)
         self.addSubview(button)

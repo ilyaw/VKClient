@@ -95,7 +95,6 @@ class MyGroupsTableViewController: UITableViewController {
         return groups?.count ?? 0
     }
     
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MyGroupsTableViewController.identifier, for: indexPath) as? MyGroupsTableViewCell,
               let group = groups?[indexPath.row]  else {
@@ -105,6 +104,20 @@ class MyGroupsTableViewController: UITableViewController {
         cell.setup(group)
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? MyGroupsTableViewCell else { return }
+        
+        UIView.animate(withDuration: 0.15, delay: 0, options: [], animations: {
+            cell.shadowView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+        }, completion: {_ in
+            UIView.animate(withDuration: 0.15, delay: 0, options: [], animations: {
+                cell.shadowView.transform = .identity
+            }, completion: {_ in
+                //self.performSegue(withIdentifier: self.segueFromFriendsTableToFriendPhoto, sender: self)
+            })
+        })
     }
     
     deinit {
