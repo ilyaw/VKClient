@@ -33,7 +33,6 @@ extension CustomNavigationController: UINavigationControllerDelegate {
         case .push:
             self.interactiveTransition.viewController = toVC
             animatedTransitioning = CustomPushAnimator()
-            
         case .pop:
             if navigationController.viewControllers.first != toVC {
                 self.interactiveTransition.viewController = toVC

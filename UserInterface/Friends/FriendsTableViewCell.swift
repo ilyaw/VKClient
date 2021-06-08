@@ -21,7 +21,6 @@ class FriendsTableViewCell: UITableViewCell {
     }()
     
     var myView: CustomShadowView = {
-//        var view = CustomShadowView(frame: CGRect(x: 10, y: 7.5, width: 50, height: 50))
         var view = CustomShadowView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -29,6 +28,8 @@ class FriendsTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        selectionStyle = .none
         
         self.addSubview(myView)
         self.myView.addSubview(photoUser)
@@ -70,9 +71,6 @@ class FriendsTableViewCell: UITableViewCell {
         
         photoFrame()
         usernameFrame()
-        
-        
-
     }
 
     func usernameFrame() {
