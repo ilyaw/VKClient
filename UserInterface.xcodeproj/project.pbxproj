@@ -51,6 +51,10 @@
 		092AC358260B419F001E4EF1 /* CustomInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092AC357260B419F001E4EF1 /* CustomInteractiveTransition.swift */; };
 		0943ECD3260F455800039272 /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0943ECD2260F455800039272 /* Photos.swift */; };
 		0952DF1C260E2B2200877AFC /* Friends.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0952DF1B260E2B2200877AFC /* Friends.swift */; };
+		09546EB4267E01E000167322 /* AlbumsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09546EB3267E01E000167322 /* AlbumsController.swift */; };
+		09546EB6267E05E900167322 /* Albums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09546EB5267E05E900167322 /* Albums.swift */; };
+		09546EBA267E2C2100167322 /* PhotoCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09546EB9267E2C2100167322 /* PhotoCollection.swift */; };
+		09546EBC267E314C00167322 /* AsyncImageCellCollectionNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09546EBB267E314C00167322 /* AsyncImageCellCollectionNode.swift */; };
 		09B1A54C2638A781005314FD /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 09B1A54B2638A781005314FD /* .gitignore */; };
 		09CDB2102656BD9500FE69F2 /* KeychainUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CDB20F2656BD9500FE69F2 /* KeychainUser.swift */; };
 		09CDB21326594C9400FE69F2 /* PhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CDB21226594C9400FE69F2 /* PhotoService.swift */; };
@@ -133,6 +137,10 @@
 		092AC357260B419F001E4EF1 /* CustomInteractiveTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInteractiveTransition.swift; sourceTree = "<group>"; };
 		0943ECD2260F455800039272 /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
 		0952DF1B260E2B2200877AFC /* Friends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friends.swift; sourceTree = "<group>"; };
+		09546EB3267E01E000167322 /* AlbumsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsController.swift; sourceTree = "<group>"; };
+		09546EB5267E05E900167322 /* Albums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Albums.swift; sourceTree = "<group>"; };
+		09546EB9267E2C2100167322 /* PhotoCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollection.swift; sourceTree = "<group>"; };
+		09546EBB267E314C00167322 /* AsyncImageCellCollectionNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageCellCollectionNode.swift; sourceTree = "<group>"; };
 		09B1A54B2638A781005314FD /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		09CDB20F2656BD9500FE69F2 /* KeychainUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainUser.swift; sourceTree = "<group>"; };
 		09CDB21226594C9400FE69F2 /* PhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoService.swift; sourceTree = "<group>"; };
@@ -195,7 +203,7 @@
 			path = Friends;
 			sourceTree = "<group>";
 		};
-		040A3E6725D9B9EB00DFD359 /* Group */ = {
+		040A3E6725D9B9EB00DFD359 /* Groups */ = {
 			isa = PBXGroup;
 			children = (
 				040A3E7C25DA405600DFD359 /* MyGroupsTableViewController.swift */,
@@ -203,7 +211,7 @@
 				040A3E8225DA463F00DFD359 /* AllGroupsTableViewCell.swift */,
 				040A3E8525DA46C400DFD359 /* AllGroupsTableViewController.swift */,
 			);
-			path = Group;
+			path = Groups;
 			sourceTree = "<group>";
 		};
 		040A3E6925D9BB2B00DFD359 /* Models */ = {
@@ -211,6 +219,7 @@
 			children = (
 				0952DF1B260E2B2200877AFC /* Friends.swift */,
 				0943ECD2260F455800039272 /* Photos.swift */,
+				09546EB5267E05E900167322 /* Albums.swift */,
 				0926B8D226106F1300C66F1A /* Groups.swift */,
 				09EB45F1266BDD660065648C /* Feed.swift */,
 				09EB45F3266BDE1A0065648C /* User.swift */,
@@ -273,7 +282,8 @@
 				0450641625FF634000B08791 /* Views */,
 				045063EA25FD4C4700B08791 /* Control */,
 				040A3E6625D9B9DF00DFD359 /* Friends */,
-				040A3E6725D9B9EB00DFD359 /* Group */,
+				09546EB2267E002500167322 /* Albums */,
+				040A3E6725D9B9EB00DFD359 /* Groups */,
 				09EB45CE266BA8420065648C /* Newsfeed */,
 				09D1DCC2263325A600D58A5F /* Firestore Models */,
 				040A3E6925D9BB2B00DFD359 /* Models */,
@@ -350,6 +360,16 @@
 				092AC34A260B3D0F001E4EF1 /* AnimatorOpen.swift */,
 			);
 			path = CustomAnimation;
+			sourceTree = "<group>";
+		};
+		09546EB2267E002500167322 /* Albums */ = {
+			isa = PBXGroup;
+			children = (
+				09546EB3267E01E000167322 /* AlbumsController.swift */,
+				09546EB9267E2C2100167322 /* PhotoCollection.swift */,
+				09546EBB267E314C00167322 /* AsyncImageCellCollectionNode.swift */,
+			);
+			path = Albums;
 			sourceTree = "<group>";
 		};
 		09CDB214265952B700FE69F2 /* Services */ = {
@@ -568,6 +588,7 @@
 				09EB45EC266BD4BE0065648C /* WebImageView.swift in Sources */,
 				040A3E8025DA427B00DFD359 /* MyGroupsTableViewCell.swift in Sources */,
 				09EB45CC266BA8370065648C /* NewsfeedInteractor.swift in Sources */,
+				09546EBC267E314C00167322 /* AsyncImageCellCollectionNode.swift in Sources */,
 				092AC358260B419F001E4EF1 /* CustomInteractiveTransition.swift in Sources */,
 				09EB45EA266BCAF50065648C /* NewsfeedConstants.swift in Sources */,
 				092600EC264B278600D079E5 /* RealmUpdateFriendsOperation.swift in Sources */,
@@ -581,6 +602,7 @@
 				09F1FB002646FC1900C5A2E0 /* Int.swift in Sources */,
 				09EB45E6266BC9DB0065648C /* GalleryCollectionView.swift in Sources */,
 				040A3E7725D9CB1900DFD359 /* FriendPhotoCollectionViewController.swift in Sources */,
+				09546EB4267E01E000167322 /* AlbumsController.swift in Sources */,
 				045C904C25CAD144005FC428 /* LoginFormController.swift in Sources */,
 				0926019826540D5C00D079E5 /* UIAlertController.swift in Sources */,
 				09EB45CB266BA8370065648C /* NewsfeedViewController.swift in Sources */,
@@ -595,6 +617,7 @@
 				09EB45F2266BDD660065648C /* Feed.swift in Sources */,
 				044570C225E9064100FC4E47 /* CircleView.swift in Sources */,
 				092AC34B260B3D0F001E4EF1 /* AnimatorOpen.swift in Sources */,
+				09546EB6267E05E900167322 /* Albums.swift in Sources */,
 				09EB45DD266BBFFA0065648C /* Constraint.swift in Sources */,
 				09EB45C8266BA8370065648C /* NewsfeedWorker.swift in Sources */,
 				040A3E8625DA46C400DFD359 /* AllGroupsTableViewController.swift in Sources */,
@@ -603,6 +626,7 @@
 				09EB45C9266BA8370065648C /* NewsfeedRouter.swift in Sources */,
 				0450641825FF634C00B08791 /* Loading.swift in Sources */,
 				090AF7FC26089E6600C1939B /* NetworkManager.swift in Sources */,
+				09546EBA267E2C2100167322 /* PhotoCollection.swift in Sources */,
 				09CDB21326594C9400FE69F2 /* PhotoService.swift in Sources */,
 				092600EE264B279600D079E5 /* ReloadFriendsController.swift in Sources */,
 				040A3E7425D9C6C600DFD359 /* FriendsTableViewCell.swift in Sources */,

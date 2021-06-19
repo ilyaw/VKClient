@@ -40,7 +40,7 @@ class NetworkManagerOperation {
         
         let getDataOperation = GetDataOperation(request: request)
         getDataOperation.completionBlock = {
-            print("Ответ от сервера пришел: \(String(describing: getDataOperation.data))")
+//            print("Ответ от сервера пришел: \(String(describing: getDataOperation.data))")
         }
         
         operationQueue.addOperation(getDataOperation)
@@ -48,7 +48,7 @@ class NetworkManagerOperation {
         let parseFriendsOperation = ParseFriendsOperation()
         parseFriendsOperation.addDependency(getDataOperation)
         parseFriendsOperation.completionBlock = {
-            print("Спарсили: \(parseFriendsOperation.outputData.count) друзей")
+//            print("Спарсили: \(parseFriendsOperation.outputData.count) друзей")
         }
         
         operationQueue.addOperation(parseFriendsOperation)
@@ -56,7 +56,7 @@ class NetworkManagerOperation {
         let realmUpdateFriendsOperation = RealmUpdateFriendsOperation()
         realmUpdateFriendsOperation.addDependency(parseFriendsOperation)
         realmUpdateFriendsOperation.completionBlock = {
-            print("Обновили Realm Friends")
+//            print("Обновили Realm Friends")
         }
         
         OperationQueue.main.addOperation(realmUpdateFriendsOperation)
@@ -64,7 +64,7 @@ class NetworkManagerOperation {
         let reloadFriendsControllerOperation = ReloadFriendsControllerOperation(controller: controller)
         reloadFriendsControllerOperation.addDependency(parseFriendsOperation)
         reloadFriendsControllerOperation.completionBlock = {
-            print("Обновили FriendsTableView")
+//            print("Обновили FriendsTableView")
             completion?()
         }
         
