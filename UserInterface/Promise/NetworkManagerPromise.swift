@@ -25,7 +25,7 @@ class NetworkManagerPromise {
     }
     
     //Получение групп пользователя
-    func getGroups(on queue: DispatchQueue = .main, userId: Int = Session.shared.userId, extended: Int = 1, count: Int = 1000, offset: Int = 0) -> Promise<[GroupItem]> {
+    func getGroups(on queue: DispatchQueue = .main, userId: Int = Session.shared.userId, extended: Int = 1, count: Int = 200, offset: Int = 0) -> Promise<[GroupItem]> {
         guard let token = Session.shared.token else {
             return Promise.init(error: VKError.needValidation(message: "Отсутвует Token"))
         }

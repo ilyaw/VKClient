@@ -23,7 +23,7 @@ struct NetworkDataFetcher: DataFetcher {
     func getFeed(nextBathFrom: String?, response: @escaping (FeedResponse?) -> Void) {
         var params = ["filters": "post, photo"]
         params["start_from"] = nextBathFrom
-        params["count"] = "40"
+        params["count"] = "30"
         
         networking.request(path: "/method/newsfeed.get", params: params) { (data, error) in
             if let error = error {

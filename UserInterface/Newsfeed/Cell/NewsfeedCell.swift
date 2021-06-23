@@ -48,7 +48,7 @@ final class NewsfeedCell: UITableViewCell {
     
     let cardView: UIView = {
        let view = UIView()
-        view.backgroundColor = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1)
+        view.backgroundColor = .white
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -81,7 +81,7 @@ final class NewsfeedCell: UITableViewCell {
     let moreTextButton: UIButton = {
        let button = UIButton()
         button.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .medium)
-        button.setTitleColor(#colorLiteral(red: 0.4012392163, green: 0.6231879592, blue: 0.8316264749, alpha: 1), for: .normal)
+        button.setTitleColor(.newsfeedBlue, for: .normal)
         button.contentHorizontalAlignment = .left
         button.contentVerticalAlignment = .center
         button.setTitle("Показать полностью...", for: .normal)
@@ -92,7 +92,7 @@ final class NewsfeedCell: UITableViewCell {
     
     let postImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = #colorLiteral(red: 0.8235294118, green: 0.3098039216, blue: 0.3294117647, alpha: 1)
+        imageView.backgroundColor = .newsfeedPaleRed
         return imageView
     }()
     
@@ -114,14 +114,14 @@ final class NewsfeedCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         label.numberOfLines = 0
-        label.textColor = #colorLiteral(red: 0.227329582, green: 0.2323184013, blue: 0.2370472848, alpha: 1)
+        label.textColor = .newsfeedDarkGrey
         return label
     }()
     
     let dateLabel: UILabel = {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = #colorLiteral(red: 0.5768421292, green: 0.6187390685, blue: 0.664434731, alpha: 1)
+        label.textColor = .newsfeedPaleGrey
         label.font = UIFont.systemFont(ofSize: 13)
         return label
     }()
@@ -185,7 +185,7 @@ final class NewsfeedCell: UITableViewCell {
     let likesLabel: UILabel = {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = #colorLiteral(red: 0.5768421292, green: 0.6187390685, blue: 0.664434731, alpha: 1)
+        label.textColor = .newsfeedPaleGrey
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         label.lineBreakMode = .byClipping
         return label
@@ -194,7 +194,7 @@ final class NewsfeedCell: UITableViewCell {
     let commentsLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = #colorLiteral(red: 0.5768421292, green: 0.6187390685, blue: 0.664434731, alpha: 1)
+        label.textColor = .newsfeedPaleGrey
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         label.lineBreakMode = .byClipping
         return label
@@ -203,7 +203,7 @@ final class NewsfeedCell: UITableViewCell {
     let sharesLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = #colorLiteral(red: 0.5768421292, green: 0.6187390685, blue: 0.664434731, alpha: 1)
+        label.textColor = .newsfeedPaleGrey
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         label.lineBreakMode = .byClipping
         return label
@@ -212,7 +212,7 @@ final class NewsfeedCell: UITableViewCell {
     let viewsLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = #colorLiteral(red: 0.5768421292, green: 0.6187390685, blue: 0.664434731, alpha: 1)
+        label.textColor = .newsfeedPaleGrey
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         label.lineBreakMode = .byClipping
         return label
@@ -244,6 +244,8 @@ final class NewsfeedCell: UITableViewCell {
         overlayThirdLayerOnTopView() // третий слой на topView
         overlayThirdLayerOnBottomView() // третий слой на bottomView
         overlayFourthLayerOnBottomViewViews() // четвертый слой на bottomViewViews
+        
+        
     }
     
     @objc func moreTextButtonTouch() {
@@ -264,11 +266,6 @@ final class NewsfeedCell: UITableViewCell {
     }
     
     func setup(viewModel: FeedCellViewModel) {
-        
-        //       photoServices.photo(urlString: viewModel.iconUrlString, filesystem: false)
-        //        .done {
-        //            [weak self] (image) in self?.iconImageView.image = image
-        //       }.catch( { print($0.localizedDescription) } )
         setPhoto(url: viewModel.iconUrlString, imageView: iconImageView)
         
         nameLabel.text = viewModel.name
@@ -284,7 +281,6 @@ final class NewsfeedCell: UITableViewCell {
         moreTextButton.frame = viewModel.sizes.moreTextButtonFrame
         
         if let photoAttachment = viewModel.photoAttachments.first, viewModel.photoAttachments.count == 1 {
-            
             setPhoto(url: photoAttachment.photoUrlString, imageView: postImageView)
             
             postImageView.isHidden = false

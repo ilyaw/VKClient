@@ -19,12 +19,23 @@ class AllGroupsTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+//    
+//    func setup(_ group: GroupItem) {
+//        self.groupName.text = group.name
+//        
+//        PhotoService.shared.photo(urlString: group.photo50 )
+//            .done { [weak self] image in self?.shadowView.avatar.image = image }
+//            .catch { print($0.localizedDescription) }
+//    }
     
-    func setup(_ group: GroupItem) {
-        self.groupName.text = group.name
-        
-        PhotoService.shared.photo(urlString: group.photo50 )
-            .done { [weak self] image in self?.shadowView.avatar.image = image }
+    func setup(_ viewModel: GroupViewModel) {
+        self.groupName.text = viewModel.title
+        self.setPhoto(url: viewModel.photoURL, imageView: shadowView.avatar)
+    }
+    
+    private func setPhoto(url: String, imageView: UIImageView) {
+        PhotoService.shared.photo(urlString: url )
+            .done { image in imageView.image = image }
             .catch { print($0.localizedDescription) }
     }
 }

@@ -325,10 +325,10 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="startColor">
-                                        <color key="value" red="1" green="0.55294117647058827" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" systemColor="systemGray5Color"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="endColor">
-                                        <color key="value" red="1" green="0.81568627450980391" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" systemColor="systemGray6Color"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
@@ -354,93 +354,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U3T-q3-W31" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1134.7826086956522" y="874.55357142857144"/>
-        </scene>
-        <!--Item-->
-        <scene sceneID="zUx-UW-6Oe">
-            <objects>
-                <viewController id="Mcb-SW-dXz" customClass="LoginFormController" customModule="UserInterface" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="P3b-Z5-Pyd">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fvu-9g-et4">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VK_Full_Logo" translatesAutoresizingMaskIntoConstraints="NO" id="mcL-dX-iEO">
-                                        <rect key="frame" x="70" y="35" width="274" height="48"/>
-                                    </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Md7-Kn-nw7">
-                                        <rect key="frame" x="70" y="226" width="274" height="30"/>
-                                        <color key="backgroundColor" red="0.14901961389999999" green="0.52941179279999995" blue="0.96078431610000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <state key="normal" title="Войти">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="esI-h8-OG4" kind="presentation" modalPresentationStyle="fullScreen" id="ew1-Yj-aqB"/>
-                                        </connections>
-                                    </button>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Логин или email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ho8-Nd-C5K">
-                                        <rect key="frame" x="70" y="118" width="274" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Пароль" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6k7-eD-t5M">
-                                        <rect key="frame" x="70" y="172" width="274" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                    </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JEy-zT-2Be">
-                                        <rect key="frame" x="149" y="276" width="116" height="30"/>
-                                        <state key="normal" title="Забыли пароль?"/>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="mcL-dX-iEO" firstAttribute="centerX" secondItem="Fvu-9g-et4" secondAttribute="centerX" id="303-uA-a3i"/>
-                                    <constraint firstItem="6k7-eD-t5M" firstAttribute="top" secondItem="Ho8-Nd-C5K" secondAttribute="bottom" constant="20" id="54n-xP-BGj"/>
-                                    <constraint firstAttribute="bottom" secondItem="JEy-zT-2Be" secondAttribute="bottom" constant="20" id="8Or-Gs-A0L"/>
-                                    <constraint firstItem="Md7-Kn-nw7" firstAttribute="leading" secondItem="Fvu-9g-et4" secondAttribute="leading" constant="70" id="BBV-zb-jY7"/>
-                                    <constraint firstItem="6k7-eD-t5M" firstAttribute="centerX" secondItem="Fvu-9g-et4" secondAttribute="centerX" id="Lyn-e2-6dt"/>
-                                    <constraint firstItem="Ho8-Nd-C5K" firstAttribute="centerX" secondItem="Fvu-9g-et4" secondAttribute="centerX" id="N4L-Fc-3zH"/>
-                                    <constraint firstItem="JEy-zT-2Be" firstAttribute="centerX" secondItem="Fvu-9g-et4" secondAttribute="centerX" id="Nna-pU-gty"/>
-                                    <constraint firstItem="mcL-dX-iEO" firstAttribute="leading" secondItem="Fvu-9g-et4" secondAttribute="leading" constant="70" id="QM0-OC-2Kl"/>
-                                    <constraint firstItem="Ho8-Nd-C5K" firstAttribute="leading" secondItem="Fvu-9g-et4" secondAttribute="leading" constant="70" id="SpP-Li-AXJ"/>
-                                    <constraint firstItem="Md7-Kn-nw7" firstAttribute="centerX" secondItem="Fvu-9g-et4" secondAttribute="centerX" id="UQn-kC-oH1"/>
-                                    <constraint firstItem="Md7-Kn-nw7" firstAttribute="top" secondItem="6k7-eD-t5M" secondAttribute="bottom" constant="20" id="flG-40-TWk"/>
-                                    <constraint firstItem="JEy-zT-2Be" firstAttribute="top" secondItem="Md7-Kn-nw7" secondAttribute="bottom" constant="20" id="hK3-ad-Uw6"/>
-                                    <constraint firstAttribute="trailing" secondItem="Md7-Kn-nw7" secondAttribute="trailing" constant="70" id="lQ4-TE-OCX"/>
-                                    <constraint firstItem="Ho8-Nd-C5K" firstAttribute="top" secondItem="mcL-dX-iEO" secondAttribute="bottom" constant="35" id="ll2-1D-dWU"/>
-                                    <constraint firstItem="mcL-dX-iEO" firstAttribute="top" secondItem="Fvu-9g-et4" secondAttribute="top" constant="35" id="u8Q-xe-Ew3"/>
-                                    <constraint firstItem="6k7-eD-t5M" firstAttribute="leading" secondItem="Fvu-9g-et4" secondAttribute="leading" constant="70" id="uP3-dc-EqK"/>
-                                    <constraint firstAttribute="trailing" secondItem="6k7-eD-t5M" secondAttribute="trailing" constant="70" id="xMc-sU-zjV"/>
-                                    <constraint firstAttribute="trailing" secondItem="mcL-dX-iEO" secondAttribute="trailing" constant="70" id="xnb-Q6-bUV"/>
-                                    <constraint firstAttribute="trailing" secondItem="Ho8-Nd-C5K" secondAttribute="trailing" constant="70" id="y06-Ut-uXI"/>
-                                </constraints>
-                                <viewLayoutGuide key="contentLayoutGuide" id="fCo-Mk-5t9"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="eB7-jC-xRV"/>
-                            </scrollView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="gvx-mz-PCB"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="Fvu-9g-et4" firstAttribute="leading" secondItem="gvx-mz-PCB" secondAttribute="leading" id="FLb-o4-aln"/>
-                            <constraint firstItem="Fvu-9g-et4" firstAttribute="trailing" secondItem="gvx-mz-PCB" secondAttribute="trailing" id="Scx-dD-0KP"/>
-                            <constraint firstItem="Fvu-9g-et4" firstAttribute="bottom" secondItem="gvx-mz-PCB" secondAttribute="bottom" id="Yuv-cO-Jus"/>
-                            <constraint firstItem="Fvu-9g-et4" firstAttribute="top" secondItem="gvx-mz-PCB" secondAttribute="top" id="lmV-lR-aXb"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="Eav-ed-ayU"/>
-                    <navigationItem key="navigationItem" id="mvs-Zx-zpu"/>
-                    <connections>
-                        <outlet property="loginBtn" destination="Md7-Kn-nw7" id="c8L-h6-zWI"/>
-                        <outlet property="loginTextField" destination="Ho8-Nd-C5K" id="FEw-QP-yAr"/>
-                        <outlet property="passwordTextField" destination="6k7-eD-t5M" id="7u2-Hh-yNw"/>
-                        <outlet property="scrollView" destination="Fvu-9g-et4" id="5Sc-Cq-gyf"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ITz-hl-nSh" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="303" y="-586"/>
         </scene>
         <!--Группы-->
         <scene sceneID="9Bi-We-IHw">
@@ -528,7 +441,6 @@
     </scenes>
     <resources>
         <image name="1" width="807" height="807"/>
-        <image name="VK_Full_Logo" width="274" height="48"/>
         <image name="chevron.down" catalog="system" width="128" height="72"/>
         <image name="newspaper.fill" catalog="system" width="128" height="111"/>
         <image name="person.2.fill" catalog="system" width="128" height="80"/>
@@ -541,6 +453,12 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -29,7 +29,7 @@ final class FriendsTableViewController: UITableViewController {
     
     private let networkManager = NetworkManager.shared
     private let realmManager = RealmManager.shared
-    
+        
     private var filteredUsersNotificationToken: NotificationToken?
     
     private var filteredUsers: Results<FriendItem>!
@@ -50,11 +50,6 @@ final class FriendsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        var alubmsTest = networkManager.getAlbums { [weak self] model in
-//            model.flatMap { print("\($0)\n") }
-//        }
-//
         
         self.tableView.register(FriendsTableViewCell.self,
                                 forCellReuseIdentifier: friendCell)
@@ -122,7 +117,7 @@ final class FriendsTableViewController: UITableViewController {
               let user = self.filteredUsers?[indexPath.row] else { return UITableViewCell() }
         
         cell.setup(user)
-        
+     
         return cell
     }
     
@@ -136,7 +131,6 @@ final class FriendsTableViewController: UITableViewController {
             UIView.animate(withDuration: 0.15, delay: 0, options: [], animations: {
                 cell.myView.transform = .identity
             }, completion: {_ in
-                
                 if let id = self.filteredUsers?[indexPath.row].id {
                     let albumsVC = AlbumsController()
                     albumsVC.loadAlbums(id: id)
@@ -144,7 +138,6 @@ final class FriendsTableViewController: UITableViewController {
                     albumsVC.modalPresentationStyle = .popover
                     self.present(albumsVC, animated: false)
                 }
-                
                 //                self.performSegue(withIdentifier: self.segueFromFriendsTableToFriendPhoto, sender: self)
             })
         })

@@ -16,16 +16,16 @@ class GalleryCollectionViewCell: UICollectionViewCell {
        let imageView = WebImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
-        imageView.backgroundColor = #colorLiteral(red: 0.8901960784, green: 0.8980392157, blue: 0.9098039216, alpha: 1)
+        imageView.backgroundColor = UIColor.brandGrey
         return imageView
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        
 //        contentView
         addSubview(myImageView)
-        
         
         // myImageView constaints
         myImageView.fillSuperview() //заполнить пространство внутри каждый ячейке
