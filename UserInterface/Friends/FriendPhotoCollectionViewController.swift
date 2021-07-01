@@ -44,26 +44,26 @@ class FriendPhotoCollectionViewController: UICollectionViewController {
     }
     
     private func loadData() {
-        networkManager.getPhotos(ownerId: user.id,
-                                 albumId: .profile,
-                                 rev: .antiСhronological) { [weak self] (result) in
-            switch result {
-            case .failure(let error):
-                print(error.localizedDescription)
-            case .success(let photos):
-                DispatchQueue.main.async {
-                    let sortedPhotos = photos.sorted { $0.id < $1.id }
-                    let arrEqual = sortedPhotos == self?.photos?.toArray()
-                    
-                    if !arrEqual {
-                        try? self?.realmManager?.add(objects: photos)
-                       // let ownerID = self?.user.id ?? 0
-                       // self?.photos = try? self?.realmManager?.getObjects().filter("ownerID = %@", ownerID)
-                        self?.collectionView.reloadData()
-                    }
-                }
-            }
-        }
+//        networkManager.getPhotos(ownerId: user.id,
+//                                 albumId: .profile,
+//                                 rev: .antiСhronological) { [weak self] (result) in
+//            switch result {
+//            case .failure(let error):
+//                print(error.localizedDescription)
+//            case .success(let photos):
+//                DispatchQueue.main.async {
+//                    let sortedPhotos = photos.sorted { $0.id < $1.id }
+//                    let arrEqual = sortedPhotos == self?.photos?.toArray()
+//                    
+//                    if !arrEqual {
+//                        try? self?.realmManager?.add(objects: photos)
+//                       // let ownerID = self?.user.id ?? 0
+//                       // self?.photos = try? self?.realmManager?.getObjects().filter("ownerID = %@", ownerID)
+//                        self?.collectionView.reloadData()
+//                    }
+//                }
+//            }
+//        }
     }
     
     private func signToFilteredUsersChanges() {

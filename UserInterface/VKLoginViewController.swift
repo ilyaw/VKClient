@@ -22,6 +22,8 @@ class VKLoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
                 
+        //User authorization failed: access_token was given to another ip address.
+        
         if let keychainData = KeychainWrapper.standard.string(forKey: "user") {
             let data = Data(keychainData.utf8)
             

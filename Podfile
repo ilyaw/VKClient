@@ -12,5 +12,6 @@ target 'UserInterface' do
   pod "PromiseKit", "~> 6.13.1"
   pod 'PromiseKit/Alamofire'
   pod 'SwiftKeychainWrapper'
-
+  pod 'Texture'
+  
 end

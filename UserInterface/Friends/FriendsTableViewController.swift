@@ -8,6 +8,10 @@
 import UIKit
 import RealmSwift
 
+protocol ReloadDataTableController: AnyObject {
+    func reloadData()
+}
+
 final class FriendsTableViewController: UITableViewController {
     let segueFromFriendsTableToFriendPhoto = "SegueFromFriendsTableToFriendPhoto"
     let friendCell = "FriendCell"
@@ -21,7 +25,7 @@ final class FriendsTableViewController: UITableViewController {
         return refreshControl
     }()
     
-    private var usersTest = [FirebaseUser]()
+//    private var usersTest = [FirebaseUser]()
     
     private let networkManager = NetworkManager.shared
     private let realmManager = RealmManager.shared
@@ -47,6 +51,10 @@ final class FriendsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        var alubmsTest = networkManager.getAlbums { [weak self] model in
+//            model.flatMap { print("\($0)\n") }
+//        }
+//
         
         self.tableView.register(FriendsTableViewCell.self,
                                 forCellReuseIdentifier: friendCell)
@@ -128,22 +136,26 @@ final class FriendsTableViewController: UITableViewController {
             UIView.animate(withDuration: 0.15, delay: 0, options: [], animations: {
                 cell.myView.transform = .identity
             }, completion: {_ in
-                self.performSegue(withIdentifier: self.segueFromFriendsTableToFriendPhoto, sender: self)
+                
+                if let id = self.filteredUsers?[indexPath.row].id {
+                    let albumsVC = AlbumsController()
+                    albumsVC.loadAlbums(id: id)
+                    albumsVC.modalTransitionStyle = .crossDissolve
+                    albumsVC.modalPresentationStyle = .popover
+                    self.present(albumsVC, animated: false)
+                }
+                
+                //                self.performSegue(withIdentifier: self.segueFromFriendsTableToFriendPhoto, sender: self)
             })
         })
     }
     
     
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == self.segueFromFriendsTableToFriendPhoto else {
-            return
-        }
-        
-        guard let source = segue.source as? FriendsTableViewController else {
-            return
-        }
-        
-        guard let destination = segue.destination as? FriendPhotoCollectionViewController else {
+        guard segue.identifier == self.segueFromFriendsTableToFriendPhoto,
+              let source = segue.source as? FriendsTableViewController,
+              let destination = segue.destination as? FriendPhotoCollectionViewController else {
             return
         }
         

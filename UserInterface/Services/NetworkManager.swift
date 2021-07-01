@@ -22,9 +22,10 @@ class NetworkManager {
         case getGroups = "groups.get"
         case searchGroups = "groups.search"
         case getNewsFeed = "newsfeed.get"
+        case getAlbums = "photos.getAlbums"
     }
     
-    //получение списка друзей по ID юзера
+    ///получение списка друзей по ID юзера
     func getFriends(userId: Int = Session.shared.userId, count: Int = 500, offset: Int = 0, fields: String = "sex, bdate, city, photo_50", completion: @escaping ((Result<[FriendItem]>) -> Void)) {
         guard let token = Session.shared.token else { return }
         
@@ -63,7 +64,7 @@ class NetworkManager {
     }
     
     
-    //Получение групп пользователя
+    ///Получение групп пользователя
     func getGroups(userId: Int = Session.shared.userId, extended: Int = 1, count: Int = 1000, offset: Int = 0, completion: @escaping ((Result<[GroupItem]>) -> Void)) {
         guard let token = Session.shared.token else { return }
         
@@ -98,20 +99,22 @@ class NetworkManager {
     }
     
     
-    //получение фотографий человека
-    func getPhotos(ownerId: Int = Session.shared.userId, albumId: TypeAlbum, rev: TypeRev = .antiСhronological, count: Int = 1000, offset: Int = 0, completion: @escaping ((Result<[PhotoItem]>) -> Void)) {
+    ///получение фотографий человека
+    func getPhotos(ownerId: Int = Session.shared.userId, albumId: Int, rev: TypeRev = .antiСhronological, completion: @escaping ((Result<[PhotoItem]>) -> Void)) {
         guard let token = Session.shared.token else { return }
         
         let url = baseURL + Paths.getPhotos.rawValue
+        
+        
         
         let parameters: Parameters = [
             "access_token": token,
             "v": versionVKAPI,
             "owner_id": ownerId,
-            "album_id": albumId.rawValue,
+            "album_id": albumId,
             "rev": rev.rawValue,
-            "count": count,
-            "offset": offset,
+//            "count": count,
+//            "offset": offset,
         ]
         
         
@@ -132,7 +135,36 @@ class NetworkManager {
         }
     }
     
-    //Получение групп по поисковому запросу
+    ///получение списка альбомов по ID юзера
+    func getAlbums(userId: Int, completion: @escaping ((Result<[AlbumItem]>) -> Void)) {
+        guard let token = Session.shared.token else { return }
+        
+        let url = baseURL + Paths.getAlbums.rawValue
+        
+        let parameters: Parameters = [
+            "access_token": token,
+            "v": versionVKAPI,
+            "user_id": userId,
+        ]
+        
+        Alamofire.request(url, parameters: parameters).responseJSON { (response) in
+            switch response.result {
+            case .failure(let error):
+                completion(.failure(error))
+            case .success( _):
+                if let data = response.data {
+                    do {
+                        let albums = try JSONDecoder().decode(Albums.self, from: data).response.items
+                        completion(.success(albums))
+                    } catch {
+                        completion(.failure(error))
+                    }
+                }
+            }
+        }
+    }
+    
+    ///Получение групп по поисковому запросу
     func searchGroups(textSearch: String, count: Int = 1000, offset: Int = 0, completion: @escaping ((Result<[GroupItem]>) -> Void) ) {
         guard let token = Session.shared.token else { return }
         
@@ -163,7 +195,7 @@ class NetworkManager {
         }
     }
     
-    //Получение новостной ленты
+    ///Получение новостной ленты
 //    func getNewsFeed(completion: @escaping ((Result<[NewsFeed]>) -> Void)) {
 //        guard let token = Session.shared.token else { return }
 //
