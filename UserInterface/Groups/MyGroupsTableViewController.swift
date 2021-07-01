@@ -102,6 +102,7 @@ class MyGroupsTableViewController: UITableViewController {
         }
         
         cell.setup(group)
+
         
         return cell
     }
