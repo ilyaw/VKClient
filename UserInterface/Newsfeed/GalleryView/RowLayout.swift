@@ -11,6 +11,8 @@ protocol RowLayoutDelegate: AnyObject {
     func collectionView(_ collectionView: UICollectionView, photoAtIndexPath indexPath: IndexPath) -> CGSize
 }
 
+
+
 class RowLayout: UICollectionViewLayout {
     
     weak var delegate: RowLayoutDelegate!

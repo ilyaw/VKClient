@@ -28,7 +28,7 @@ class GalleryCollectionViewCell: UICollectionViewCell {
         addSubview(myImageView)
         
         // myImageView constaints
-        myImageView.fillSuperview() //заполнить пространство внутри каждый ячейке
+        myImageView.fillSuperview() //заполнить пространство внутри каждой ячейки
     }
     
     override func prepareForReuse() {

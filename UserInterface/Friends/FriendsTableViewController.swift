@@ -136,7 +136,9 @@ final class FriendsTableViewController: UITableViewController {
                     albumsVC.loadAlbums(id: id)
                     albumsVC.modalTransitionStyle = .crossDissolve
                     albumsVC.modalPresentationStyle = .popover
-                    self.present(albumsVC, animated: false)
+//                    self.present(albumsVC, animated: false)
+                    
+                    self.navigationController?.pushViewController(albumsVC, animated: true)
                 }
                 //                self.performSegue(withIdentifier: self.segueFromFriendsTableToFriendPhoto, sender: self)
             })

@@ -72,7 +72,7 @@
 		09EB45CC266BA8370065648C /* NewsfeedInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EB45C5266BA8370065648C /* NewsfeedInteractor.swift */; };
 		09EB45D3266BAA410065648C /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EB45D2266BAA410065648C /* GradientView.swift */; };
 		09EB45D6266BAE8F0065648C /* NewsfeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EB45D5266BAE8F0065648C /* NewsfeedCell.swift */; };
-		09EB45DD266BBFFA0065648C /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EB45DC266BBFFA0065648C /* Constraint.swift */; };
+		09EB45DD266BBFFA0065648C /* UIView+Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EB45DC266BBFFA0065648C /* UIView+Constraint.swift */; };
 		09EB45E1266BC1650065648C /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EB45E0266BC1650065648C /* FooterView.swift */; };
 		09EB45E4266BC9360065648C /* RowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EB45E3266BC9360065648C /* RowLayout.swift */; };
 		09EB45E6266BC9DB0065648C /* GalleryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EB45E5266BC9DB0065648C /* GalleryCollectionView.swift */; };
@@ -159,7 +159,7 @@
 		09EB45C5266BA8370065648C /* NewsfeedInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedInteractor.swift; sourceTree = "<group>"; };
 		09EB45D2266BAA410065648C /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		09EB45D5266BAE8F0065648C /* NewsfeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedCell.swift; sourceTree = "<group>"; };
-		09EB45DC266BBFFA0065648C /* Constraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraint.swift; sourceTree = "<group>"; };
+		09EB45DC266BBFFA0065648C /* UIView+Constraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraint.swift"; sourceTree = "<group>"; };
 		09EB45E0266BC1650065648C /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 		09EB45E3266BC9360065648C /* RowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowLayout.swift; sourceTree = "<group>"; };
 		09EB45E5266BC9DB0065648C /* GalleryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCollectionView.swift; sourceTree = "<group>"; };
@@ -290,7 +290,6 @@
 				09EB45CE266BA8420065648C /* Newsfeed */,
 				09D1DCC2263325A600D58A5F /* Firestore Models */,
 				040A3E6925D9BB2B00DFD359 /* Models */,
-				09EB45DB266BBFDD0065648C /* Helpers */,
 				045C904725CAD144005FC428 /* AppDelegate.swift */,
 				045C904925CAD144005FC428 /* SceneDelegate.swift */,
 				090AF7EF26088F9100C1939B /* VKLoginViewController.swift */,
@@ -389,6 +388,7 @@
 				090AF7FB26089E6600C1939B /* NetworkManager.swift */,
 				09EB45F5266BDF1D0065648C /* NetworkService.swift */,
 				09EB45F7266BDF2A0065648C /* NetworkDataFetcher.swift */,
+				09CDB21226594C9400FE69F2 /* PhotoService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -406,6 +406,9 @@
 		09D685C0261F62AF0046B131 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				09EB45EF266BDC3D0065648C /* String+Height.swift */,
+				093D991126824CFC00473817 /* UIColor+Extensions.swift */,
+				09EB45DC266BBFFA0065648C /* UIView+Constraint.swift */,
 				09D685C1261F62C90046B131 /* Results.swift */,
 				09F1FAFD2646E30A00C5A2E0 /* Date.swift */,
 				09F1FAFF2646FC1900C5A2E0 /* Int.swift */,
@@ -446,17 +449,6 @@
 				09EB45E0266BC1650065648C /* FooterView.swift */,
 			);
 			path = FooterView;
-			sourceTree = "<group>";
-		};
-		09EB45DB266BBFDD0065648C /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				09CDB21226594C9400FE69F2 /* PhotoService.swift */,
-				09EB45DC266BBFFA0065648C /* Constraint.swift */,
-				09EB45EF266BDC3D0065648C /* String+Height.swift */,
-				093D991126824CFC00473817 /* UIColor+Extensions.swift */,
-			);
-			path = Helpers;
 			sourceTree = "<group>";
 		};
 		09EB45E2266BC91E0065648C /* GalleryView */ = {
@@ -630,7 +622,7 @@
 				044570C225E9064100FC4E47 /* CircleView.swift in Sources */,
 				092AC34B260B3D0F001E4EF1 /* AnimatorOpen.swift in Sources */,
 				09546EB6267E05E900167322 /* Albums.swift in Sources */,
-				09EB45DD266BBFFA0065648C /* Constraint.swift in Sources */,
+				09EB45DD266BBFFA0065648C /* UIView+Constraint.swift in Sources */,
 				09EB45C8266BA8370065648C /* NewsfeedWorker.swift in Sources */,
 				040A3E8625DA46C400DFD359 /* AllGroupsTableViewController.swift in Sources */,
 				0952DF1C260E2B2200877AFC /* Friends.swift in Sources */,

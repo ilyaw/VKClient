@@ -21,7 +21,7 @@ class AlbumsController: ASDKViewController<ASTableNode> {
     
     override init() {
         super.init(node: ASTableNode())
-    
+        
         self.tableNode.delegate = self
         self.tableNode.dataSource = self
         
@@ -31,6 +31,7 @@ class AlbumsController: ASDKViewController<ASTableNode> {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.title = "Альбомы"
     }
     
     func loadAlbums(id: Int) {

@@ -40,7 +40,7 @@ class PhotoCollection: ASDKViewController<ASCollectionNode> {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-                self.title = album?.title
+        self.title = album?.title
         collectionNode.view.isScrollEnabled = true
     }
     
@@ -71,10 +71,12 @@ extension PhotoCollection: ASCollectionDataSource, ASCollectionDelegate {
     func collectionNode(_ collectionNode: ASCollectionNode, nodeBlockForItemAt indexPath: IndexPath) -> ASCellNodeBlock {
         let photo = photos[indexPath.row]
         if let image = photo.sizes.first  {
+            
             if let data = try? Data(contentsOf: URL(string: image.url)!),
                let image = UIImage(data: data) {
-                    return { AsyncImageCellCollectionNode(with: image) }
+                return { AsyncImageCellCollectionNode(with: image) }
             }
+            
         }
         
         return {
