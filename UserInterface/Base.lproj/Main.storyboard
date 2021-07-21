@@ -414,6 +414,10 @@
                                                 <outlet property="avatar" destination="sVv-6j-Gsa" id="8Wl-kg-blS"/>
                                             </connections>
                                         </view>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N5Q-BR-bhb">
+                                            <rect key="frame" x="365" y="12" width="30" height="34"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="wkm-by-2nF" secondAttribute="bottom" constant="2.5" id="MK1-BB-qiL"/>

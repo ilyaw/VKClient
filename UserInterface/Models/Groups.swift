@@ -96,13 +96,6 @@ class GroupList: Decodable {
     }
 }
 
-enum GroupsError: Error {
-    case parseError(message: String)
-}
-
-
-struct AddGroupResponse: Codable {
+struct GroupResponse: Codable {
     let response: Int
 }
-
-

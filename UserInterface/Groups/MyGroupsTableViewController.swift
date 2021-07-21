@@ -63,6 +63,28 @@ class MyGroupsTableViewController: UITableViewController {
             }
     }
     
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .normal, title: "Выйти") { [weak self] (action, view, completion) in
+            if let group = self?.groups?[indexPath.row] {
+                self?.networkManager.removeGroup(groupId: String(group.id), on: .global())
+                    .catch { [weak self] error in
+                        self?.present(UIAlertController.create(error.localizedDescription), animated: true, completion: nil)
+                    }
+                    .finally { [weak self] in
+                        try? self?.realmManager?.delete(object: group)
+                    }
+            }
+            completion(true)
+        }
+        
+        deleteAction.backgroundColor = UIColor.red
+        return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
+    
     private func signToGroupsChanges() {
         groupsNotificationToken = groups?.observe { [weak self] (changes) in
             switch changes {
@@ -95,6 +117,8 @@ class MyGroupsTableViewController: UITableViewController {
         return groups?.count ?? 0
     }
     
+    
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MyGroupsTableViewController.identifier, for: indexPath) as? MyGroupsTableViewCell,
               let group = groups?[indexPath.row]  else {
@@ -103,7 +127,6 @@ class MyGroupsTableViewController: UITableViewController {
         
         cell.setup(group)
 
-        
         return cell
     }
     

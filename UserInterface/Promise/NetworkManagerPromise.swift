@@ -23,6 +23,7 @@ class NetworkManagerPromise {
         case getGroups = "groups.get"
         case searchGroups = "groups.search"
         case addGroup = "groups.join"
+        case removeGroup = "groups.leave"
     }
     
     //Получение групп пользователя
@@ -112,7 +113,7 @@ class NetworkManagerPromise {
                 }
                 
                 do {
-                    let response = try JSONDecoder().decode(AddGroupResponse.self, from: data)
+                    let response = try JSONDecoder().decode(GroupResponse.self, from: data)
                     
                     switch response.response {
                     case 1:
@@ -122,6 +123,37 @@ class NetworkManagerPromise {
                     default:
                         return
                     }
+                    
+                } catch {
+                    throw VKError.cannotDeserialize(message: error.localizedDescription)
+                }
+                
+            }
+    }
+    
+    func removeGroup(groupId: String, on queue: DispatchQueue = .main) -> Promise<Void> {
+        guard let token = Session.shared.token else {
+            return Promise.init(error: VKError.needValidation(message: "Отсутвует Token"))
+        }
+        
+        let url = baseURL + Paths.removeGroup.rawValue
+        
+        let parameters: Parameters = [
+            "access_token": token,
+            "v": versionVKAPI,
+            "group_id": groupId,
+        ]
+        
+        return Alamofire.request(url, parameters: parameters)
+            .responseJSON()
+            .map(on: queue) { json, response -> () in
+                guard let data = response.data else {
+                    throw VKError.dataIsEmpty(message: "response data is empty")
+                }
+                
+                do {
+                    let a = try JSONDecoder().decode(GroupResponse.self, from: data)
+                    print(a)
                     
                 } catch {
                     throw VKError.cannotDeserialize(message: error.localizedDescription)
