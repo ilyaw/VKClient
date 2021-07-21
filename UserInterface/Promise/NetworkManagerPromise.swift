@@ -22,6 +22,7 @@ class NetworkManagerPromise {
     private enum Paths: String {
         case getGroups = "groups.get"
         case searchGroups = "groups.search"
+        case addGroup = "groups.join"
     }
     
     //Получение групп пользователя
@@ -49,7 +50,7 @@ class NetworkManagerPromise {
                 }
                 
                 do {
-                    let groups = try JSONDecoder().decode(Groups.self, from: data).response.items
+                    let groups = try JSONDecoder().decode(GroupList.self, from: data).models
                     return groups
                 } catch {
                     throw VKError.cannotDeserialize(message: error.localizedDescription)
@@ -58,7 +59,7 @@ class NetworkManagerPromise {
     }
     
     //Получение групп по поисковому запросу
-    func searchGroups(textSearch: String, on queue: DispatchQueue = .main, count: Int = 1000, offset: Int = 0) -> Promise<[GroupItem]> {
+    func searchGroups(textSearch: String, on queue: DispatchQueue = .main, count: Int = 100, offset: Int = 0) -> Promise<[GroupItem]> {
         guard let token = Session.shared.token else {
             return Promise.init(error: VKError.needValidation(message: "Отсутвует Token"))
         }
@@ -70,6 +71,7 @@ class NetworkManagerPromise {
             "v": versionVKAPI,
             "q": textSearch,
             "count": count,
+            "type": "group",
             "offset": offset,
         ]
         
@@ -81,11 +83,50 @@ class NetworkManagerPromise {
                 }
                 
                 do {
-                    let groups = try JSONDecoder().decode(Groups.self, from: data).response.items
+                    let groups = try JSONDecoder().decode(GroupList.self, from: data).models
                     return groups
                 } catch {
                     throw VKError.cannotDeserialize(message: error.localizedDescription)
                 }
+            }
+    }
+    
+    func addGroup(groupId: String, on queue: DispatchQueue = .main) -> Promise<Void> {
+        guard let token = Session.shared.token else {
+            return Promise.init(error: VKError.needValidation(message: "Отсутвует Token"))
+        }
+        
+        let url = baseURL + Paths.addGroup.rawValue
+        
+        let parameters: Parameters = [
+            "access_token": token,
+            "v": versionVKAPI,
+            "group_id": groupId,
+        ]
+        
+        return Alamofire.request(url, parameters: parameters)
+            .responseJSON()
+            .map(on: queue) { json, response -> () in
+                guard let data = response.data else {
+                    throw VKError.dataIsEmpty(message: "response data is empty")
+                }
+                
+                do {
+                    let response = try JSONDecoder().decode(AddGroupResponse.self, from: data)
+                    
+                    switch response.response {
+                    case 1:
+                        return
+                    case 103:
+                        throw VKError.limitIsexceeded(message: "Превышено ограничение на количество вступлений.")
+                    default:
+                        return
+                    }
+                    
+                } catch {
+                    throw VKError.cannotDeserialize(message: error.localizedDescription)
+                }
+                
             }
     }
 }

@@ -88,7 +88,7 @@ class NetworkManager {
             case .success( _):
                 if let data = response.data {
                     do {
-                        let groups = try JSONDecoder().decode(Groups.self, from: data).response.items
+                        let groups = try JSONDecoder().decode(GroupList.self, from: data).models
                         completion(.success(groups))
                     } catch {
                         completion(.failure(error))
@@ -185,7 +185,7 @@ class NetworkManager {
             case .success( _):
                 if let data = response.data {
                     do {
-                        let groups = try JSONDecoder().decode(Groups.self, from: data).response.items
+                        let groups = try JSONDecoder().decode(GroupList.self, from: data).models
                         completion(.success(groups))
                     } catch {
                         completion(.failure(error))

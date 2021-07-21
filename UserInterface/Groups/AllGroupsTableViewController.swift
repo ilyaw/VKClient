@@ -16,7 +16,6 @@ class AllGroupsTableViewController: UITableViewController {
     private let viewModelFactory = GroupViewModelFactory()
     private var viewModels: [GroupViewModel] = []
     
-    
     @IBOutlet weak var searchBar: UISearchBar!
     
     override func viewDidLoad() {
@@ -32,17 +31,17 @@ class AllGroupsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return searchGroups?.count ?? 0
         return viewModels.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: AllGroupsTableViewController.identifier, for: indexPath) as? AllGroupsTableViewCell
-               else {
+        else {
             return UITableViewCell()
         }
         
         cell.setup(viewModels[indexPath.row])
+        cell.delegate = self
         
         return cell
     }
@@ -65,4 +64,21 @@ extension AllGroupsTableViewController: UISearchBarDelegate {
                 self?.present(UIAlertController.create(error.localizedDescription), animated: true, completion: nil)
             }
     }
+}
+
+extension AllGroupsTableViewController: AllGroupsTableViewCellDelegate {
+    func addGroup(for groupId: String?) {
+        guard let id = groupId else { return }
+        networkManager.addGroup(groupId: id, on: .global())
+            .done(on: .main) { [weak self] _ in
+                let index = self?.viewModels.firstIndex { $0.id == id }
+                self?.viewModels[index!].isMember = true
+                
+                self?.tableView.reloadData()
+            }
+            .catch { [weak self] error in
+                self?.present(UIAlertController.create(error.localizedDescription), animated: true, completion: nil)
+            }
+    }
+
 }

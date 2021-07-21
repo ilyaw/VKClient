@@ -8,8 +8,10 @@
 import Foundation
 
 struct GroupViewModel {
+    let id: String
     let title: String
     let photoURL: String
+    var isMember: Bool
 }
 
 final class GroupViewModelFactory {
@@ -19,10 +21,15 @@ final class GroupViewModelFactory {
     }
     
     private func viewModel(from group: GroupItem) -> GroupViewModel {
+        let id = String(group.id)
         let title = group.name
         let photoURL = group.photo50
+        let isMember = group.isMember
         
-        return GroupViewModel(title: title, photoURL: photoURL)
+        return GroupViewModel(id: id,
+                              title: title,
+                              photoURL: photoURL,
+                              isMember: isMember)
     }
     
 }

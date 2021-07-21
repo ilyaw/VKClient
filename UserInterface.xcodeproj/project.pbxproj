@@ -57,6 +57,7 @@
 		09546EBA267E2C2100167322 /* PhotoCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09546EB9267E2C2100167322 /* PhotoCollection.swift */; };
 		09546EBC267E314C00167322 /* AsyncImageCellCollectionNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09546EBB267E314C00167322 /* AsyncImageCellCollectionNode.swift */; };
 		09B1A54C2638A781005314FD /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 09B1A54B2638A781005314FD /* .gitignore */; };
+		09CAC55326A811A30043201F /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAC55226A811A30043201F /* UIViewController+Alert.swift */; };
 		09CDB2102656BD9500FE69F2 /* KeychainUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CDB20F2656BD9500FE69F2 /* KeychainUser.swift */; };
 		09CDB21326594C9400FE69F2 /* PhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CDB21226594C9400FE69F2 /* PhotoService.swift */; };
 		09D1DCA22633218200D58A5F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 09D1DCA12633218200D58A5F /* GoogleService-Info.plist */; };
@@ -144,6 +145,7 @@
 		09546EB9267E2C2100167322 /* PhotoCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollection.swift; sourceTree = "<group>"; };
 		09546EBB267E314C00167322 /* AsyncImageCellCollectionNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageCellCollectionNode.swift; sourceTree = "<group>"; };
 		09B1A54B2638A781005314FD /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		09CAC55226A811A30043201F /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		09CDB20F2656BD9500FE69F2 /* KeychainUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainUser.swift; sourceTree = "<group>"; };
 		09CDB21226594C9400FE69F2 /* PhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoService.swift; sourceTree = "<group>"; };
 		09D1DCA12633218200D58A5F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -413,6 +415,7 @@
 				09F1FAFD2646E30A00C5A2E0 /* Date.swift */,
 				09F1FAFF2646FC1900C5A2E0 /* Int.swift */,
 				0926019726540D5C00D079E5 /* UIAlertController.swift */,
+				09CAC55226A811A30043201F /* UIViewController+Alert.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -617,6 +620,7 @@
 				040A3E7A25D9CEAC00DFD359 /* FriendPhotoCollectionViewCell.swift in Sources */,
 				092600EA264B277400D079E5 /* ParseFriendsOperation.swift in Sources */,
 				09EB45D3266BAA410065648C /* GradientView.swift in Sources */,
+				09CAC55326A811A30043201F /* UIViewController+Alert.swift in Sources */,
 				045CCBA925F3F46F00513B88 /* GroupUser.swift in Sources */,
 				09EB45F2266BDD660065648C /* Feed.swift in Sources */,
 				044570C225E9064100FC4E47 /* CircleView.swift in Sources */,
@@ -795,6 +799,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
