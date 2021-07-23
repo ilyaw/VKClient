@@ -21,7 +21,7 @@ extension String {
     
     func getLabelSize(maxWidth: CGFloat, font: UIFont) -> CGSize {
         // определяем максимальную ширину текста - это ширина ячейки минус отступы слева и справа
-        let maxWidth = maxWidth //= bounds.width - instets * 2
+        let maxWidth = maxWidth
         // получаем размеры блока под надпись
         // используем максимальную ширину и максимально возможную высоту
         let textBlock = CGSize(width: maxWidth, height: CGFloat.greatestFiniteMagnitude)

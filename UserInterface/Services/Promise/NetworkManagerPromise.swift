@@ -39,6 +39,7 @@ class NetworkManagerPromise {
             "v": versionVKAPI,
             "user_id": userId,
             "extended": extended,
+            "fields": "activity",
             "count": count,
             "offset": offset,
         ]

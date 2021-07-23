@@ -208,11 +208,9 @@
 		040A3E6725D9B9EB00DFD359 /* Groups */ = {
 			isa = PBXGroup;
 			children = (
-				093D99172683908D00473817 /* SimpleFactory */,
-				040A3E7C25DA405600DFD359 /* MyGroupsTableViewController.swift */,
-				040A3E7F25DA427B00DFD359 /* MyGroupsTableViewCell.swift */,
-				040A3E8225DA463F00DFD359 /* AllGroupsTableViewCell.swift */,
-				040A3E8525DA46C400DFD359 /* AllGroupsTableViewController.swift */,
+				093D99172683908D00473817 /* Factory */,
+				096A084C26AB46E700487DED /* MyGroups */,
+				096A084D26AB46F000487DED /* AllGroups */,
 			);
 			path = Groups;
 			sourceTree = "<group>";
@@ -359,12 +357,12 @@
 			path = CustomAnimation;
 			sourceTree = "<group>";
 		};
-		093D99172683908D00473817 /* SimpleFactory */ = {
+		093D99172683908D00473817 /* Factory */ = {
 			isa = PBXGroup;
 			children = (
 				093D99152683908300473817 /* GroupViewModelFactory.swift */,
 			);
-			path = SimpleFactory;
+			path = Factory;
 			sourceTree = "<group>";
 		};
 		09546EB2267E002500167322 /* Albums */ = {
@@ -375,6 +373,24 @@
 				09546EBB267E314C00167322 /* AsyncImageCellCollectionNode.swift */,
 			);
 			path = Albums;
+			sourceTree = "<group>";
+		};
+		096A084C26AB46E700487DED /* MyGroups */ = {
+			isa = PBXGroup;
+			children = (
+				040A3E7C25DA405600DFD359 /* MyGroupsTableViewController.swift */,
+				040A3E7F25DA427B00DFD359 /* MyGroupsTableViewCell.swift */,
+			);
+			path = MyGroups;
+			sourceTree = "<group>";
+		};
+		096A084D26AB46F000487DED /* AllGroups */ = {
+			isa = PBXGroup;
+			children = (
+				040A3E8225DA463F00DFD359 /* AllGroupsTableViewCell.swift */,
+				040A3E8525DA46C400DFD359 /* AllGroupsTableViewController.swift */,
+			);
+			path = AllGroups;
 			sourceTree = "<group>";
 		};
 		09CDB214265952B700FE69F2 /* Services */ = {

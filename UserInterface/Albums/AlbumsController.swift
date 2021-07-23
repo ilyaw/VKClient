@@ -28,15 +28,23 @@ class AlbumsController: ASDKViewController<ASTableNode> {
         self.tableNode.allowsSelection = false
     }
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setUI()
+    }
+    
+    private func setUI() {
         self.navigationItem.title = "Альбомы"
+        
+        if #available(iOS 11.0, *) {
+            navigationItem.largeTitleDisplayMode = .never
+        }
     }
     
     func loadAlbums(id: Int) {
         networkManager.getAlbums(userId: id) { [weak self] (result) in
-            
             switch result {
             case let .success(albums):
                 DispatchQueue.main.async {

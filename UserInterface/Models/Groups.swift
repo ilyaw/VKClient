@@ -14,24 +14,27 @@ class GroupItem: Object {
     @objc dynamic var name: String = ""
     @objc dynamic var isMember: Bool = false
     @objc dynamic var photo: String = ""
+    @objc dynamic var activity: String = ""
     
-    convenience init(id: Int, name: String, isMember: Bool, photo: String) {
+    convenience init(id: Int,
+                     name: String,
+                     isMember: Bool,
+                     photo: String,
+                     activity: String) {
         self.init()
 
         self.id = id
         self.name = name
         self.isMember = isMember
         self.photo = photo
+        self.activity = activity
     }
 
     override func isEqual(_ object: Any?) -> Bool {
         if let object = object as? GroupItem {
-            
-            if self.name != object.name {
-                print("\(self.name) \(object.name)")
-            }
-            
-            return self.name == object.name && self.photo == object.photo
+            return self.name == object.name
+                && self.photo == object.photo
+                && self.activity == object.activity
         }
         return true
     }
@@ -61,6 +64,7 @@ class GroupList: Decodable {
         case isMember = "is_member"
         case name
         case photo100 = "photo_100"
+        case activity
     }
     
     required init(from decoder: Decoder) throws {
@@ -77,6 +81,8 @@ class GroupList: Decodable {
             let groupContainer = try items.nestedContainer(keyedBy: GroupKeys.self)
             let id = try groupContainer.decode(Int.self, forKey: .id)
             let name = try groupContainer.decode(String.self, forKey: .name)
+            let activity = try? groupContainer.decode(String.self, forKey: .activity)
+            
             let isMemberInt = try? groupContainer.decode(Int.self, forKey: .isMember)
             var isMemberBool = false
             
@@ -89,7 +95,8 @@ class GroupList: Decodable {
             let group = GroupItem(id: id,
                                   name: name,
                                   isMember: isMemberBool,
-                                  photo: photo)
+                                  photo: photo,
+                                  activity: activity ?? "")
 
             self.models.append(group)
         }

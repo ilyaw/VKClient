@@ -9,7 +9,6 @@ import UIKit
 import RealmSwift
 
 class MyGroupsTableViewController: UITableViewController {
-    static let identifier = "GroupCell"
     
     private lazy var refresh: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -53,13 +52,19 @@ class MyGroupsTableViewController: UITableViewController {
     }
     
     private func setUI() {
+        
         filteredGroups = groups
+        
+        if #available(iOS 11.0, *) {
+            self.navigationItem.largeTitleDisplayMode = .never
+        }
         
         self.refreshControl = refresh
         
+        self.tableView.register(MyGroupsTableViewCell.self, forCellReuseIdentifier: MyGroupsTableViewCell.reuseId)
         self.tableView.addSubview(searchBar)
         self.tableView.tableHeaderView = searchBar
-
+        
         self.searchBar.delegate = self
     }
     
@@ -108,6 +113,10 @@ class MyGroupsTableViewController: UITableViewController {
         return UISwipeActionsConfiguration(actions: [deleteAction])
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 65
+    }
+    
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -119,7 +128,7 @@ class MyGroupsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: MyGroupsTableViewController.identifier, for: indexPath) as? MyGroupsTableViewCell,
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MyGroupsTableViewCell.reuseId, for: indexPath) as? MyGroupsTableViewCell,
               let group = filteredGroups?[indexPath.row]  else {
             return UITableViewCell()
         }
@@ -133,10 +142,10 @@ class MyGroupsTableViewController: UITableViewController {
         guard let cell = tableView.cellForRow(at: indexPath) as? MyGroupsTableViewCell else { return }
         
         UIView.animate(withDuration: 0.15, delay: 0, options: [], animations: {
-            cell.shadowView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+            cell.photoView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
         }, completion: {_ in
             UIView.animate(withDuration: 0.15, delay: 0, options: [], animations: {
-                cell.shadowView.transform = .identity
+                cell.photoView.transform = .identity
             }, completion: {_ in
                 //self.performSegue(withIdentifier: self.segueFromFriendsTableToFriendPhoto, sender: self)
             })

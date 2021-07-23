@@ -68,7 +68,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" id="IMH-k3-vJM">
+                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Поиск" id="IMH-k3-vJM">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
@@ -213,7 +213,7 @@
         <!--Группы-->
         <scene sceneID="EFp-Hr-Z5m">
             <objects>
-                <navigationController id="KZq-TS-hJu" customClass="CustomNavigationController" customModule="UserInterface" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="KZq-TS-hJu" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Группы" image="person.3.fill" catalog="system" id="pXT-Yk-gD9"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="g1r-bB-vDt">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -235,7 +235,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" id="yId-TP-ViE">
+                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Поиск" id="yId-TP-ViE">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
@@ -375,67 +375,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="GroupCell" id="iIJ-zM-Atd" customClass="MyGroupsTableViewCell" customModule="UserInterface" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="24.5" width="414" height="55"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iIJ-zM-Atd" id="p2b-VP-U1e">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="55"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Группа" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NbO-ZV-Oxl">
-                                            <rect key="frame" x="75" y="17.5" width="334" height="20"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                            <color key="textColor" systemColor="linkColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wkm-by-2nF" customClass="CircleView" customModule="UserInterface" customModuleProvider="target">
-                                            <rect key="frame" x="10" y="2.5" width="50" height="50"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="sVv-6j-Gsa">
-                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="50" id="8ym-sh-eRg"/>
-                                                        <constraint firstAttribute="width" constant="50" id="kyO-DB-sdB"/>
-                                                    </constraints>
-                                                </imageView>
-                                            </subviews>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="50" id="LVv-VI-wHN"/>
-                                                <constraint firstItem="sVv-6j-Gsa" firstAttribute="top" secondItem="wkm-by-2nF" secondAttribute="top" id="Ynb-PC-luC"/>
-                                                <constraint firstAttribute="trailing" secondItem="sVv-6j-Gsa" secondAttribute="trailing" id="Z4v-At-3Sb"/>
-                                                <constraint firstItem="sVv-6j-Gsa" firstAttribute="leading" secondItem="wkm-by-2nF" secondAttribute="leading" id="a5h-MM-PE3"/>
-                                                <constraint firstItem="sVv-6j-Gsa" firstAttribute="centerY" secondItem="wkm-by-2nF" secondAttribute="centerY" id="j0K-YL-0AW"/>
-                                                <constraint firstAttribute="height" constant="50" id="kGo-wB-5DX"/>
-                                                <constraint firstAttribute="bottom" secondItem="sVv-6j-Gsa" secondAttribute="bottom" id="m0g-6A-ueb"/>
-                                            </constraints>
-                                            <connections>
-                                                <outlet property="avatar" destination="sVv-6j-Gsa" id="8Wl-kg-blS"/>
-                                            </connections>
-                                        </view>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N5Q-BR-bhb">
-                                            <rect key="frame" x="365" y="12" width="30" height="34"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </button>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="wkm-by-2nF" secondAttribute="bottom" constant="2.5" id="MK1-BB-qiL"/>
-                                        <constraint firstItem="wkm-by-2nF" firstAttribute="leading" secondItem="p2b-VP-U1e" secondAttribute="leading" constant="10" id="MtN-2s-SSO"/>
-                                        <constraint firstItem="NbO-ZV-Oxl" firstAttribute="centerY" secondItem="p2b-VP-U1e" secondAttribute="centerY" id="RRy-hm-zGW"/>
-                                        <constraint firstItem="NbO-ZV-Oxl" firstAttribute="leading" secondItem="sVv-6j-Gsa" secondAttribute="trailing" constant="15" id="Sen-nW-6L9"/>
-                                        <constraint firstItem="wkm-by-2nF" firstAttribute="centerY" secondItem="p2b-VP-U1e" secondAttribute="centerY" id="ffG-Y9-slD"/>
-                                        <constraint firstItem="wkm-by-2nF" firstAttribute="top" secondItem="p2b-VP-U1e" secondAttribute="top" constant="2.5" id="heV-Ta-rMw"/>
-                                        <constraint firstItem="wkm-by-2nF" firstAttribute="centerY" secondItem="p2b-VP-U1e" secondAttribute="centerY" id="jf9-cE-1l8"/>
-                                        <constraint firstAttribute="trailing" secondItem="NbO-ZV-Oxl" secondAttribute="trailing" constant="5" id="mGn-A6-Z2o"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="groupName" destination="NbO-ZV-Oxl" id="Tfg-zd-fHc"/>
-                                    <outlet property="shadowView" destination="wkm-by-2nF" id="qay-Zb-RAC"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
                         <sections/>
                         <connections>
                             <outlet property="dataSource" destination="d11-7k-iO9" id="dc4-cB-K2A"/>

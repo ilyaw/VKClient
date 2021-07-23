@@ -7,8 +7,6 @@
 
 import UIKit
 
-
-
 class FriendsTableViewCell: UITableViewCell {
     static let reuseId = "FriendsTableViewCell"
     
@@ -24,7 +22,7 @@ class FriendsTableViewCell: UITableViewCell {
         return image
     }()
     
-    let myView: UIView = {
+    private(set) var shadowView: UIView = {
         let view = UIView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.clipsToBounds = false
@@ -35,25 +33,24 @@ class FriendsTableViewCell: UITableViewCell {
         return view
     }()
     
+    let imageHeight: CGFloat = 50, imageWidth: CGFloat = 50
+    let xPosition: CGFloat = 10
+    let instets: CGFloat = 15.0
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         selectionStyle = .none
         
-        self.addSubview(myView)
-        self.myView.addSubview(photoUser)
-    
+        self.addSubview(shadowView)
+        self.shadowView.addSubview(photoUser)
         self.addSubview(nameLabel)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    let imageHeight: CGFloat = 50, imageWidth: CGFloat = 50
-    let xPosition: CGFloat = 10
-    let instets: CGFloat = 15.0
-    
+   
     func setup(_ user: FriendItem) {
         self.nameLabel.text = user.firstName + " " + user.lastName
         
@@ -85,16 +82,16 @@ class FriendsTableViewCell: UITableViewCell {
     }
     
     private func photoFrame() {
-        photoUser.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        photoUser.frame = CGRect(x: 0, y: 0, width: imageHeight, height: imageWidth)
         photoUser.backgroundColor = .white
         photoUser.clipsToBounds = true
         photoUser.layer.cornerRadius = photoUser.frame.width / 2
         photoUser.layer.borderColor = UIColor.black.cgColor
         photoUser.layer.borderWidth = 0
         
-        if myView.frame == .zero {
+        if shadowView.frame == .zero {
             let yPosition = (self.frame.height / 2) - (imageHeight / 2)
-            myView.frame = CGRect(x: xPosition, y: yPosition, width: imageWidth, height: imageHeight)
+            shadowView.frame = CGRect(x: xPosition, y: yPosition, width: imageWidth, height: imageHeight)
         }
     }
     

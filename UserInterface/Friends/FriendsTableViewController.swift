@@ -46,7 +46,7 @@ final class FriendsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+              
         setUI()
         
         signToFilteredUsersChange()
@@ -127,17 +127,17 @@ final class FriendsTableViewController: UITableViewController {
         guard let cell = tableView.cellForRow(at: indexPath) as? FriendsTableViewCell else { return }
         
         UIView.animate(withDuration: 0.15, delay: 0, options: [], animations: {
-            cell.myView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+            cell.shadowView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
         }, completion: {_ in
             UIView.animate(withDuration: 0.15, delay: 0, options: [], animations: {
-                cell.myView.transform = .identity
+                cell.shadowView.transform = .identity
             }, completion: {_ in
                 if let id = self.filteredUsers?[indexPath.row].id {
                     let albumsVC = AlbumsController()
                     albumsVC.loadAlbums(id: id)
                     albumsVC.modalTransitionStyle = .crossDissolve
                     albumsVC.modalPresentationStyle = .popover
-                  self.navigationController?.pushViewController(albumsVC, animated: true)
+                    self.navigationController?.pushViewController(albumsVC, animated: true)
                 }
                 //                self.performSegue(withIdentifier: self.segueFromFriendsTableToFriendPhoto, sender: self)
             })
