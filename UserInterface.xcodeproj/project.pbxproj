@@ -280,9 +280,6 @@
 			children = (
 				092AC349260B3A64001E4EF1 /* CustomAnimation */,
 				09D685C0261F62AF0046B131 /* Extensions */,
-				0922124E2615D26000B49CD6 /* RealmManager */,
-				092601922652BD6100D079E5 /* Promise */,
-				092600E4264B272F00D079E5 /* Operations */,
 				09CDB214265952B700FE69F2 /* Services */,
 				0450641625FF634000B08791 /* Views */,
 				045063EA25FD4C4700B08791 /* Control */,
@@ -386,6 +383,9 @@
 		09CDB214265952B700FE69F2 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				0922124E2615D26000B49CD6 /* RealmManager */,
+				092600E4264B272F00D079E5 /* Operations */,
+				092601922652BD6100D079E5 /* Promise */,
 				042542F3260088E6005D99FD /* Session.swift */,
 				090AF7FB26089E6600C1939B /* NetworkManager.swift */,
 				09EB45F5266BDF1D0065648C /* NetworkService.swift */,

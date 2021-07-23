@@ -48,12 +48,13 @@ class MyGroupsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        filteredGroups = groups
         setUI()
         loadData()
     }
     
     private func setUI() {
+        filteredGroups = groups
+        
         self.refreshControl = refresh
         
         self.tableView.addSubview(searchBar)
@@ -148,7 +149,8 @@ class MyGroupsTableViewController: UITableViewController {
 
 extension MyGroupsTableViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredGroups = searchText.isEmpty ? groups : groups?.filter("name CONTAINS %@ OR name CONTAINS %@", searchText.localizedLowercase, searchText.localizedUppercase)
+        filteredGroups = searchText.isEmpty ? groups : groups?.filter("name CONTAINS %@ OR name CONTAINS %@", searchText.localizedLowercase, searchText)
+        
         self.tableView.reloadData()
     }
 }

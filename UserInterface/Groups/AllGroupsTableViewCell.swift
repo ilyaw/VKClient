@@ -34,7 +34,6 @@ class AllGroupsTableViewCell: UITableViewCell {
         self.groupNameLabel.text = viewModel.title
         self.setPhoto(url: viewModel.photoURL, imageView: shadowView.avatar)
         
-
         self.addGroupButton.isHidden = viewModel.isMember
         self.addGroupButton.addTarget(self, action: #selector(didTapAddGroupButton), for: .touchUpInside)
     }
