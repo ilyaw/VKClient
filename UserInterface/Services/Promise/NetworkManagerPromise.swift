@@ -127,7 +127,6 @@ class NetworkManagerPromise {
                 } catch {
                     throw VKError.cannotDeserialize(message: error.localizedDescription)
                 }
-                
             }
     }
     
@@ -152,9 +151,7 @@ class NetworkManagerPromise {
                 }
                 
                 do {
-                    let a = try JSONDecoder().decode(GroupResponse.self, from: data)
-                    print(a)
-                    
+                    let _ = try JSONDecoder().decode(GroupResponse.self, from: data)
                 } catch {
                     throw VKError.cannotDeserialize(message: error.localizedDescription)
                 }

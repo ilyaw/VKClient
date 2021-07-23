@@ -22,5 +22,4 @@ class CircleView: UIView {
         
         self.addSubview(avatar)
     }
-    
 }

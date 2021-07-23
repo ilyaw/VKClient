@@ -14,22 +14,18 @@ protocol ReloadDataTableController: AnyObject {
 
 final class FriendsTableViewController: UITableViewController {
     let segueFromFriendsTableToFriendPhoto = "SegueFromFriendsTableToFriendPhoto"
-    let friendCell = "FriendCell"
     
     private lazy var refresh: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.tintColor = .systemBlue
         refreshControl.attributedTitle = NSAttributedString(string: "Reload Data", attributes: [.font: UIFont.systemFont(ofSize: 12)])
         refreshControl.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
-        
         return refreshControl
     }()
     
-//    private var usersTest = [FirebaseUser]()
-    
     private let networkManager = NetworkManager.shared
     private let realmManager = RealmManager.shared
-        
+    
     private var filteredUsersNotificationToken: NotificationToken?
     
     private var filteredUsers: Results<FriendItem>!
@@ -43,26 +39,30 @@ final class FriendsTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//        if let users = users, users.isEmpty {
-//            loadData()
-//        }
+        if let users = users, users.isEmpty {
+            loadData()
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setUI()
+        
+        signToFilteredUsersChange()
+        loadData()
+    }
+    
+    private func setUI() {
         self.tableView.register(FriendsTableViewCell.self,
-                                forCellReuseIdentifier: friendCell)
+                                forCellReuseIdentifier: FriendsTableViewCell.reuseId)
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.refreshControl = refresh
         self.searchBar.delegate = self
-    
-        filteredUsers = realmManager?.getObjects()
-        signToFilteredUsersChange()
-        loadData()
     }
+    
     
     private func loadData(completion: (() -> Void)? = nil) {
         NetworkManagerOperation.shared.getFriends(controller: self) {
@@ -73,6 +73,7 @@ final class FriendsTableViewController: UITableViewController {
     }
     
     private func signToFilteredUsersChange() {
+        filteredUsers = users
         filteredUsersNotificationToken = filteredUsers?.observe { [weak self] (change) in
             switch change {
             case .initial( _): break
@@ -113,18 +114,18 @@ final class FriendsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: friendCell, for: indexPath) as? FriendsTableViewCell,
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: FriendsTableViewCell.reuseId, for: indexPath) as? FriendsTableViewCell,
               let user = self.filteredUsers?[indexPath.row] else { return UITableViewCell() }
         
         cell.setup(user)
-     
+        
         return cell
     }
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? FriendsTableViewCell else { return }
-          
+        
         UIView.animate(withDuration: 0.15, delay: 0, options: [], animations: {
             cell.myView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
         }, completion: {_ in
@@ -136,16 +137,12 @@ final class FriendsTableViewController: UITableViewController {
                     albumsVC.loadAlbums(id: id)
                     albumsVC.modalTransitionStyle = .crossDissolve
                     albumsVC.modalPresentationStyle = .popover
-//                    self.present(albumsVC, animated: false)
-                    
-                    self.navigationController?.pushViewController(albumsVC, animated: true)
+                  self.navigationController?.pushViewController(albumsVC, animated: true)
                 }
                 //                self.performSegue(withIdentifier: self.segueFromFriendsTableToFriendPhoto, sender: self)
             })
         })
     }
-    
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == self.segueFromFriendsTableToFriendPhoto,
@@ -173,6 +170,6 @@ extension FriendsTableViewController: UISearchBarDelegate {
 
 extension FriendsTableViewController: ReloadDataTableController {
     func reloadData() {
-        filteredUsers = realmManager?.getObjects()
+        filteredUsers = users
     }
 }

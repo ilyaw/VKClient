@@ -59,6 +59,7 @@ class MyGroupsTableViewController: UITableViewController {
         
         self.tableView.addSubview(searchBar)
         self.tableView.tableHeaderView = searchBar
+
         self.searchBar.delegate = self
     }
     
