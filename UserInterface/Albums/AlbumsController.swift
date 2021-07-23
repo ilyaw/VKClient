@@ -14,7 +14,7 @@ class AlbumsController: ASDKViewController<ASTableNode> {
     var tableNode: ASTableNode {
         return node
     }
-  
+    
     private let networkManager = NetworkManager.shared
     let id: Int = 0
     var albums = [AlbumItem]()
@@ -31,7 +31,7 @@ class AlbumsController: ASDKViewController<ASTableNode> {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = "Альбомы"
+        self.navigationItem.title = "Альбомы"
     }
     
     func loadAlbums(id: Int) {
@@ -47,17 +47,15 @@ class AlbumsController: ASDKViewController<ASTableNode> {
             case let .failure(error):
                 self?.present(UIAlertController.create(error.localizedDescription), animated: true, completion: nil)
             }
-
+            
         }
     }
-    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }
- 
+
 extension AlbumsController: ASTableDelegate, ASTableDataSource {
     func numberOfSections(in tableNode: ASTableNode) -> Int {
         albums.count

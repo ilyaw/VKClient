@@ -18,19 +18,18 @@ class VKLoginViewController: UIViewController {
     }
     
     var canPresent: Bool = false
+    let timeToSecnod: Double = 86400.0
       
     override func viewDidLoad() {
         super.viewDidLoad()
-                
-        //User authorization failed: access_token was given to another ip address.
-        
+    
         if let keychainData = KeychainWrapper.standard.string(forKey: "user") {
             let data = Data(keychainData.utf8)
             
             if let decodeUser = decode(json: data, as: KeychainUser.self) {
                 
                 let now = Date().timeIntervalSince1970
-                let checkInterval = (now - decodeUser.date) >= 86400
+                let checkInterval = (now - decodeUser.date) >= timeToSecnod
                 
                 if !checkInterval {
                     Session.shared.token = decodeUser.token

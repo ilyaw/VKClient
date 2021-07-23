@@ -20,6 +20,14 @@ class MyGroupsTableViewController: UITableViewController {
         return refreshControl
     }()
     
+    private let searchBar: UISearchBar = {
+        let searchBar = UISearchBar()
+        searchBar.placeholder = "Поиск по моим группам"
+        searchBar.backgroundColor = .white
+        searchBar.sizeToFit()
+        return searchBar
+    }()
+    
     @objc private func refresh(_ sender: UIRefreshControl) {
         loadData { [weak self] in
             self?.refreshControl?.endRefreshing()
@@ -31,6 +39,7 @@ class MyGroupsTableViewController: UITableViewController {
     
     private var groupsNotificationToken: NotificationToken?
     
+    private var filteredGroups: Results<GroupItem>!
     private var groups: Results<GroupItem>? {
         let groups: Results<GroupItem>? = realmManager?.getObjects()
         return groups
@@ -39,10 +48,17 @@ class MyGroupsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        filteredGroups = groups
+        setUI()
+        loadData()
+    }
+    
+    private func setUI() {
         self.refreshControl = refresh
         
-        signToGroupsChanges()
-        loadData()
+        self.tableView.addSubview(searchBar)
+        self.tableView.tableHeaderView = searchBar
+        self.searchBar.delegate = self
     }
     
     private func loadData(completion: (() -> Void)? = nil) {
@@ -53,29 +69,34 @@ class MyGroupsTableViewController: UITableViewController {
                 
                 if !arrEqual {
                     try? self?.realmManager?.add(objects: sortedGroups)
+                    self?.tableView.reloadData()
                 }
             }
             .catch { [weak self] error in
                 self?.present(UIAlertController.create(error.localizedDescription), animated: true, completion: nil)
             }
-            .finally {
+            .finally(on: .main) {
                 completion?()
             }
     }
     
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .normal, title: "Выйти") { [weak self] (action, view, completion) in
-            if let group = self?.groups?[indexPath.row] {
+            if let group = self?.filteredGroups?[indexPath.row] {
                 self?.networkManager.removeGroup(groupId: String(group.id), on: .global())
                     .catch { [weak self] error in
                         self?.present(UIAlertController.create(error.localizedDescription), animated: true, completion: nil)
                     }
                     .finally { [weak self] in
                         try? self?.realmManager?.delete(object: group)
+                        
+                        let deletionsIndexPaths = [IndexPath(row: indexPath.row, section: indexPath.section)]
+                        
+                        DispatchQueue.main.async {
+                            self?.tableView.beginUpdates()
+                            self?.tableView.deleteRows(at: deletionsIndexPaths, with: .automatic)
+                            self?.tableView.endUpdates()
+                        }
                     }
             }
             completion(true)
@@ -85,28 +106,6 @@ class MyGroupsTableViewController: UITableViewController {
         return UISwipeActionsConfiguration(actions: [deleteAction])
     }
     
-    private func signToGroupsChanges() {
-        groupsNotificationToken = groups?.observe { [weak self] (changes) in
-            switch changes {
-            case .initial( _): break
-            case .update( _, deletions: let deletions, insertions: let insertions, modifications: let modifications):
-                self?.tableView.beginUpdates()
-                
-                let deletionsIndexPaths = deletions.map { IndexPath(row: $0, section: 0) }
-                let insertionsIndexPaths = insertions.map { IndexPath(row: $0, section: 0) }
-                let modificationsIndexPaths = modifications.map { IndexPath(row: $0, section: 0) }
-                
-                self?.tableView.deleteRows(at: deletionsIndexPaths, with: .automatic)
-                self?.tableView.insertRows(at: insertionsIndexPaths, with: .automatic)
-                self?.tableView.reloadRows(at: modificationsIndexPaths, with: .automatic)
-                
-                self?.tableView.endUpdates()
-            case .error(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -114,19 +113,17 @@ class MyGroupsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return groups?.count ?? 0
+        return filteredGroups?.count ?? 0
     }
-    
-    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MyGroupsTableViewController.identifier, for: indexPath) as? MyGroupsTableViewCell,
-              let group = groups?[indexPath.row]  else {
+              let group = filteredGroups?[indexPath.row]  else {
             return UITableViewCell()
         }
         
         cell.setup(group)
-
+        
         return cell
     }
     
@@ -146,5 +143,12 @@ class MyGroupsTableViewController: UITableViewController {
     
     deinit {
         groupsNotificationToken?.invalidate()
+    }
+}
+
+extension MyGroupsTableViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filteredGroups = searchText.isEmpty ? groups : groups?.filter("name CONTAINS %@ OR name CONTAINS %@", searchText.localizedLowercase, searchText.localizedUppercase)
+        self.tableView.reloadData()
     }
 }

@@ -80,5 +80,4 @@ extension AllGroupsTableViewController: AllGroupsTableViewCellDelegate {
                 self?.present(UIAlertController.create(error.localizedDescription), animated: true, completion: nil)
             }
     }
-
 }

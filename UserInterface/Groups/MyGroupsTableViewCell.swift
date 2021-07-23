@@ -25,7 +25,7 @@ class MyGroupsTableViewCell: UITableViewCell {
     func setup(_ group: GroupItem) {
         self.groupName.text = group.name
         
-        PhotoService.shared.photo(urlString: group.photo50 )
+        PhotoService.shared.photo(urlString: group.photo )
             .done { [weak self] image in self?.shadowView.avatar.image = image }
             .catch { print($0.localizedDescription) }
     }

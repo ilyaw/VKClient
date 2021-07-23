@@ -23,7 +23,7 @@ final class GroupViewModelFactory {
     private func viewModel(from group: GroupItem) -> GroupViewModel {
         let id = String(group.id)
         let title = group.name
-        let photoURL = group.photo50
+        let photoURL = group.photo
         let isMember = group.isMember
         
         return GroupViewModel(id: id,

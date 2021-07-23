@@ -53,7 +53,7 @@ class NetworkManagerPromise {
                 do {
                     let groups = try JSONDecoder().decode(GroupList.self, from: data).models
                     return groups
-                } catch {
+                } catch {                    
                     throw VKError.cannotDeserialize(message: error.localizedDescription)
                 }
             }

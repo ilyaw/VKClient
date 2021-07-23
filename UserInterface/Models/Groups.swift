@@ -13,15 +13,15 @@ class GroupItem: Object {
     @objc dynamic var id: Int = -1
     @objc dynamic var name: String = ""
     @objc dynamic var isMember: Bool = false
-    @objc dynamic var photo50: String = ""
+    @objc dynamic var photo: String = ""
     
-    convenience init(id: Int, name: String, isMember: Bool, photo50: String) {
+    convenience init(id: Int, name: String, isMember: Bool, photo: String) {
         self.init()
 
         self.id = id
         self.name = name
         self.isMember = isMember
-        self.photo50 = photo50
+        self.photo = photo
     }
 
     override func isEqual(_ object: Any?) -> Bool {
@@ -31,7 +31,7 @@ class GroupItem: Object {
                 print("\(self.name) \(object.name)")
             }
             
-            return self.name == object.name && self.photo50 == object.photo50
+            return self.name == object.name && self.photo == object.photo
         }
         return true
     }
@@ -60,7 +60,7 @@ class GroupList: Decodable {
         case id
         case isMember = "is_member"
         case name
-        case photo_50
+        case photo100 = "photo_100"
     }
     
     required init(from decoder: Decoder) throws {
@@ -84,12 +84,12 @@ class GroupList: Decodable {
                 isMemberBool = isMemberInt == 0 ? false : true
             }
             
-            let photo50 = try groupContainer.decode(String.self, forKey: .photo_50)
+            let photo = try groupContainer.decode(String.self, forKey: .photo100)
 
             let group = GroupItem(id: id,
                                   name: name,
                                   isMember: isMemberBool,
-                                  photo50: photo50)
+                                  photo: photo)
 
             self.models.append(group)
         }
