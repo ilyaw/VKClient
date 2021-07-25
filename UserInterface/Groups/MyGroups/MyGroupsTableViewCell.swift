@@ -12,21 +12,18 @@ class MyGroupsTableViewCell: UITableViewCell {
     
     private(set) var photoView: UIImageView = {
         var image = UIImageView()
-        image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
         
     private let groupNameLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private let activityLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .footerGrey
         return label
     }()
@@ -44,6 +41,10 @@ class MyGroupsTableViewCell: UITableViewCell {
         self.addSubview(photoView)
         self.addSubview(groupNameLabel)
         self.addSubview(activityLabel)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func layoutSubviews() {
@@ -81,10 +82,6 @@ class MyGroupsTableViewCell: UITableViewCell {
         let activityLabelOrigin = CGPoint(x: activityLabelX, y: activityLabelY)
         
         self.activityLabel.frame = CGRect(origin: activityLabelOrigin, size: activityLabelSize)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     func setup(_ group: GroupItem) {

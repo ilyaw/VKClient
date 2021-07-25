@@ -46,7 +46,7 @@ final class FriendsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-              
+        
         setUI()
         
         signToFilteredUsersChange()

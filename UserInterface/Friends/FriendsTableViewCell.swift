@@ -12,19 +12,16 @@ class FriendsTableViewCell: UITableViewCell {
     
     private let nameLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private let photoUser: UIImageView = {
         var image = UIImageView()
-        image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
     
     private(set) var shadowView: UIView = {
         let view = UIView(frame: .zero)
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.clipsToBounds = false
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOpacity = 0.8

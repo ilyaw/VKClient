@@ -9,7 +9,6 @@ import Foundation
 import RealmSwift
 
 class GroupItem: Object {
-    
     @objc dynamic var id: Int = -1
     @objc dynamic var name: String = ""
     @objc dynamic var isMember: Bool = false

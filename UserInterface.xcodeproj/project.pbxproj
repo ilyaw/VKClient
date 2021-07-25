@@ -17,7 +17,6 @@
 		040A3E8625DA46C400DFD359 /* AllGroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040A3E8525DA46C400DFD359 /* AllGroupsTableViewController.swift */; };
 		041C53F825E9196600F21BD7 /* LikeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041C53F725E9196600F21BD7 /* LikeButton.swift */; };
 		042542F4260088E6005D99FD /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042542F3260088E6005D99FD /* Session.swift */; };
-		044570C225E9064100FC4E47 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044570C125E9064100FC4E47 /* CircleView.swift */; };
 		045063EC25FD4C9E00B08791 /* CommentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045063EB25FD4C9E00B08791 /* CommentButton.swift */; };
 		045063F025FD4D0B00B08791 /* ShareButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045063EF25FD4D0B00B08791 /* ShareButton.swift */; };
 		0450641825FF634C00B08791 /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0450641725FF634C00B08791 /* Loading.swift */; };
@@ -48,13 +47,14 @@
 		092AC355260B4165001E4EF1 /* CustomPopAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092AC354260B4165001E4EF1 /* CustomPopAnimator.swift */; };
 		092AC358260B419F001E4EF1 /* CustomInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092AC357260B419F001E4EF1 /* CustomInteractiveTransition.swift */; };
 		093D991226824CFC00473817 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093D991126824CFC00473817 /* UIColor+Extensions.swift */; };
-		093D99162683908300473817 /* GroupViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093D99152683908300473817 /* GroupViewModelFactory.swift */; };
+		093D99162683908300473817 /* MyGroupViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093D99152683908300473817 /* MyGroupViewModelFactory.swift */; };
 		0943ECD3260F455800039272 /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0943ECD2260F455800039272 /* Photos.swift */; };
 		0952DF1C260E2B2200877AFC /* Friends.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0952DF1B260E2B2200877AFC /* Friends.swift */; };
 		09546EB4267E01E000167322 /* AlbumsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09546EB3267E01E000167322 /* AlbumsController.swift */; };
 		09546EB6267E05E900167322 /* Albums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09546EB5267E05E900167322 /* Albums.swift */; };
 		09546EBA267E2C2100167322 /* PhotoCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09546EB9267E2C2100167322 /* PhotoCollection.swift */; };
 		09546EBC267E314C00167322 /* AsyncImageCellCollectionNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09546EBB267E314C00167322 /* AsyncImageCellCollectionNode.swift */; };
+		096A084F26AC577C00487DED /* GroupsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096A084E26AC577C00487DED /* GroupsInfo.swift */; };
 		09B1A54C2638A781005314FD /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 09B1A54B2638A781005314FD /* .gitignore */; };
 		09CAC55326A811A30043201F /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAC55226A811A30043201F /* UIViewController+Alert.swift */; };
 		09CDB2102656BD9500FE69F2 /* KeychainUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CDB20F2656BD9500FE69F2 /* KeychainUser.swift */; };
@@ -102,7 +102,6 @@
 		040A3E8525DA46C400DFD359 /* AllGroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupsTableViewController.swift; sourceTree = "<group>"; };
 		041C53F725E9196600F21BD7 /* LikeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButton.swift; sourceTree = "<group>"; };
 		042542F3260088E6005D99FD /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
-		044570C125E9064100FC4E47 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		045063EB25FD4C9E00B08791 /* CommentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentButton.swift; sourceTree = "<group>"; };
 		045063EF25FD4D0B00B08791 /* ShareButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareButton.swift; sourceTree = "<group>"; };
 		0450641725FF634C00B08791 /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
@@ -135,13 +134,14 @@
 		092AC354260B4165001E4EF1 /* CustomPopAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopAnimator.swift; sourceTree = "<group>"; };
 		092AC357260B419F001E4EF1 /* CustomInteractiveTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInteractiveTransition.swift; sourceTree = "<group>"; };
 		093D991126824CFC00473817 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
-		093D99152683908300473817 /* GroupViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewModelFactory.swift; sourceTree = "<group>"; };
+		093D99152683908300473817 /* MyGroupViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupViewModelFactory.swift; sourceTree = "<group>"; };
 		0943ECD2260F455800039272 /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
 		0952DF1B260E2B2200877AFC /* Friends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friends.swift; sourceTree = "<group>"; };
 		09546EB3267E01E000167322 /* AlbumsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsController.swift; sourceTree = "<group>"; };
 		09546EB5267E05E900167322 /* Albums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Albums.swift; sourceTree = "<group>"; };
 		09546EB9267E2C2100167322 /* PhotoCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollection.swift; sourceTree = "<group>"; };
 		09546EBB267E314C00167322 /* AsyncImageCellCollectionNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageCellCollectionNode.swift; sourceTree = "<group>"; };
+		096A084E26AC577C00487DED /* GroupsInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsInfo.swift; sourceTree = "<group>"; };
 		09B1A54B2638A781005314FD /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		09CAC55226A811A30043201F /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		09CDB20F2656BD9500FE69F2 /* KeychainUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainUser.swift; sourceTree = "<group>"; };
@@ -218,10 +218,12 @@
 		040A3E6925D9BB2B00DFD359 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				09D1DCC2263325A600D58A5F /* Firestore Models */,
 				0952DF1B260E2B2200877AFC /* Friends.swift */,
 				0943ECD2260F455800039272 /* Photos.swift */,
 				09546EB5267E05E900167322 /* Albums.swift */,
 				0926B8D226106F1300C66F1A /* Groups.swift */,
+				096A084E26AC577C00487DED /* GroupsInfo.swift */,
 				09EB45F1266BDD660065648C /* Feed.swift */,
 				09EB45F3266BDE1A0065648C /* User.swift */,
 				09CDB20F2656BD9500FE69F2 /* KeychainUser.swift */,
@@ -244,7 +246,6 @@
 			isa = PBXGroup;
 			children = (
 				09EB45D2266BAA410065648C /* GradientView.swift */,
-				044570C125E9064100FC4E47 /* CircleView.swift */,
 				0450641725FF634C00B08791 /* Loading.swift */,
 				09EB45EB266BD4BE0065648C /* WebImageView.swift */,
 			);
@@ -282,7 +283,6 @@
 				09546EB2267E002500167322 /* Albums */,
 				040A3E6725D9B9EB00DFD359 /* Groups */,
 				09EB45CE266BA8420065648C /* Newsfeed */,
-				09D1DCC2263325A600D58A5F /* Firestore Models */,
 				040A3E6925D9BB2B00DFD359 /* Models */,
 				045C904725CAD144005FC428 /* AppDelegate.swift */,
 				045C904925CAD144005FC428 /* SceneDelegate.swift */,
@@ -360,7 +360,7 @@
 		093D99172683908D00473817 /* Factory */ = {
 			isa = PBXGroup;
 			children = (
-				093D99152683908300473817 /* GroupViewModelFactory.swift */,
+				093D99152683908300473817 /* MyGroupViewModelFactory.swift */,
 			);
 			path = Factory;
 			sourceTree = "<group>";
@@ -378,8 +378,8 @@
 		096A084C26AB46E700487DED /* MyGroups */ = {
 			isa = PBXGroup;
 			children = (
-				040A3E7C25DA405600DFD359 /* MyGroupsTableViewController.swift */,
 				040A3E7F25DA427B00DFD359 /* MyGroupsTableViewCell.swift */,
+				040A3E7C25DA405600DFD359 /* MyGroupsTableViewController.swift */,
 			);
 			path = MyGroups;
 			sourceTree = "<group>";
@@ -615,12 +615,13 @@
 				092600EC264B278600D079E5 /* RealmUpdateFriendsOperation.swift in Sources */,
 				045063EC25FD4C9E00B08791 /* CommentButton.swift in Sources */,
 				092AC355260B4165001E4EF1 /* CustomPopAnimator.swift in Sources */,
+				096A084F26AC577C00487DED /* GroupsInfo.swift in Sources */,
 				09D685C2261F62C90046B131 /* Results.swift in Sources */,
 				092601962654015900D079E5 /* VKError.swift in Sources */,
 				09CDB2102656BD9500FE69F2 /* KeychainUser.swift in Sources */,
 				092AC351260B414D001E4EF1 /* CustomPushAnimator.swift in Sources */,
 				092601942652BE6F00D079E5 /* NetworkManagerPromise.swift in Sources */,
-				093D99162683908300473817 /* GroupViewModelFactory.swift in Sources */,
+				093D99162683908300473817 /* MyGroupViewModelFactory.swift in Sources */,
 				09F1FB002646FC1900C5A2E0 /* Int.swift in Sources */,
 				09EB45E6266BC9DB0065648C /* GalleryCollectionView.swift in Sources */,
 				040A3E7725D9CB1900DFD359 /* FriendPhotoCollectionViewController.swift in Sources */,
@@ -637,7 +638,6 @@
 				09CAC55326A811A30043201F /* UIViewController+Alert.swift in Sources */,
 				045CCBA925F3F46F00513B88 /* GroupUser.swift in Sources */,
 				09EB45F2266BDD660065648C /* Feed.swift in Sources */,
-				044570C225E9064100FC4E47 /* CircleView.swift in Sources */,
 				092AC34B260B3D0F001E4EF1 /* AnimatorOpen.swift in Sources */,
 				09546EB6267E05E900167322 /* Albums.swift in Sources */,
 				09EB45DD266BBFFA0065648C /* UIView+Constraint.swift in Sources */,

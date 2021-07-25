@@ -46,13 +46,12 @@ class MyGroupsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setUI()
         loadData()
     }
     
     private func setUI() {
-        
         filteredGroups = groups
         
         if #available(iOS 11.0, *) {
@@ -71,11 +70,14 @@ class MyGroupsTableViewController: UITableViewController {
     private func loadData(completion: (() -> Void)? = nil) {
         networkManager.getGroups(on: .global())
             .get(on: .main) { [weak self] groups in
-                let sortedGroups = groups.sorted { $0.id < $1.id }
-                let arrEqual = sortedGroups == self?.groups?.toArray()
+                
+                let sortedNetworkGroups = groups.sorted { $0.id < $1.id }
+                let realmGroups = self?.groups?.toArray() ?? []
+                let arrEqual = sortedNetworkGroups == realmGroups
                 
                 if !arrEqual {
-                    try? self?.realmManager?.add(objects: sortedGroups)
+                    try? self?.realmManager?.delete(objects: realmGroups)
+                    try? self?.realmManager?.add(objects: sortedNetworkGroups)
                     self?.tableView.reloadData()
                 }
             }
@@ -159,7 +161,7 @@ class MyGroupsTableViewController: UITableViewController {
 
 extension MyGroupsTableViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredGroups = searchText.isEmpty ? groups : groups?.filter("name CONTAINS %@ OR name CONTAINS %@", searchText.localizedLowercase, searchText)
+        filteredGroups = searchText.isEmpty ? groups : groups?.filter("name contains[cd] %@", searchText)
         
         self.tableView.reloadData()
     }

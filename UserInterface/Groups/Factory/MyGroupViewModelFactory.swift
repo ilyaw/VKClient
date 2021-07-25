@@ -10,13 +10,17 @@ import Foundation
 struct GroupViewModel {
     let id: String
     let title: String
+    let shortInfo: String
     let photoURL: String
     var isMember: Bool
 }
 
-final class GroupViewModelFactory {
+final class AllGroupViewModelFactory {
     
-    func constuctViewModels(with groups: [GroupItem]) -> [GroupViewModel] {
+    private var infoGroups: [GroupInfo]?
+    
+    func constuctViewModels(groups: [GroupItem], infoGroups: [GroupInfo]) -> [GroupViewModel] {
+        self.infoGroups = infoGroups
         return groups.map(viewModel)
     }
     
@@ -25,11 +29,19 @@ final class GroupViewModelFactory {
         let title = group.name
         let photoURL = group.photo
         let isMember = group.isMember
+        var shortInfo = ""
+        
+        if let infoGroup = infoGroups?.first(where: { $0.id == group.id }) {
+            let membersCount = infoGroup.membersCount ?? 0
+            let activity = infoGroup.activity ?? ""
+            
+            shortInfo = "\(activity), \(membersCount) участников"
+        }
         
         return GroupViewModel(id: id,
                               title: title,
+                              shortInfo: shortInfo,
                               photoURL: photoURL,
                               isMember: isMember)
     }
-    
 }

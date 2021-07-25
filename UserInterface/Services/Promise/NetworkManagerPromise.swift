@@ -22,12 +22,13 @@ class NetworkManagerPromise {
     private enum Paths: String {
         case getGroups = "groups.get"
         case searchGroups = "groups.search"
+        case getByIdGroups = "groups.getById"
         case addGroup = "groups.join"
         case removeGroup = "groups.leave"
     }
     
     //Получение групп пользователя
-    func getGroups(on queue: DispatchQueue = .main, userId: Int = Session.shared.userId, extended: Int = 1, count: Int = 200, offset: Int = 0) -> Promise<[GroupItem]> {
+    func getGroups(on queue: DispatchQueue = .main, userId: Int = Session.shared.userId, extended: Int = 1, count: Int = 500, offset: Int = 0) -> Promise<[GroupItem]> {
         guard let token = Session.shared.token else {
             return Promise.init(error: VKError.needValidation(message: "Отсутвует Token"))
         }
@@ -55,6 +56,37 @@ class NetworkManagerPromise {
                     let groups = try JSONDecoder().decode(GroupList.self, from: data).models
                     return groups
                 } catch {                    
+                    throw VKError.cannotDeserialize(message: error.localizedDescription)
+                }
+            }
+    }
+    
+    func getByIdGroups(ids: String) -> Promise<[GroupInfo]> {
+        guard let token = Session.shared.token else {
+            return Promise.init(error: VKError.needValidation(message: "Отсутвует Token"))
+        }
+        
+        let url = baseURL + Paths.getByIdGroups.rawValue
+        
+        let parameters: Parameters = [
+            "access_token": token,
+            "v": versionVKAPI,
+            "fields": "members_count,description,activity",
+            "group_ids": ids
+        ]
+        
+        return Alamofire.request(url, parameters: parameters)
+            .responseJSON()
+            .map(on: .main) { json, response -> [GroupInfo] in
+                guard let data = response.data else {
+                    throw VKError.dataIsEmpty(message: "response data is empty")
+                }
+                
+                do {
+                    let groupsInfo = try JSONDecoder().decode(GroupResponseInfo.self, from: data).response
+                    return groupsInfo
+                } catch {
+                    print(error)
                     throw VKError.cannotDeserialize(message: error.localizedDescription)
                 }
             }
@@ -117,8 +149,6 @@ class NetworkManagerPromise {
                     let response = try JSONDecoder().decode(GroupResponse.self, from: data)
                     
                     switch response.response {
-                    case 1:
-                        return
                     case 103:
                         throw VKError.limitIsexceeded(message: "Превышено ограничение на количество вступлений.")
                     default:
@@ -156,7 +186,6 @@ class NetworkManagerPromise {
                 } catch {
                     throw VKError.cannotDeserialize(message: error.localizedDescription)
                 }
-                
             }
     }
 }
