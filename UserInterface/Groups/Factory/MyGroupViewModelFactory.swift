@@ -35,7 +35,10 @@ final class AllGroupViewModelFactory {
             let membersCount = infoGroup.membersCount ?? 0
             let activity = infoGroup.activity ?? ""
             
-            shortInfo = "\(activity), \(membersCount) участников"
+            let text = String.localizedStringWithFormat(NSLocalizedString("members count", comment: ""),
+                                                        membersCount)
+            
+            shortInfo = "\(activity), \(text)"
         }
         
         return GroupViewModel(id: id,

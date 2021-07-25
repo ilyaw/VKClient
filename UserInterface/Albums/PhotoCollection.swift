@@ -71,16 +71,19 @@ extension PhotoCollection: ASCollectionDataSource, ASCollectionDelegate {
     func collectionNode(_ collectionNode: ASCollectionNode, nodeBlockForItemAt indexPath: IndexPath) -> ASCellNodeBlock {
         let photo = photos[indexPath.row]
         
-        if let imageURL = photo.sizes.first,
-           let data = try? Data(contentsOf: URL(string: imageURL.url)!),
-           let image = UIImage(data: data) {
-           
-            return { AsyncImageCellCollectionNode(with: image) }
+        if let imageSize = photo.sizes.first {
+            return { AsyncImageCellCollectionNode(with: imageSize.url) }
         }
         
         return {
             return ASCellNode()
         }
+    }
+    
+    func collectionView(_ collectionView: ASCollectionView, willDisplay node: ASCellNode, forItemAt indexPath: IndexPath) {
+        
+        let e = node as! AsyncImageCellCollectionNode
+        e.loadImage()
     }
     
     func numberOfSections(in collectionNode: ASCollectionNode) -> Int {

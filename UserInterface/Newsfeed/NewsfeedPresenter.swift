@@ -56,8 +56,8 @@ class NewsfeedPresenter: NewsfeedPresentationLogic {
         let photoAttachments = self.photoAttachments(feedItem: feedItem)
         
         let isFullSizedPost = revealedPostIds.contains(feedItem.postId)
+                
         
-        // закэшировать
         
         let date = Date(timeIntervalSince1970: feedItem.date)
         let dateTitle = dateFormatter.string(from: date)

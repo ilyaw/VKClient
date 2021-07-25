@@ -10,13 +10,27 @@ import AsyncDisplayKit
 class AsyncImageCellCollectionNode: ASCellNode {
     let imageNode = ASImageNode()
     
-    required init(with image: UIImage) {
+    private var url: String?
+    
+    required init(with url: String) {
         super.init()
             
         imageNode.backgroundColor = .systemBackground
         imageNode.contentMode = .scaleAspectFill
-        imageNode.image = image
+        self.url = url
         self.addSubnode(self.imageNode)
+    }
+    
+    func loadImage() {
+        DispatchQueue.global().async {
+            if let url = self.url,
+               let data = try? Data(contentsOf: URL(string: url)!),
+                let image = UIImage(data: data) {
+                DispatchQueue.main.async {
+                    self.imageNode.image = image
+                }
+            }
+        }
     }
     
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {

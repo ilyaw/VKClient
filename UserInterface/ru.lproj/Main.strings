@@ -1,0 +1,24 @@
+
+/* Class = "UINavigationItem"; title = "Глобальный поиск"; ObjectID = "AnV-wq-wwf"; */
+"AnV-wq-wwf.title" = "Глобальный поиск";
+
+/* Class = "UISearchBar"; placeholder = "Поиск"; ObjectID = "IMH-k3-vJM"; */
+"IMH-k3-vJM.placeholder" = "Поиск";
+
+/* Class = "UINavigationItem"; title = "Группы"; ObjectID = "cKe-pL-MWD"; */
+"cKe-pL-MWD.title" = "Группы";
+
+/* Class = "UITabBarItem"; title = "Лента"; ObjectID = "gWC-Ej-vMb"; */
+"gWC-Ej-vMb.title" = "Лента";
+
+/* Class = "UINavigationItem"; title = "Друзья"; ObjectID = "k3D-46-mGD"; */
+"k3D-46-mGD.title" = "Друзья";
+
+/* Class = "UITabBarItem"; title = "Группы"; ObjectID = "pXT-Yk-gD9"; */
+"pXT-Yk-gD9.title" = "Группы";
+
+/* Class = "UITabBarItem"; title = "Друзья"; ObjectID = "vld-Hz-3E1"; */
+"vld-Hz-3E1.title" = "Друзья";
+
+/* Class = "UISearchBar"; placeholder = "Поиск"; ObjectID = "yId-TP-ViE"; */
+"yId-TP-ViE.placeholder" = "Поиск";
