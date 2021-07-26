@@ -107,7 +107,6 @@ class AllGroupsTableViewCell: UITableViewCell {
         let addButtonY = self.bounds.midY - addGroupButtonSize.height / 2
         let addButtonOrigin = CGPoint(x: addButtonX, y: addButtonY)
         
-        
         self.addGroupButton.frame = CGRect(origin: addButtonOrigin, size: addGroupButtonSize)
     }
     
