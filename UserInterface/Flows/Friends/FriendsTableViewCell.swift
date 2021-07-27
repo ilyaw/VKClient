@@ -51,7 +51,7 @@ class FriendsTableViewCell: UITableViewCell {
     func setup(_ user: FriendItem) {
         self.nameLabel.text = user.firstName + " " + user.lastName
         
-        if let url = user.photo50 {
+        if let url = user.photo {
             PhotoService.shared.photo(urlString: url)
                 .done { [weak self] image in self?.photoUser.image = image }
                 .catch { print($0.localizedDescription) }

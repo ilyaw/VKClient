@@ -47,13 +47,25 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
     }
     
     private func setupTopBars() {
-        let topBar = UIView(frame: UIApplication.shared.statusBarFrame)
-        topBar.backgroundColor = .white
-        topBar.layer.shadowColor = UIColor.black.cgColor
-        topBar.layer.shadowOpacity = 0.5
-        topBar.layer.shadowOffset = CGSize.zero
-        topBar.layer.shadowRadius = 8
-        self.view.addSubview(topBar)
+        
+        var frame: CGRect?
+        
+        if #available(iOS 13.0, *) {
+            let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+            frame = window?.windowScene?.statusBarManager?.statusBarFrame
+        } else {
+            frame = UIApplication.shared.statusBarFrame
+        }
+        
+        if let frame = frame {
+            let topBar = UIView(frame: frame)
+            topBar.backgroundColor = .white
+            topBar.layer.shadowColor = UIColor.black.cgColor
+            topBar.layer.shadowOpacity = 0.5
+            topBar.layer.shadowOffset = CGSize.zero
+            topBar.layer.shadowRadius = 8
+            self.view.addSubview(topBar)
+        }
     }
     
     

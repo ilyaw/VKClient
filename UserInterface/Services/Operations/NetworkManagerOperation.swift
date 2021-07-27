@@ -21,7 +21,7 @@ class NetworkManagerOperation {
     }
    
     //получение списка друзей по ID юзера
-    func getFriends(controller: ReloadDataTableController, userId: Int = Session.shared.userId, count: Int = 500, offset: Int = 0, fields: String = "sex, bdate, city, photo_50", completion: (() -> Void)? = nil) {
+    func getFriends(controller: ReloadDataTableController, userId: Int = Session.shared.userId, count: Int = 500, offset: Int = 0, fields: String = "sex, bdate, city, photo_100", completion: (() -> Void)? = nil) {
         guard let token = Session.shared.token else { return }
         
         let url = baseURL + Paths.getFriends.rawValue

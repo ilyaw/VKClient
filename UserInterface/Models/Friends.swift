@@ -22,7 +22,7 @@ class FriendItem: Object, Codable {
     @objc dynamic var firstName: String
     @objc dynamic var id: Int
     @objc dynamic var lastName: String
-    @objc dynamic var photo50: String?
+    @objc dynamic var photo: String?
     @objc dynamic var domain: String?
     @objc dynamic var city: City?
     var deactivated: Deactivated?
@@ -31,7 +31,7 @@ class FriendItem: Object, Codable {
         case firstName = "first_name"
         case id
         case lastName = "last_name"
-        case photo50 = "photo_50"
+        case photo = "photo_100"
         case domain, city
         case deactivated
     }
@@ -41,7 +41,7 @@ class FriendItem: Object, Codable {
         if let object = object as? FriendItem {
             return self.firstName == object.firstName
                 && self.lastName == object.lastName
-                && self.photo50 == object.photo50
+                && self.photo == object.photo
                 && self.domain == object.domain
         } else {
             return false
