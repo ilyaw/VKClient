@@ -29,14 +29,14 @@ class FriendPhotoCollectionViewController: UICollectionViewController {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         
-        // = realmManager?.getObjects().filter("ownerID = %@", user.id)
-        //loadData()
-        signToFilteredUsersChanges()
         loadData()
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        signToFilteredUsersChanges()
         
         if let photos = photos, photos.isEmpty {
             loadData()
@@ -105,7 +105,9 @@ class FriendPhotoCollectionViewController: UICollectionViewController {
         return cell
     }
     
-    deinit {
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
         photosNotificationToken?.invalidate()
     }
 }

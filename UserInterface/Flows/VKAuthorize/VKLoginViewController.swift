@@ -11,18 +11,16 @@ import SwiftKeychainWrapper
 
 class VKLoginViewController: UIViewController {
     
-    @IBOutlet weak var webView: WKWebView! {
-        didSet {
-            webView.navigationDelegate = self
-        }
-    }
+    @IBOutlet weak var webView: WKWebView!
     
     var canPresent: Bool = false
     let timeToSecnod: Double = 86400.0
-      
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
+        self.webView.navigationDelegate = self
+       
         if let keychainData = KeychainWrapper.standard.string(forKey: "user") {
             let data = Data(keychainData.utf8)
             

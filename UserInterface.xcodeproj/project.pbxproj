@@ -282,16 +282,12 @@
 				09CDB214265952B700FE69F2 /* Services */,
 				0450641625FF634000B08791 /* Views */,
 				045063EA25FD4C4700B08791 /* Control */,
-				040A3E6625D9B9DF00DFD359 /* Friends */,
-				09546EB2267E002500167322 /* Albums */,
-				040A3E6725D9B9EB00DFD359 /* Groups */,
-				09EB45CE266BA8420065648C /* Newsfeed */,
 				040A3E6925D9BB2B00DFD359 /* Models */,
+				0915EECD26B0304F0025E7D8 /* Flows */,
+				045C904D25CAD144005FC428 /* Main.storyboard */,
 				045C904725CAD144005FC428 /* AppDelegate.swift */,
 				045C904925CAD144005FC428 /* SceneDelegate.swift */,
-				090AF7EF26088F9100C1939B /* VKLoginViewController.swift */,
 				092601952654015900D079E5 /* VKError.swift */,
-				045C904D25CAD144005FC428 /* Main.storyboard */,
 				045C905025CAD146005FC428 /* Assets.xcassets */,
 				045C905225CAD146005FC428 /* LaunchScreen.storyboard */,
 				09D1DCA12633218200D58A5F /* GoogleService-Info.plist */,
@@ -309,6 +305,26 @@
 				D52D27DFE470821A09066CB9 /* Pods_UserInterface.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0915EECD26B0304F0025E7D8 /* Flows */ = {
+			isa = PBXGroup;
+			children = (
+				0915EED026B036F50025E7D8 /* VKAuthorize */,
+				040A3E6625D9B9DF00DFD359 /* Friends */,
+				09546EB2267E002500167322 /* Albums */,
+				040A3E6725D9B9EB00DFD359 /* Groups */,
+				09EB45CE266BA8420065648C /* Newsfeed */,
+			);
+			path = Flows;
+			sourceTree = "<group>";
+		};
+		0915EED026B036F50025E7D8 /* VKAuthorize */ = {
+			isa = PBXGroup;
+			children = (
+				090AF7EF26088F9100C1939B /* VKLoginViewController.swift */,
+			);
+			path = VKAuthorize;
 			sourceTree = "<group>";
 		};
 		0922124E2615D26000B49CD6 /* RealmManager */ = {

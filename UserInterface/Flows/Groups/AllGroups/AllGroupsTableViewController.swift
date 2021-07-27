@@ -24,6 +24,7 @@ class AllGroupsTableViewController: UITableViewController {
     
     private func setUI() {
         self.tableView.register(AllGroupsTableViewCell.self, forCellReuseIdentifier: AllGroupsTableViewCell.reuseId)
+        self.tableView.keyboardDismissMode = .onDrag
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.searchBar.delegate = self

@@ -39,6 +39,8 @@ final class FriendsTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        signToFilteredUsersChange()
+        
         if let users = users, users.isEmpty {
             loadData()
         }
@@ -48,15 +50,14 @@ final class FriendsTableViewController: UITableViewController {
         super.viewDidLoad()
         
         setUI()
-        
-        signToFilteredUsersChange()
         loadData()
     }
+
     
     private func setUI() {
         self.tableView.register(FriendsTableViewCell.self,
                                 forCellReuseIdentifier: FriendsTableViewCell.reuseId)
-        
+        self.tableView.keyboardDismissMode = .onDrag
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.refreshControl = refresh
@@ -156,7 +157,10 @@ final class FriendsTableViewController: UITableViewController {
         }
     }
     
-    deinit {
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
         filteredUsersNotificationToken?.invalidate()
     }
 }

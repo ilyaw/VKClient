@@ -36,8 +36,6 @@ class MyGroupsTableViewController: UITableViewController {
     private let networkManager = NetworkManagerPromise.shared
     private let realmManager = RealmManager.shared
     
-    private var groupsNotificationToken: NotificationToken?
-    
     private var filteredGroups: Results<GroupItem>!
     private var groups: Results<GroupItem>? {
         let groups: Results<GroupItem>? = realmManager?.getObjects()
@@ -61,6 +59,7 @@ class MyGroupsTableViewController: UITableViewController {
         self.refreshControl = refresh
         
         self.tableView.register(MyGroupsTableViewCell.self, forCellReuseIdentifier: MyGroupsTableViewCell.reuseId)
+        self.tableView.keyboardDismissMode = .onDrag
         self.tableView.addSubview(searchBar)
         self.tableView.tableHeaderView = searchBar
         
@@ -152,10 +151,6 @@ class MyGroupsTableViewController: UITableViewController {
                 //self.performSegue(withIdentifier: self.segueFromFriendsTableToFriendPhoto, sender: self)
             })
         })
-    }
-    
-    deinit {
-        groupsNotificationToken?.invalidate()
     }
 }
 
