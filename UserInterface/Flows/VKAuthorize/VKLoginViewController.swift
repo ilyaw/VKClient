@@ -11,13 +11,23 @@ import SwiftKeychainWrapper
 
 class VKLoginViewController: UIViewController {
     
-    @IBOutlet weak var webView: WKWebView!
+    private let webView: WKWebView = {
+        let preferences = WKPreferences()
+        let config = WKWebViewConfiguration()
+        config.defaultWebpagePreferences.allowsContentJavaScript = true
+        config.preferences = preferences
+     
+        let webView = WKWebView(frame: .zero, configuration: config)
+        return webView
+    }()
     
     var canPresent: Bool = false
     let timeToSecnod: Double = 86400.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.addSubview(webView)
         
         self.webView.navigationDelegate = self
        
@@ -63,6 +73,12 @@ class VKLoginViewController: UIViewController {
 
         let request = URLRequest(url: url)
         webView.load(request)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        self.webView.frame = view.bounds
     }
     
     override func viewDidAppear(_ animated: Bool) {
