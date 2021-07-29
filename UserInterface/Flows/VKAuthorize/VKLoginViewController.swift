@@ -21,16 +21,22 @@ class VKLoginViewController: UIViewController {
         return webView
     }()
     
-    var canPresent: Bool = false
-    let timeToSecnod: Double = 86400.0
+    private var canPresent: Bool = false
+    private let timeToSecnod: Double = 86400.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setUI()
+        checkAuth()
+    }
+    
+    private func setUI() {
         self.view.addSubview(webView)
-        
         self.webView.navigationDelegate = self
-       
+    }
+    
+    private func checkAuth() {
         if let keychainData = KeychainWrapper.standard.string(forKey: "user") {
             let data = Data(keychainData.utf8)
             

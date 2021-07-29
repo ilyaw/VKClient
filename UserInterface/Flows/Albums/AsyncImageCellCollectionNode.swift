@@ -22,14 +22,10 @@ class AsyncImageCellCollectionNode: ASCellNode {
     }
     
     func loadImage() {
-        DispatchQueue.global().async {
-            if let url = self.url,
-               let data = try? Data(contentsOf: URL(string: url)!),
-                let image = UIImage(data: data) {
-                DispatchQueue.main.async {
-                    self.imageNode.image = image
-                }
-            }
+        if let url = url {
+            PhotoService.shared.photo(urlString: url)
+                .done { [weak self] image in self?.imageNode.image = image }
+                .catch { print($0.localizedDescription) }
         }
     }
     
