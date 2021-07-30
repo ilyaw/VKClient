@@ -20,7 +20,6 @@ class LoaderView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         setUI()
     }
     
@@ -39,13 +38,14 @@ class LoaderView: UIView {
             stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
         
+
         var delay = 0.0
-        for _ in 1...3 {
+        for _ in 0...2 {
             
             let view = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 30, height: 30)))
             view.backgroundColor = .systemGray
             view.layer.masksToBounds = true
-            view.layer.cornerRadius = 16
+            view.layer.cornerRadius = view.frame.width / 2
             view.alpha = 0
             
             UIView.animate(withDuration: 0.5,

@@ -211,7 +211,7 @@
                                     <constraint firstAttribute="height" constant="30" id="uoJ-4J-A9c"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ggh-v2-nfa" customClass="GradientView" customModule="UserInterface" customModuleProvider="target">
+                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ggh-v2-nfa" customClass="GradientView" customModule="UserInterface" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -224,7 +224,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QTW-7J-7NY">
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QTW-7J-7NY">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="761"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
@@ -242,6 +242,8 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Лента" image="newspaper.fill" catalog="system" id="gWC-Ej-vMb"/>
                     <connections>
+                        <outlet property="gradientView" destination="ggh-v2-nfa" id="tXG-aT-xmJ"/>
+                        <outlet property="loaderView" destination="yFZ-f8-X3T" id="kbW-0E-IuY"/>
                         <outlet property="tableView" destination="QTW-7J-7NY" id="MJx-0x-Dy5"/>
                     </connections>
                 </viewController>

@@ -20,6 +20,10 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
     private lazy var footerView = FooterView()
     
     private var feedViewModel = FeedViewModel(cells: [], footerTitle: nil)
+    private var isFirstStart: Bool = true
+    
+    @IBOutlet weak var gradientView: GradientView!
+    @IBOutlet weak var loaderView: LoaderView!
     
     @IBOutlet weak var tableView: UITableView! {
         didSet {
@@ -79,7 +83,15 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
         case .displayFooterLoader:
             footerView.showLoader() //активируем лоадер
         }
+        
+        if isFirstStart {
+            tableView.isHidden = false
+            gradientView.isHidden = false
+            loaderView.removeFromSuperview()
+            isFirstStart = false
+        }
     }
+    
     
     // MARK: Setup
     
