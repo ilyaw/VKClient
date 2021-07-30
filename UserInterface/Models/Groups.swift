@@ -8,47 +8,32 @@
 import Foundation
 import RealmSwift
 
-struct Groups: Codable {
-    let response: GroupsResponse
-}
-
-struct GroupsResponse: Codable {
-    let count: Int
-    let items: [GroupItem]
-}
-
-class GroupItem: Object, Codable {
-    @objc dynamic var id: Int = 0
+class GroupItem: Object {
+    @objc dynamic var id: Int = -1
     @objc dynamic var name: String = ""
-    @objc dynamic var screenName: String = ""
-    //@objc dynamic var isClosed: Int = 0
-    var type: TypeGroup
-    //@objc dynamic var isAdmin, isMember, isAdvertiser: Int
-    @objc dynamic var photo50: String = ""
-    @objc dynamic var photo100: String = ""
-    @objc dynamic var photo200: String = ""
-
-    enum CodingKeys: String, CodingKey {
-        case id, name
-        case screenName = "screen_name"
-        //case isClosed = "is_closed"
-        case type
-//        case isAdmin = "is_admin"
-//        case isMember = "is_member"
-//        case isAdvertiser = "is_advertiser"
-        case photo50 = "photo_50"
-        case photo100 = "photo_100"
-        case photo200 = "photo_200"
-    }
+    @objc dynamic var isMember: Bool = false
+    @objc dynamic var photo: String = ""
+    @objc dynamic var activity: String = ""
     
+    convenience init(id: Int,
+                     name: String,
+                     isMember: Bool,
+                     photo: String,
+                     activity: String) {
+        self.init()
+
+        self.id = id
+        self.name = name
+        self.isMember = isMember
+        self.photo = photo
+        self.activity = activity
+    }
+
     override func isEqual(_ object: Any?) -> Bool {
         if let object = object as? GroupItem {
-            
-            if self.name != object.name {
-                print("\(self.name) \(object.name)")
-            }
-            
-            return self.name == object.name && self.photo50 == object.photo50
+            return self.name == object.name
+                && self.photo == object.photo
+                && self.activity == object.activity
         }
         return true
     }
@@ -58,8 +43,65 @@ class GroupItem: Object, Codable {
     }
 }
 
-enum TypeGroup: String, Codable {
-    case event = "event"
-    case group = "group"
-    case page = "page"
+class GroupList: Decodable {
+    var amount: Int = 0
+    var models: [GroupItem] = []
+    
+    var isMember: Int?
+    
+    enum ResponseCodingKeys: String, CodingKey {
+        case response
+    }
+
+    enum ItemsCodingKeys: String, CodingKey {
+        case count
+        case items
+    }
+    
+    enum GroupKeys: String, CodingKey {
+        case id
+        case isMember = "is_member"
+        case name
+        case photo100 = "photo_100"
+        case activity
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let response = try decoder.container(keyedBy: ResponseCodingKeys.self)
+        let values = try response.nestedContainer(keyedBy: ItemsCodingKeys.self, forKey: .response)
+
+        let count = try values.decode(Int.self, forKey: .count)
+        self.amount = count
+        
+        var items = try values.nestedUnkeyedContainer(forKey: .items)
+        
+        let itemsCount: Int = items.count ?? 0
+        for _ in 0..<itemsCount {
+            let groupContainer = try items.nestedContainer(keyedBy: GroupKeys.self)
+            let id = try groupContainer.decode(Int.self, forKey: .id)
+            let name = try groupContainer.decode(String.self, forKey: .name)
+            let activity = try? groupContainer.decode(String.self, forKey: .activity)
+            
+            let isMemberInt = try? groupContainer.decode(Int.self, forKey: .isMember)
+            var isMemberBool = false
+            
+            if let isMemberInt = isMemberInt {
+                isMemberBool = isMemberInt == 0 ? false : true
+            }
+            
+            let photo = try groupContainer.decode(String.self, forKey: .photo100)
+
+            let group = GroupItem(id: id,
+                                  name: name,
+                                  isMember: isMemberBool,
+                                  photo: photo,
+                                  activity: activity ?? "")
+
+            self.models.append(group)
+        }
+    }
+}
+
+struct GroupResponse: Codable {
+    let response: Int
 }
