@@ -65,7 +65,8 @@ class PhotoCollection: ASDKViewController<ASCollectionNode> {
 
 extension PhotoCollection: ASCollectionDataSource, ASCollectionDelegate {
     func collectionNode(_ collectionNode: ASCollectionNode, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.row)
+        let vc = FriendsPhotoViewController(photos: photos, currentIndex: indexPath.row) 
+        self.present(vc, animated: true, completion: nil)
     }
     
     func collectionNode(_ collectionNode: ASCollectionNode, nodeBlockForItemAt indexPath: IndexPath) -> ASCellNodeBlock {

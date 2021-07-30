@@ -53,7 +53,6 @@ final class FriendsTableViewController: UITableViewController {
         loadData()
     }
 
-    
     private func setUI() {
         self.tableView.register(FriendsTableViewCell.self,
                                 forCellReuseIdentifier: FriendsTableViewCell.reuseId)
@@ -63,7 +62,6 @@ final class FriendsTableViewController: UITableViewController {
         self.tableView.refreshControl = refresh
         self.searchBar.delegate = self
     }
-    
     
     private func loadData(completion: (() -> Void)? = nil) {
         NetworkManagerOperation.shared.getFriends(controller: self) {

@@ -32,6 +32,7 @@ class NetworkManager {
             "v": versionVKAPI,
             "owner_id": ownerId,
             "album_id": albumId,
+            "extended": "1",
             "rev": rev.rawValue,
         ]
         
@@ -45,6 +46,7 @@ class NetworkManager {
                         let photos = try JSONDecoder().decode(Photos.self, from: data).response.items
                         completion(.success(photos))
                     } catch {
+                        print(error)
                         completion(.failure(error))
                     }
                 }

@@ -244,8 +244,7 @@ final class NewsfeedCell: UITableViewCell {
         overlayThirdLayerOnTopView() // третий слой на topView
         overlayThirdLayerOnBottomView() // третий слой на bottomView
         overlayFourthLayerOnBottomViewViews() // четвертый слой на bottomViewViews
-        
-        
+
     }
     
     @objc func moreTextButtonTouch() {

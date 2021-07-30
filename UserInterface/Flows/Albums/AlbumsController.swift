@@ -66,7 +66,7 @@ class AlbumsController: ASDKViewController<ASTableNode> {
 
 extension AlbumsController: ASTableDelegate, ASTableDataSource {
     func numberOfSections(in tableNode: ASTableNode) -> Int {
-        albums.count
+        return albums.count
     }
     
     func tableNode(_ tableNode: ASTableNode, numberOfRowsInSection section: Int) -> Int {

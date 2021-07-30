@@ -233,14 +233,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		045063EA25FD4C4700B08791 /* Control */ = {
+		045063EA25FD4C4700B08791 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
 				041C53F725E9196600F21BD7 /* LikeButton.swift */,
 				045063EB25FD4C9E00B08791 /* CommentButton.swift */,
 				045063EF25FD4D0B00B08791 /* ShareButton.swift */,
 			);
-			path = Control;
+			path = Controls;
 			sourceTree = "<group>";
 		};
 		0450641625FF634000B08791 /* Views */ = {
@@ -279,7 +279,7 @@
 				09D685C0261F62AF0046B131 /* Extensions */,
 				09CDB214265952B700FE69F2 /* Services */,
 				0450641625FF634000B08791 /* Views */,
-				045063EA25FD4C4700B08791 /* Control */,
+				045063EA25FD4C4700B08791 /* Controls */,
 				040A3E6925D9BB2B00DFD359 /* Models */,
 				0915EECD26B0304F0025E7D8 /* Flows */,
 				045C904D25CAD144005FC428 /* Main.storyboard */,

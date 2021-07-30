@@ -27,14 +27,17 @@ class PhotoItem: Object, Codable {
     @objc dynamic var ownerID: Int = 0
     var sizes = List<Size>()
     @objc dynamic var text: String = ""
+    var likes: Likes?
+    var reposts: Reposts?
+    var comments: Comments?
     
     enum CodingKeys: String, CodingKey {
         case albumID = "album_id"
         case date, id
         case ownerID = "owner_id"
         case sizes, text
+        case likes, reposts, comments
     }
-    
     
     override func isEqual(_ object: Any?) -> Bool {
         if let object = object as? PhotoItem {
@@ -48,6 +51,36 @@ class PhotoItem: Object, Codable {
         "id"
     }
 }
+
+struct Comments: Codable {
+    let count: Int
+}
+
+struct Reposts: Codable {
+    let count: Int
+}
+
+class Likes: Codable {
+
+    enum CodingKeys: String, CodingKey {
+        case isLike = "user_likes"
+        case count
+    }
+    
+    let isLike: Bool
+    let count: Int
+    
+    required init(from decoder: Decoder) throws {
+        let decoder = try decoder.container(keyedBy: CodingKeys.self)
+        
+        let isLike = try? decoder.decode(Int.self, forKey: .isLike)
+        let count = try? decoder.decode(Int.self, forKey: .count)
+        
+        self.isLike = isLike == 1 ? true : false
+        self.count = count ?? 0
+    }
+}
+
 
 // MARK: - Size
 class Size: Object, Codable {
