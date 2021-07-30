@@ -203,6 +203,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yFZ-f8-X3T" customClass="LoaderView" customModule="UserInterface" customModuleProvider="target">
+                                <rect key="frame" x="135" y="407" width="120" height="30"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="DSo-Y6-BEw"/>
+                                    <constraint firstAttribute="height" constant="30" id="uoJ-4J-A9c"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ggh-v2-nfa" customClass="GradientView" customModule="UserInterface" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -224,8 +232,10 @@
                         <viewLayoutGuide key="safeArea" id="ufA-7E-QqN"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="yFZ-f8-X3T" firstAttribute="centerY" secondItem="Qrm-56-Ofn" secondAttribute="centerY" id="3mM-lu-obs"/>
                             <constraint firstItem="QTW-7J-7NY" firstAttribute="bottom" secondItem="ufA-7E-QqN" secondAttribute="bottom" id="X4F-cY-pRw"/>
                             <constraint firstAttribute="trailing" secondItem="QTW-7J-7NY" secondAttribute="trailing" id="ZrQ-oV-AYJ"/>
+                            <constraint firstItem="yFZ-f8-X3T" firstAttribute="centerX" secondItem="Qrm-56-Ofn" secondAttribute="centerX" id="fdx-1n-s1W"/>
                             <constraint firstItem="QTW-7J-7NY" firstAttribute="leading" secondItem="ufA-7E-QqN" secondAttribute="leading" id="fx7-j7-9Vu"/>
                             <constraint firstItem="QTW-7J-7NY" firstAttribute="top" secondItem="Qrm-56-Ofn" secondAttribute="top" id="xF0-oW-YfL"/>
                         </constraints>
@@ -237,7 +247,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U3T-q3-W31" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1954" y="680"/>
+            <point key="canvasLocation" x="1953.8461538461538" y="679.62085308056874"/>
         </scene>
         <!--Группы-->
         <scene sceneID="9Bi-We-IHw">

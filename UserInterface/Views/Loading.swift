@@ -7,36 +7,56 @@
 
 import UIKit
 
-//@IBDesignable
-class Loading: UIView {
+class LoaderView: UIView {
     
-        override func draw(_ rect: CGRect) {
-            super.draw(rect)
+    private let stackView: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .horizontal
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.distribution = .fillEqually
+        stack.spacing = 12
+        return stack
+    }()
     
-            let distance = 50 //смещение по x
-            let count = 3 //количество объектов
-
-            var x = 0
-            var delay = 0.0
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        setUI()
+    }
     
-            for _ in 1...count {
-
-                let view = UIView(frame: CGRect(x: x, y: 0, width: 30, height: 30))
-                view.backgroundColor = .systemGray
-                view.layer.masksToBounds = true
-                view.layer.cornerRadius = 16
-                view.alpha = 0
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setUI()
+    }
     
-                UIView.animate(withDuration: 0.5,
-                               delay: delay,
-                               options: [.repeat, .autoreverse, .curveEaseInOut], animations: {
-                                view.alpha = 1
-                        }, completion: nil)
-    
-                self.addSubview(view)
-                
-                x += distance
-                delay += 0.16
-            }
+    private func setUI() {
+        addSubview(stackView)
+        
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: topAnchor),
+            stackView.leftAnchor.constraint(equalTo: leftAnchor),
+            stackView.rightAnchor.constraint(equalTo: rightAnchor),
+            stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
+        ])
+        
+        var delay = 0.0
+        for _ in 1...3 {
+            
+            let view = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 30, height: 30)))
+            view.backgroundColor = .systemGray
+            view.layer.masksToBounds = true
+            view.layer.cornerRadius = 16
+            view.alpha = 0
+            
+            UIView.animate(withDuration: 0.5,
+                           delay: delay,
+                           options: [.repeat, .autoreverse, .curveEaseInOut], animations: {
+                            view.alpha = 1
+                           }, completion: nil)
+            
+            stackView.addArrangedSubview(view)
+        
+            delay += 0.16
         }
+    }
 }
