@@ -24,7 +24,6 @@ class AlbumsController: ASDKViewController<ASTableNode> {
         
         self.tableNode.delegate = self
         self.tableNode.dataSource = self
-        
         self.tableNode.allowsSelection = false
     }
     
@@ -51,7 +50,6 @@ class AlbumsController: ASDKViewController<ASTableNode> {
                     self?.albums = albums
                     self?.tableNode.reloadData()
                 }
-                
             case let .failure(error):
                 self?.present(UIAlertController.create(error.localizedDescription), animated: true, completion: nil)
             }

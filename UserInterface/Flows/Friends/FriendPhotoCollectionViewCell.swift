@@ -6,23 +6,23 @@
 //
 
 import UIKit
-
-class FriendPhotoCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var photoImageView: UIImageView!
-    
-    func setup(_ photo: PhotoItem) {
-        
-        //TODO: изменить получение фото после редизайна collection
-        if let url = photo.sizes.first?.url {
-            PhotoService.shared.photo(urlString: url)
-                .done { [weak self] image in self?.photoImageView.image = image }
-                .catch { print($0.localizedDescription) }
-        }
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        
-        self.photoImageView.image = nil
-    }
-}
+//
+//class FriendPhotoCollectionViewCell: UICollectionViewCell {
+//    @IBOutlet weak var photoImageView: UIImageView!
+//    
+//    func setup(_ photo: PhotoItem) {
+//        
+//        //TODO: изменить получение фото после редизайна collection
+//        if let url = photo.sizes.first?.url {
+//            PhotoService.shared.photo(urlString: url)
+//                .done { [weak self] image in self?.photoImageView.image = image }
+//                .catch { print($0.localizedDescription) }
+//        }
+//    }
+//    
+//    override func prepareForReuse() {
+//        super.prepareForReuse()
+//        
+//        self.photoImageView.image = nil
+//    }
+//}
