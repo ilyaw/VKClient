@@ -61,9 +61,6 @@
 		09CAC55326A811A30043201F /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAC55226A811A30043201F /* UIViewController+Alert.swift */; };
 		09CDB2102656BD9500FE69F2 /* KeychainUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CDB20F2656BD9500FE69F2 /* KeychainUser.swift */; };
 		09CDB21326594C9400FE69F2 /* PhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CDB21226594C9400FE69F2 /* PhotoService.swift */; };
-		09D1DCC02633246D00D58A5F /* UsersFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D1DCBF2633246D00D58A5F /* UsersFirestore.swift */; };
-		09D1DCC5263325FA00D58A5F /* PhotosFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D1DCC4263325FA00D58A5F /* PhotosFirestore.swift */; };
-		09D1DCC92633260300D58A5F /* GroupsFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D1DCC82633260300D58A5F /* GroupsFirestore.swift */; };
 		09D685C2261F62C90046B131 /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D685C1261F62C90046B131 /* Results.swift */; };
 		09EB45C7266BA8370065648C /* NewsfeedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EB45C0266BA8370065648C /* NewsfeedPresenter.swift */; };
 		09EB45C8266BA8370065648C /* NewsfeedWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EB45C1266BA8370065648C /* NewsfeedWorker.swift */; };
@@ -151,9 +148,6 @@
 		09CAC55226A811A30043201F /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		09CDB20F2656BD9500FE69F2 /* KeychainUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainUser.swift; sourceTree = "<group>"; };
 		09CDB21226594C9400FE69F2 /* PhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoService.swift; sourceTree = "<group>"; };
-		09D1DCBF2633246D00D58A5F /* UsersFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersFirestore.swift; sourceTree = "<group>"; };
-		09D1DCC4263325FA00D58A5F /* PhotosFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosFirestore.swift; sourceTree = "<group>"; };
-		09D1DCC82633260300D58A5F /* GroupsFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsFirestore.swift; sourceTree = "<group>"; };
 		09D685C1261F62C90046B131 /* Results.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
 		09EB45C0266BA8370065648C /* NewsfeedPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedPresenter.swift; sourceTree = "<group>"; };
 		09EB45C1266BA8370065648C /* NewsfeedWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedWorker.swift; sourceTree = "<group>"; };
@@ -218,7 +212,6 @@
 		040A3E6925D9BB2B00DFD359 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				09D1DCC2263325A600D58A5F /* Firestore Models */,
 				0952DF1B260E2B2200877AFC /* Friends.swift */,
 				0943ECD2260F455800039272 /* Photos.swift */,
 				09546EB5267E05E900167322 /* Albums.swift */,
@@ -425,16 +418,6 @@
 				09CDB21226594C9400FE69F2 /* PhotoService.swift */,
 			);
 			path = Services;
-			sourceTree = "<group>";
-		};
-		09D1DCC2263325A600D58A5F /* Firestore Models */ = {
-			isa = PBXGroup;
-			children = (
-				09D1DCBF2633246D00D58A5F /* UsersFirestore.swift */,
-				09D1DCC4263325FA00D58A5F /* PhotosFirestore.swift */,
-				09D1DCC82633260300D58A5F /* GroupsFirestore.swift */,
-			);
-			path = "Firestore Models";
 			sourceTree = "<group>";
 		};
 		09D685C0261F62AF0046B131 /* Extensions */ = {
@@ -672,7 +655,6 @@
 				09CDB21326594C9400FE69F2 /* PhotoService.swift in Sources */,
 				092600EE264B279600D079E5 /* ReloadFriendsController.swift in Sources */,
 				040A3E7425D9C6C600DFD359 /* FriendsTableViewCell.swift in Sources */,
-				09D1DCC5263325FA00D58A5F /* PhotosFirestore.swift in Sources */,
 				045C904825CAD144005FC428 /* AppDelegate.swift in Sources */,
 				09EB45CA266BA8370065648C /* NewsfeedModels.swift in Sources */,
 				092AC34E260B4106001E4EF1 /* CustomNavigationController.swift in Sources */,
@@ -681,9 +663,7 @@
 				0943ECD3260F455800039272 /* Photos.swift in Sources */,
 				042542F4260088E6005D99FD /* Session.swift in Sources */,
 				09EB45C7266BA8370065648C /* NewsfeedPresenter.swift in Sources */,
-				09D1DCC92633260300D58A5F /* GroupsFirestore.swift in Sources */,
 				092600E6264B273C00D079E5 /* AsyncOperation.swift in Sources */,
-				09D1DCC02633246D00D58A5F /* UsersFirestore.swift in Sources */,
 				0926B8D326106F1300C66F1A /* Groups.swift in Sources */,
 				045C904A25CAD144005FC428 /* SceneDelegate.swift in Sources */,
 				041C53F825E9196600F21BD7 /* LikeButton.swift in Sources */,
