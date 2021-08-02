@@ -49,6 +49,30 @@ class PhotoCollection: ASDKViewController<ASCollectionNode> {
               let ownerId = album.ownerID,
               let albumId = album.id else { return }
         
+        // -9000 - альбом "фото с другом", парсится отдельным апи методом
+        if albumId == -9000 {
+            getUserPhotos(ownerId: ownerId)
+        } else {
+            getPhotos(ownerId: ownerId, albumId: albumId)
+        }
+    }
+    
+    private func getUserPhotos(ownerId: Int) {
+        networkManager.getUserPhotos(ownerId: ownerId) { [weak self] result in
+            switch result {
+            case let .success(photos):
+                DispatchQueue.main.async {
+                    self?.photos = photos
+                    self?.collectionNode.reloadData()
+                }
+            case let .failure(error):
+                print(error)
+                self?.present(UIAlertController.create(error.localizedDescription), animated: true, completion: nil)
+            }
+        }
+    }
+    
+    private func getPhotos(ownerId: Int, albumId: Int) {
         networkManager.getPhotos(ownerId: ownerId, albumId: albumId) { [weak self] result in
             switch result {
             case let .success(photos):
