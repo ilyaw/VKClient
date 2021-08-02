@@ -24,8 +24,8 @@ class FriendsTableViewCell: UITableViewCell {
         let view = UIView(frame: .zero)
         view.clipsToBounds = false
         view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowOpacity = 0.8
-        view.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
+        view.layer.shadowOpacity = 1
+        view.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
         view.layer.shadowRadius = 5
         return view
     }()
@@ -83,8 +83,9 @@ class FriendsTableViewCell: UITableViewCell {
         photoUser.backgroundColor = .white
         photoUser.clipsToBounds = true
         photoUser.layer.cornerRadius = photoUser.frame.width / 2
-        photoUser.layer.borderColor = UIColor.black.cgColor
-        photoUser.layer.borderWidth = 0
+        
+        photoUser.layer.borderColor = UIColor.white.cgColor
+        photoUser.layer.borderWidth = 1
         
         if shadowView.frame == .zero {
             let yPosition = (self.frame.height / 2) - (imageHeight / 2)
