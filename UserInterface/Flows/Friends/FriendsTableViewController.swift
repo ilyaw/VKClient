@@ -76,6 +76,8 @@ final class FriendsTableViewController: UITableViewController {
                 }
             }
         }
+        
+        self.tableView.reloadData()
     }
     
     override func viewDidLoad() {
@@ -107,18 +109,8 @@ final class FriendsTableViewController: UITableViewController {
         filteredUsersNotificationToken = users?.observe { [weak self] (change) in
             switch change {
             case .initial( _): break
-            case .update( _, deletions: let deletions, insertions: let insertions, modifications: let modifications):
-                self?.tableView.beginUpdates()
-
-                let deletionsIndexPaths = deletions.map { IndexPath(row: $0, section: 0) }
-                let insertionsIndexPaths = insertions.map { IndexPath(row: $0, section: 0) }
-                let modificationsIndexPaths = modifications.map { IndexPath(row: $0, section: 0) }
-
-                self?.tableView.deleteRows(at: deletionsIndexPaths, with: .automatic)
-                self?.tableView.insertRows(at: insertionsIndexPaths, with: .automatic)
-                self?.tableView.reloadRows(at: modificationsIndexPaths, with: .automatic)
-
-                self?.tableView.endUpdates()
+            case .update( _, deletions: _, insertions: _, modifications: _):
+                self?.generateSection()
             case .error(let error):
                 print(error.localizedDescription)
             }
@@ -176,11 +168,11 @@ final class FriendsTableViewController: UITableViewController {
                 albumsVC.modalTransitionStyle = .crossDissolve
                 albumsVC.modalPresentationStyle = .popover
                 self.navigationController?.pushViewController(albumsVC, animated: true)
-
+                
             })
         })
     }
-        
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         

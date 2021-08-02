@@ -27,10 +27,8 @@ class AlbumsController: ASDKViewController<ASTableNode> {
         self.tableNode.allowsSelection = false
     }
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setUI()
     }
     
@@ -47,7 +45,7 @@ class AlbumsController: ASDKViewController<ASTableNode> {
             switch result {
             case let .success(albums):
                 DispatchQueue.main.async {
-                    self?.albums = albums
+                    self?.albums = self?.removeEmptyAlbums(albums) ?? []
                     self?.tableNode.reloadData()
                 }
             case let .failure(error):
@@ -55,6 +53,10 @@ class AlbumsController: ASDKViewController<ASTableNode> {
             }
             
         }
+    }
+    
+    private func removeEmptyAlbums(_ albums: [AlbumItem]) -> [AlbumItem] {
+        return albums.filter { $0.size != 0 }
     }
     
     required init?(coder: NSCoder) {

@@ -20,10 +20,8 @@ struct AlbumsResponse: Codable {
 
 // MARK: - Item
 struct AlbumItem: Codable {
-    let id, thumbID, ownerID: Int?
+    let id, thumbID, ownerID, size: Int?
     let title, itemDescription: String?
-//    let created, updated, size, thumbIsLast: Int?
-//    let privacyView, privacyComment: Privacy?
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -31,19 +29,6 @@ struct AlbumItem: Codable {
         case ownerID = "owner_id"
         case title
         case itemDescription = "description"
-//        case created, updated, size
-//        case thumbIsLast = "thumb_is_last"
-//        case privacyView = "privacy_view"
-//        case privacyComment = "privacy_comment"
+        case size
     }
 }
-
-//// MARK: - Privacy
-//struct Privacy: Codable {
-//    let category: Category?
-//}
-//
-//enum Category: String, Codable {
-//    case friends = "friends"
-//    case onlyMe = "only_me"
-//}

@@ -46,7 +46,6 @@ class NetworkManager {
                         let photos = try JSONDecoder().decode(Photos.self, from: data).response.items
                         completion(.success(photos))
                     } catch {
-                        print(error)
                         completion(.failure(error))
                     }
                 }
@@ -63,6 +62,7 @@ class NetworkManager {
         let parameters: Parameters = [
             "access_token": token,
             "v": versionVKAPI,
+            "need_system": "1",
             "user_id": userId,
         ]
         
