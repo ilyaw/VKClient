@@ -12,6 +12,7 @@ class FriendsTableViewCell: UITableViewCell {
     
     private let nameLabel: UILabel = {
         let label = UILabel()
+        label.backgroundColor = .white
         return label
     }()
     
@@ -30,9 +31,15 @@ class FriendsTableViewCell: UITableViewCell {
         return view
     }()
     
-    let imageHeight: CGFloat = 50, imageWidth: CGFloat = 50
-    let xPosition: CGFloat = 10
-    let instets: CGFloat = 15.0
+    private let cellView: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = 10
+        view.layer.masksToBounds = true
+        view.backgroundColor = .white
+        return view
+    }()
+
+    private let photoSize = Constants.photoSize
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -47,7 +54,7 @@ class FriendsTableViewCell: UITableViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-   
+    
     func setup(_ user: FriendItem) {
         self.nameLabel.text = user.firstName + " " + user.lastName
         
@@ -64,33 +71,39 @@ class FriendsTableViewCell: UITableViewCell {
         photoFrame()
         usernameFrame()
     }
-    
-    private func usernameFrame() {
-        guard let text = nameLabel.text else {  return }
-        
-        let maxWidth = bounds.width - instets * 2
-        
-        let nameLabelSize = text.getLabelSize(maxWidth: maxWidth, font: nameLabel.font)
-        let nameLabelX = imageWidth + instets * 2
-        let nameLabelY = bounds.midY - nameLabelSize.height / 2
-        let nameLabelOrigin = CGPoint(x: nameLabelX, y: nameLabelY)
-        
-        self.nameLabel.frame = CGRect(origin: nameLabelOrigin, size: nameLabelSize)
-    }
+
     
     private func photoFrame() {
-        photoUser.frame = CGRect(x: 0, y: 0, width: imageHeight, height: imageWidth)
+        photoUser.frame = CGRect(origin: .zero, size: photoSize)
         photoUser.backgroundColor = .white
         photoUser.clipsToBounds = true
-        photoUser.layer.cornerRadius = photoUser.frame.width / 2
         
+        photoUser.layer.cornerRadius = photoSize.height / 2
         photoUser.layer.borderColor = UIColor.white.cgColor
         photoUser.layer.borderWidth = 1
         
         if shadowView.frame == .zero {
-            let yPosition = (self.frame.height / 2) - (imageHeight / 2)
-            shadowView.frame = CGRect(x: xPosition, y: yPosition, width: imageWidth, height: imageHeight)
+            let xPosition: CGFloat = 20
+            let yPosition = (self.frame.height / 2) - (photoSize.height / 2)
+            
+            let origin = CGPoint(x: xPosition, y: yPosition)
+            
+            shadowView.frame = CGRect(origin: origin, size: photoSize)
         }
+    }
+    
+    private func usernameFrame() {
+        guard let text = nameLabel.text else {  return }
+        
+        let instets: CGFloat = 20.0
+        let maxWidth = bounds.width - instets * 2
+        
+        let nameLabelSize = text.getLabelSize(maxWidth: maxWidth, font: nameLabel.font)
+        let nameLabelX = photoSize.width + instets * 2
+        let nameLabelY = bounds.midY - nameLabelSize.height / 2
+        let nameLabelOrigin = CGPoint(x: nameLabelX, y: nameLabelY)
+        
+        self.nameLabel.frame = CGRect(origin: nameLabelOrigin, size: nameLabelSize)
     }
     
     override func prepareForReuse() {

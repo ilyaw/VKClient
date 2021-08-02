@@ -78,7 +78,6 @@ class NetworkManager {
                         let photos = try JSONDecoder().decode(Photos.self, from: data).response.items
                         completion(.success(photos))
                     } catch {
-                        print(response.request?.url!)
                         completion(.failure(error))
                     }
                 }

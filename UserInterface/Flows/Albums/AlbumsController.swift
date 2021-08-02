@@ -16,8 +16,8 @@ class AlbumsController: ASDKViewController<ASTableNode> {
     }
     
     private let networkManager = NetworkManager.shared
-    let id: Int = 0
-    var albums = [AlbumItem]()
+    private let id: Int = 0
+    private var albums = [AlbumItem]()
     
     override init() {
         super.init(node: ASTableNode())
@@ -45,14 +45,27 @@ class AlbumsController: ASDKViewController<ASTableNode> {
             switch result {
             case let .success(albums):
                 DispatchQueue.main.async {
-                    self?.albums = self?.removeEmptyAlbums(albums) ?? []
+                    let albums = self?.removeEmptyAlbums(albums) ?? []
+                    
+                    if albums.isEmpty {
+                        self?.showEmptyResults()
+                        return
+                    }
+                    
+                    self?.albums = albums
                     self?.tableNode.reloadData()
                 }
             case let .failure(error):
                 self?.present(UIAlertController.create(error.localizedDescription), animated: true, completion: nil)
             }
-            
         }
+    }
+    
+    private func showEmptyResults() {
+        let empltyResultsView = EmptyResultsView(frame: view.frame)
+        empltyResultsView.setMessage(text: "Фотографий нет")
+        
+        tableNode.view.addSubview(empltyResultsView)
     }
     
     private func removeEmptyAlbums(_ albums: [AlbumItem]) -> [AlbumItem] {

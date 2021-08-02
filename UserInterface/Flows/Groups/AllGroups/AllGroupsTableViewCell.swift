@@ -43,12 +43,11 @@ class AllGroupsTableViewCell: UITableViewCell {
     private var groupId: String?
     weak var delegate: AllGroupsTableViewCellDelegate?
     
-    private let imageSize = CGSize(width: 50, height: 50)
+    private let photoSize = Constants.photoSize
     private let addGroupButtonSize = CGSize(width: 25, height: 25)
-    private let xPosition: CGFloat = 10
     private let instets: CGFloat = 15.0
     private var maxWidthForLabel: CGFloat {
-        return bounds.width - (instets * 4) - imageSize.width - addGroupButtonSize.width
+        return bounds.width - (instets * 4) - photoSize.width - addGroupButtonSize.width
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -76,18 +75,22 @@ class AllGroupsTableViewCell: UITableViewCell {
     private func photoFrame() {
         photoView.backgroundColor = .white
         photoView.clipsToBounds = true
-        photoView.layer.cornerRadius = imageSize.width / 2
+        photoView.layer.cornerRadius = photoSize.width / 2
         
         if photoView.frame == .zero {
-            let yPosition = (self.frame.height / 2) - (imageSize.width / 2)
-            photoView.frame = CGRect(x: xPosition, y: yPosition, width: imageSize.width, height: imageSize.height)
+            let xPosition: CGFloat = 10
+            let yPosition = (self.frame.height / 2) - (photoSize.width / 2)
+            
+            let origin = CGPoint(x: xPosition, y: yPosition)
+            
+            photoView.frame = CGRect(origin: origin, size: photoSize)
         }
     }
     
     private func groupNameFrame() {
         let nameLabelSize = CGSize(width: maxWidthForLabel, height: 21.0)
-        let nameLabelX = imageSize.width + instets * 2
-        let nameLabelY = bounds.midY -  21.0
+        let nameLabelX = photoSize.width + instets * 2
+        let nameLabelY = bounds.midY - 21.0
         let nameLabelOrigin = CGPoint(x: nameLabelX, y: nameLabelY)
         
         self.groupNameLabel.frame = CGRect(origin: nameLabelOrigin, size: nameLabelSize)
@@ -95,7 +98,7 @@ class AllGroupsTableViewCell: UITableViewCell {
     
     private func shortInfoFrame() {
         let activityLabelSize = CGSize(width: maxWidthForLabel, height: 21.0)
-        let activityLabelX = imageSize.width + instets * 2
+        let activityLabelX = photoSize.width + instets * 2
         let activityLabelY = groupNameLabel.frame.maxY
         let activityLabelOrigin = CGPoint(x: activityLabelX, y: activityLabelY)
         

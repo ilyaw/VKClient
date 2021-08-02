@@ -57,7 +57,6 @@ final class FriendsTableViewController: UITableViewController {
     private var groupUsers: [GroupUser] = []
     
     private func generateSection() {
-        
         groupUsers = []
         
         if let users = users {
@@ -121,6 +120,15 @@ final class FriendsTableViewController: UITableViewController {
         loadData { [weak self] in
             self?.refreshControl?.endRefreshing()
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerSectionView = HeaderSectionView(text: groupUsers[section].titleForHeader)
+        return headerSectionView
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

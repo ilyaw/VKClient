@@ -22,8 +22,8 @@ class CommentButton: UIControl {
         return label
     }()
     
-    private let comments = UIImage(named: "comments")
-    private let commentsPressed = UIImage(named: "comments")
+    private let comments = UIImage(named: "comment")
+    private let commentsPressed = UIImage(named: "comment")
     
     private var flag = false {
         didSet {

@@ -22,6 +22,13 @@ class FriendsPhotoViewController: UIViewController {
         return imageView
     }()
     
+    private let descriptionPhotoLabel: UILabel = {
+       let label = UILabel()
+        label.numberOfLines = 2
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     private let buttonsActionStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -74,7 +81,6 @@ class FriendsPhotoViewController: UIViewController {
     private var safeArea: UILayoutGuide {
         return view.safeAreaLayoutGuide
     }
-
     
     init(photos: [PhotoItem], currentIndex: Int) {
         self.photos = photos
@@ -100,18 +106,20 @@ class FriendsPhotoViewController: UIViewController {
         
         self.view.addSubview(closeButton)
         self.view.addSubview(photoView)
+        self.view.addSubview(descriptionPhotoLabel)
         self.view.addSubview(buttonsActionStackView)
         
         buttonsActionStackView.addArrangedSubview(likeControl)
         buttonsActionStackView.addArrangedSubview(commentControl)
         buttonsActionStackView.addArrangedSubview(shareControl)
         
-        self.addCloseButtonnConstraints()
+        self.addCloseButtonConstraints()
         self.addPhotoViewConstraints()
+        self.descriptionPhotoLabelConstraints()
         self.addButtonsActionStackViewConstraints()
     }
     
-    private func addCloseButtonnConstraints() {
+    private func addCloseButtonConstraints() {
         NSLayoutConstraint.activate([
             closeButton.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 5),
             closeButton.leftAnchor.constraint(equalTo: safeArea.leftAnchor, constant: 0),
@@ -125,7 +133,16 @@ class FriendsPhotoViewController: UIViewController {
             photoView.topAnchor.constraint(equalTo: closeButton.bottomAnchor, constant: 10),
             photoView.leftAnchor.constraint(equalTo: safeArea.leftAnchor, constant: 0),
             photoView.rightAnchor.constraint(equalTo: safeArea.rightAnchor, constant: 0),
-            photoView.bottomAnchor.constraint(equalTo: buttonsActionStackView.topAnchor, constant: -10),
+            photoView.bottomAnchor.constraint(equalTo: descriptionPhotoLabel.topAnchor, constant: -10),
+        ])
+    }
+    
+    private func descriptionPhotoLabelConstraints() {
+        NSLayoutConstraint.activate([
+            descriptionPhotoLabel.leftAnchor.constraint(equalTo: safeArea.leftAnchor, constant: 10),
+            descriptionPhotoLabel.rightAnchor.constraint(equalTo: safeArea.rightAnchor, constant: -10),
+            descriptionPhotoLabel.bottomAnchor.constraint(equalTo: buttonsActionStackView.topAnchor, constant: -10),
+            descriptionPhotoLabel.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
     
@@ -151,7 +168,9 @@ class FriendsPhotoViewController: UIViewController {
     }
 
     private func showPhoto() {
+        updatePhotoDescription()
         updateInfoButtons()
+        
         if let photo = self.photos[currentIndex].sizes.last {
             photoService.photo(urlString: photo.url)
                 .done { [weak self] image in
@@ -163,7 +182,7 @@ class FriendsPhotoViewController: UIViewController {
     
     private func updateInfoButtons() {
         let photo = self.photos[currentIndex]
-        
+    
         let likesCount = photo.likes?.count ?? 0
         let isLike = photo.likes?.isLike ?? false
         let commentsCount = photo.comments?.count ?? 0
@@ -172,6 +191,11 @@ class FriendsPhotoViewController: UIViewController {
         likeControl.setLikeInfo(count: likesCount, isLike: isLike)
         commentControl.setComment(count: commentsCount)
         shareControl.setShare(count: shareCount)
+    }
+    
+    private func updatePhotoDescription() {
+        let photo = self.photos[currentIndex]
+        descriptionPhotoLabel.text = photo.text
     }
     
     @objc private func handleSwipeGesture(sender: UISwipeGestureRecognizer) {
