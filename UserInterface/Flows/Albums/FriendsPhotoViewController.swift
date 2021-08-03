@@ -102,7 +102,7 @@ class FriendsPhotoViewController: UIViewController {
     }
   
     private func setUI() {
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = .systemBackground
         
         self.view.addSubview(closeButton)
         self.view.addSubview(photoView)

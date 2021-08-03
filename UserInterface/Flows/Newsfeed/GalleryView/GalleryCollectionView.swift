@@ -16,11 +16,11 @@ class GalleryCollectionView: UICollectionView {
         let rowLayout = RowLayout()
         super.init(frame: .zero, collectionViewLayout: rowLayout)
         
-
+        
         self.delegate = self
         self.dataSource = self
         
-        backgroundColor = UIColor.white
+        backgroundColor = .newsfeedCollectionView
         
         showsHorizontalScrollIndicator = false
         showsVerticalScrollIndicator = false
@@ -54,7 +54,7 @@ extension GalleryCollectionView: UICollectionViewDelegate, UICollectionViewDataS
         guard let cell = dequeueReusableCell(withReuseIdentifier: GalleryCollectionViewCell.reuseId, for: indexPath) as? GalleryCollectionViewCell else { return UICollectionViewCell() }
         
         cell.set(imageURL: photos[indexPath.row].photoUrlString)
-
+        
         return cell
     }
 }

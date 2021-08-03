@@ -29,10 +29,10 @@ class ShareControl: UIControl {
         didSet {
             if flag {
                 self.actionButton.setImage(sharePressed, for: .normal)
-                self.countLabel.textColor = UIColor.black
+                self.countLabel.backgroundColor = .systemBackground
             } else {
                 self.actionButton.setImage(share, for: .normal)
-                self.countLabel.textColor = UIColor.black
+                self.countLabel.backgroundColor = .systemBackground
             }
         }
     }

@@ -26,14 +26,13 @@ class EmptyResultsView: UIView {
     }
     
     private func setUI() {
-        self.backgroundColor = .white
+        self.backgroundColor = .systemBackground
         addSubview(messageLabel)
         
         NSLayoutConstraint.activate([
             messageLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20),
             messageLabel.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor)
         ])
-        
     }
     
     func setMessage(text: String) {

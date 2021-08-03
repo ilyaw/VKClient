@@ -8,32 +8,42 @@
 import UIKit
 
 class GradientView: UIView {
-
-    @IBInspectable
-    private var startColor: UIColor? {
-        didSet {
-            setupGradientColors()
-        }
-    }
     
-    @IBInspectable
-    private var endColor: UIColor? {
-        didSet {
-            setupGradientColors()
-        }
-    }
+    private var startColor: UIColor?
+    private var endColor: UIColor?
     
     private let gradientLayer = CAGradientLayer()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        setupGradient()
+        startColor = .startGradientNewsfeedGrey
+        endColor = .endGradientNewsfeedGrey
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        if #available(iOS 13.0, *) {
+            guard traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) else {
+                return
+            }
+            
+            setupGradientColors()
+        }
     }
     
     //если пользуемся через storyboard то юзаем этот инит
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        
         setupGradient()
+        
+        startColor = .startGradientNewsfeedGrey
+        endColor = .endGradientNewsfeedGrey
+        
+        setupGradientColors()
     }
     
     override func layoutSubviews() {
@@ -44,7 +54,6 @@ class GradientView: UIView {
     private func setupGradient() {
         self.layer.addSublayer(gradientLayer)
         
-        setupGradientColors()
         gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.0)
         gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
     }
@@ -53,6 +62,6 @@ class GradientView: UIView {
         if let startColor = startColor, let endColor = endColor {
             gradientLayer.colors = [startColor.cgColor, endColor.cgColor]
         }
+        
     }
-    
 }

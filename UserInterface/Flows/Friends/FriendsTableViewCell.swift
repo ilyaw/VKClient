@@ -12,7 +12,7 @@ class FriendsTableViewCell: UITableViewCell {
     
     private let nameLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = .white
+        label.backgroundColor = .systemBackground
         return label
     }()
     

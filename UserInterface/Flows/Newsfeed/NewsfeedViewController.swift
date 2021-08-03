@@ -22,7 +22,7 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
     private var feedViewModel = FeedViewModel(cells: [], footerTitle: nil)
     private var isFirstStart: Bool = true
     
-    @IBOutlet weak var gradientView: GradientView!
+    @IBOutlet weak var gradientView: GradientView! 
     @IBOutlet weak var loaderView: LoaderView!
     
     @IBOutlet weak var tableView: UITableView! {
@@ -53,7 +53,7 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
     private func setupTopBars() {
         
         var frame: CGRect?
-        
+
         if #available(iOS 13.0, *) {
             let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
             frame = window?.windowScene?.statusBarManager?.statusBarFrame
@@ -63,10 +63,9 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
         
         if let frame = frame {
             let topBar = UIView(frame: frame)
-            topBar.backgroundColor = .white
+            topBar.backgroundColor = .systemBackground
             topBar.layer.shadowColor = UIColor.black.cgColor
-            topBar.layer.shadowOpacity = 0.5
-            topBar.layer.shadowOffset = CGSize.zero
+            topBar.layer.shadowOpacity = 0.1
             topBar.layer.shadowRadius = 8
             self.view.addSubview(topBar)
         }

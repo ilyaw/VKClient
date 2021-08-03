@@ -29,10 +29,10 @@ class LikeControl: UIControl {
         didSet {
             if flag {
                 self.actionButton.setImage(self.imgLike, for: .normal)
-                self.countLabel.textColor = UIColor.red
+                self.countLabel.textColor = .systemRed
             } else {
                 self.actionButton.setImage(self.imgNoLike, for: .normal)
-                self.countLabel.textColor = UIColor.black
+                self.countLabel.textColor = .likeCountLabel
             }
         }
     }
@@ -85,7 +85,6 @@ class LikeControl: UIControl {
     }
     
     @objc func like(_ sender: UIButton) {
-    
         switch flag {
         case true:
             self.likeCount -= 1

@@ -28,7 +28,7 @@ class HeaderSectionView: UIView {
     }
     
     private func setUI() {
-        self.backgroundColor = .brandGrey
+        self.backgroundColor = .systemGray5
         self.layer.masksToBounds = true
         self.layer.cornerRadius = 10
     }

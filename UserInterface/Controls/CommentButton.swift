@@ -29,8 +29,10 @@ class CommentButton: UIControl {
         didSet {
             if flag {
                 self.actionButton.setImage(commentsPressed, for: .normal)
+                self.countLabel.backgroundColor = .systemBackground
             } else {
                 self.actionButton.setImage(comments, for: .normal)
+                self.countLabel.backgroundColor = .systemBackground
             }
         }
     }
